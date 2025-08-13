@@ -78,6 +78,7 @@ export function DifficultyStars({ level, maxStars = 5 }: DifficultyProps) {
 
 function App() {
   const [isPirateMode, setIsPirateMode] = useState(true);
+  const [bg, setBg] = useState<"ocean" | "parchment" | "starry">("ocean");
 
   const pirateText = `Ahoy, matey! We be the crew of the Shagworm, victors of the mighty Crypto & Privacy Village Gold Bug Challenge at DEFCON 33, 2025. Once but humble sailors from the far-flung shores of Stanford's Applied Cyber guild, now we sail the seas of cipher and code, with a deck split 'twixt seasoned hands who've weathered many a Goldbug storm, and greenhorns who'd ne'er before set eyes on such a map of mysteries.
 
@@ -93,8 +94,11 @@ Each puzzle has a difficulty rating set by the puzzle masters of 1 to 5 stars - 
 
 If you have questions, feel free to ping us on discord: @rlama__ or @cooper7840`;
 
+  const bgClass =
+    bg === "ocean" ? "bg-ocean" : bg === "parchment" ? "bg-parchment" : "bg-starry";
+
   return (
-    <div className="min-h-screen bg-black text-green-300" style={{ fontFamily: "'VT323', ui-monospace, SFMono-Regular, Menlo, monospace" }}>
+    <div className={`min-h-screen text-green-300 ${bgClass}`} style={{ fontFamily: "'VT323', ui-monospace, SFMono-Regular, Menlo, monospace" }}>
       <div className="mx-auto max-w-5xl px-4 py-6">
         <div className="mb-6">
           <AnsiHeader />
@@ -111,6 +115,27 @@ If you have questions, feel free to ping us on discord: @rlama__ or @cooper7840`
                 onCheckedChange={setIsPirateMode}
                 className="data-[state=checked]:bg-yellow-500 data-[state=unchecked]:bg-green-600"
               />
+            </div>
+            <div className="flex items-center gap-1 text-xs font-mono">
+              <span className="text-green-300 mr-2">Background:</span>
+              <button
+                onClick={() => setBg("ocean")}
+                className={`px-2 py-1 border rounded-sm ${bg === "ocean" ? "border-yellow-400 text-yellow-300 bg-yellow-900/10" : "border-green-600/40 text-green-200 hover:bg-green-900/20"}`}
+              >
+                Ocean
+              </button>
+              <button
+                onClick={() => setBg("parchment")}
+                className={`px-2 py-1 border rounded-sm ${bg === "parchment" ? "border-yellow-400 text-yellow-300 bg-yellow-900/10" : "border-green-600/40 text-green-200 hover:bg-green-900/20"}`}
+              >
+                Parchment
+              </button>
+              <button
+                onClick={() => setBg("starry")}
+                className={`px-2 py-1 border rounded-sm ${bg === "starry" ? "border-yellow-400 text-yellow-300 bg-yellow-900/10" : "border-green-600/40 text-green-200 hover:bg-green-900/20"}`}
+              >
+                Starry
+              </button>
             </div>
           </div>
           <div className="text-lg whitespace-pre-line">
