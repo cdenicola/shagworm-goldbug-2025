@@ -89,12 +89,19 @@ function Badge({
 type DifficultyProps = {
   level: number
   maxStars?: number
+  size?: "sm" | "lg"
 }
 
-export function DifficultyStars({ level, maxStars = 5 }: DifficultyProps) {
+export function DifficultyStars({
+  level,
+  maxStars = 5,
+  size = "sm",
+}: DifficultyProps) {
+  const textSizeClass = size === "lg" ? "text-lg" : "text-sm"
+
   return (
     <span
-      className="font-mono text-sm"
+      className={`font-mono ${textSizeClass}`}
       title={`Difficulty: ${level}/${maxStars}`}
     >
       {Array.from({ length: maxStars }, (_, i) => (
@@ -141,7 +148,6 @@ If you have questions, feel free to ping us on discord: @rlama__ or @cooper7840`
       : bg === "parchment"
         ? "bg-parchment"
         : "bg-starry"
-    bg === "ocean" ? "bg-ocean" : bg === "parchment" ? "bg-parchment" : "bg-starry";
 
   //const base = import.meta.env.BASE_URL || "/";
   //const goldbugUrl = `${base}assets/pirate/goldbug.png`;
