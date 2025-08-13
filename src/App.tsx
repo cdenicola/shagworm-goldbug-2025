@@ -113,6 +113,28 @@ If you have questions, feel free to ping us on discord: @rlama__ or @cooper7840`
           <AnsiHeader />
         </div>
 
+        <div className="flex items-center gap-1 text-xs font-mono justify-end">
+          <span className="text-green-300 mr-2">Background:</span>
+          <button
+            onClick={() => setBg("ocean")}
+            className={`px-2 py-1 border rounded-sm ${bg === "ocean" ? "border-yellow-400 text-yellow-300 bg-yellow-900/10" : "border-green-600/40 text-green-200 hover:bg-green-900/20"}`}
+          >
+            Ocean
+          </button>
+          <button
+            onClick={() => setBg("parchment")}
+            className={`px-2 py-1 border rounded-sm ${bg === "parchment" ? "border-yellow-400 text-yellow-300 bg-yellow-900/10" : "border-green-600/40 text-green-200 hover:bg-green-900/20"}`}
+          >
+            Parchment
+          </button>
+          <button
+            onClick={() => setBg("starry")}
+            className={`px-2 py-1 border rounded-sm ${bg === "starry" ? "border-yellow-400 text-yellow-300 bg-yellow-900/10" : "border-green-600/40 text-green-200 hover:bg-green-900/20"}`}
+          >
+            Starry
+          </button>
+        </div>
+
         <div className="border border-green-600/40 rounded-sm p-4 bg-green-900/10">
           <div className="flex items-center justify-between mb-4">
             <h3 className="text-2xl text-green-200">
@@ -128,27 +150,6 @@ If you have questions, feel free to ping us on discord: @rlama__ or @cooper7840`
               <span className="text-yellow-300 font-mono text-sm">
                 {isPirateMode ? "🏴‍☠️ Pirate Mode" : "⚓ Landlubber Mode"}
               </span>
-            </div>
-            <div className="flex items-center gap-1 text-xs font-mono">
-              <span className="text-green-300 mr-2">Background:</span>
-              <button
-                onClick={() => setBg("ocean")}
-                className={`px-2 py-1 border rounded-sm ${bg === "ocean" ? "border-yellow-400 text-yellow-300 bg-yellow-900/10" : "border-green-600/40 text-green-200 hover:bg-green-900/20"}`}
-              >
-                Ocean
-              </button>
-              <button
-                onClick={() => setBg("parchment")}
-                className={`px-2 py-1 border rounded-sm ${bg === "parchment" ? "border-yellow-400 text-yellow-300 bg-yellow-900/10" : "border-green-600/40 text-green-200 hover:bg-green-900/20"}`}
-              >
-                Parchment
-              </button>
-              <button
-                onClick={() => setBg("starry")}
-                className={`px-2 py-1 border rounded-sm ${bg === "starry" ? "border-yellow-400 text-yellow-300 bg-yellow-900/10" : "border-green-600/40 text-green-200 hover:bg-green-900/20"}`}
-              >
-                Starry
-              </button>
             </div>
           </div>
           <div className="text-lg whitespace-pre-line">
