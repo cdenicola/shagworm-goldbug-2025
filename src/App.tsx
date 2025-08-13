@@ -240,10 +240,10 @@ If you have questions, feel free to ping us on discord: @rlama__ or @cooper7840`
             event.preventDefault()
             setTimeout(() => {
               window.scrollTo({
-                top: document.body.scrollHeight,
+                top: document.documentElement.scrollHeight,
                 behavior: "smooth",
               })
-            }, 10)
+            }, 50)
             setKeySequence("")
             if (keySequenceTimeout) {
               clearTimeout(keySequenceTimeout)
