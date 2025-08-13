@@ -35,7 +35,7 @@ export default function PuzzleSection({ p }: { p: TPuzzle }) {
             {p.theme}
           </span>
           <div className="ml-auto">
-            <DifficultyStars level={p.difficulty} />
+            <DifficultyStars level={p.difficulty} size="text-xl" />
           </div>
         </div>
       </header>
