@@ -89,19 +89,17 @@ function Badge({
 type DifficultyProps = {
   level: number
   maxStars?: number
-  size?: "sm" | "lg"
+  size: string
 }
 
 export function DifficultyStars({
   level,
   maxStars = 5,
-  size = "sm",
+  size = "text-sm",
 }: DifficultyProps) {
-  const textSizeClass = size === "lg" ? "text-lg" : "text-sm"
-
   return (
     <span
-      className={`font-mono ${textSizeClass}`}
+      className={`font-mono ${size}`}
       title={`Difficulty: ${level}/${maxStars}`}
     >
       {Array.from({ length: maxStars }, (_, i) => (
