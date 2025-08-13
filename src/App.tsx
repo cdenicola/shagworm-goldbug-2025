@@ -236,27 +236,24 @@ If you have questions, feel free to ping us on discord: @rlama__ or @cooper7840`
               setKeySequenceTimeout(timeout)
             }
             break
-          case "G":
+          case "G": {
             event.preventDefault()
-            setTimeout(() => {
-              const scrollHeight = Math.max(
-                document.body.scrollHeight,
-                document.body.offsetHeight,
-                document.documentElement.clientHeight,
-                document.documentElement.scrollHeight,
-                document.documentElement.offsetHeight
-              )
+            const footer = document.querySelector("footer:last-of-type")
+            if (footer) {
+              footer.scrollIntoView({ behavior: "smooth", block: "end" })
+            } else {
               window.scrollTo({
-                top: scrollHeight,
+                top: document.documentElement.scrollHeight,
                 behavior: "smooth",
               })
-            }, 0)
+            }
             setKeySequence("")
             if (keySequenceTimeout) {
               clearTimeout(keySequenceTimeout)
               setKeySequenceTimeout(null)
             }
             break
+          }
           case "?":
             event.preventDefault()
             showHelpToast()
