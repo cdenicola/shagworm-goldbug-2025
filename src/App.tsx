@@ -116,6 +116,7 @@ If you have questions, feel free to ping us on discord: @rlama__ or @cooper7840`
         <div className="border border-green-600/40 rounded-sm p-4 bg-green-900/10">
           <div className="flex items-center justify-between mb-4">
             <h3 className="text-2xl text-green-200">
+              <span className="inline mr-2 text-green-200" aria-hidden>🏴‍☠️</span>
               Captain’s Log
             </h3>
             <div className="flex items-center gap-3">
