@@ -23,12 +23,12 @@ html, body {
   z-index: 0;
 }
 
-/* Minimal extras for ANSI cursor blink effect */
 .ansi-cursor::after {
   content: "█";
-  animation: blink 1s steps(1, end) infinite;
+  animation: blink 1s steps(1, end) infinite, cursorpulse 1.5s ease-in-out infinite;
   margin-left: 4px;
 }
+
 @keyframes blink { 50% { opacity: 0; } }
 
 /* Pirate-themed background variants */
@@ -73,4 +73,9 @@ html, body {
   0%, 96%, 100% { text-shadow: none; }
   97%, 99% { text-shadow: 0 0 6px rgba(255, 255, 0, 0.6); }
   98% { text-shadow: 0 0 12px rgba(255, 255, 0, 0.9); }
+}
+
+@keyframes cursorpulse {
+  0%,100% { text-shadow: 0 0 6px rgba(253,224,71,0.5);}
+  50% { text-shadow: 0 0 12px rgba(34,211,238,0.5);}
 }
