@@ -118,17 +118,17 @@ function App() {
   const [isPirateMode, setIsPirateMode] = useState(true)
   const [bg, setBg] = useState<"ocean" | "parchment" | "starry">("ocean")
 
-  const pirateText = `Ahoy, matey! We be the crew of the Shagworm, victors of the mighty Crypto & Privacy Village Gold Bug Challenge at DEFCON 33, 2025. Once but humble sailors from the far-flung shores of Stanford's Applied Cyber guild, now we sail the seas of cipher and code, with a deck split 'twixt seasoned hands who've weathered many a Goldbug storm, and greenhorns who'd ne'er before set eyes on such a map of mysteries.
+  const pirateText = `Ahoy, matey! We be the crew of the Shagworm, victors of the mighty Crypto & Privacy Village Gold Bug Challenge at DEFCON 33, 2025. Once but humble sailors from the far-flung shores of Stanford's Applied Cyber guild, now we sail the seas of cipher and code, with a deck split 'twixt seasoned hands who've weathered many a Gold Bug storm, and greenhorns who'd ne'er before set eyes on such a map of mysteries.
 
-Our charts be marked with trials o' varying peril—each puzzle marked by the Puzzle Masters with one to five gleamin' stars. One star be a calm harbor, five be a storm fit to snap a mast. All treasures we sought were 12-letter phrases—sometimes two or three words lashed together—aye, whether writ in upper, lower, or a mix o' cases, so long as the form be true. In Goldbug waters, the number 12 be more than mere count—it be a key to the very locks ye must pick.
+Our charts be marked with trials o' varying peril—each puzzle marked by the Puzzle Masters with one to five gleamin' stars. One star be a calm harbor, five be a storm fit to snap a mast. All treasures we sought were 12-letter phrases—sometimes two or three words lashed together—aye, whether writ in upper, lower, or a mix o' cases, so long as the form be true. In Gold Bug waters, the number 12 be more than mere count—it be a key to the very locks ye must pick.
 
 We charted our course through the isles of JRC, FLP, MOC, NUM, TTT, OMR, CCC, SSY, TPS, BLU, OWB, MAN, GOS, and MET, plundering each in turn, until the map lay complete before us.
 
 Should ye wish to parley or swap tales of the hunt, ye'll find us in the Discord tavern—look for @rlama__ or @cooper7840—and mayhap we'll trade secrets over a cask o' rum.`
 
-  const landlubberText = `Hi! We're the shagworm team, winners of the DEFCON 33, 2025 Goldbug Challenge. We're a group of current and alumni Stanford Applied Cyber members, and we're excited to share our solutions writeup. Our favorite team fact was that our team was half-composed of people who have competed several years in a row, and half who have never even seen a Goldbug puzzle before!
+  const landlubberText = `Hi! We're the shagworm team, winners of the DEFCON 33, 2025 Gold Bug Challenge. We're a group of current and alumni Stanford Applied Cyber members, and we're excited to share our solutions writeup. Our favorite team fact was that our team was half-composed of people who have competed several years in a row, and half who have never even seen a Gold Bug puzzle before!
 
-Each puzzle has a difficulty rating set by the puzzle masters of 1 to 5 stars - 1 being the easiest and 5 being the most difficult. All puzzles are a 12 letter (not case-sensitive) combination of words (exception meta puzzle). For example, "TwelveDigits", "twelvedigits", and "TWELVEDIGITS" are in the correct format. This is helpful to know in the context of Goldbug as you are usually looking for "12" as a key relation. Our team solved the puzzles in the following order: 1) JRC 2) FLP 3) MOC 4) NUM 5) TTT 6) OMR 7) CCC 8) SSY 9) TPS 10) BLU 11) OWB 12) MAN 13) GOS 14) MET. 
+Each puzzle has a difficulty rating set by the puzzle masters of 1 to 5 stars - 1 being the easiest and 5 being the most difficult. All puzzles are a 12 letter (not case-sensitive) combination of words (exception meta puzzle). For example, "TwelveDigits", "twelvedigits", and "TWELVEDIGITS" are in the correct format. This is helpful to know in the context of Gold Bug as you are usually looking for "12" as a key relation. Our team solved the puzzles in the following order: 1) JRC 2) FLP 3) MOC 4) NUM 5) TTT 6) OMR 7) CCC 8) SSY 9) TPS 10) BLU 11) OWB 12) MAN 13) GOS 14) MET. 
 
 If you have questions, feel free to ping us on discord: @rlama__ or @cooper7840`
 
@@ -328,12 +328,50 @@ If you have questions, feel free to ping us on discord: @rlama__ or @cooper7840`
         </section>
 
         <section className="mt-10 border border-pink-500/40 bg-pink-900/10 rounded-sm p-4">
-          <h3 className="text-2xl text-pink-400 mb-2">Closing Notes</h3>
-          <ul className="list-[♥] pl-6 space-y-1">
-            <li>Shout-outs</li>
-            <li>Lessons learned</li>
-            <li>Future improvements</li>
-          </ul>
+          <h3 className="text-2xl text-pink-400 mb-2">Final Boarding</h3>
+          <div className="space-y-3">
+            <p className="text-green-200">
+              We are incredibly excited to have won the Crypto & Privacy
+              Village's Gold Bug Challenge and received a{" "}
+              <span className="text-yellow-300 font-bold">
+                DEFCON Black Badge
+              </span>{" "}
+              - one of DEFCON's highest honors, granting us lifetime free entry
+              to DEFCON!
+            </p>
+            <p className="text-green-200">
+              Huge appreciation to the entire{" "}
+              <a
+                className="underline text-yellow-300 hover:text-pink-400"
+                href="https://square.link/u/6SD4E1mL"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Stanford Applied Cyber
+              </a>{" "}
+              community for their support.
+            </p>
+            <p className="text-green-200">
+              Special thanks to our mentor{" "}
+              <span className="text-yellow-300">Alex Keller</span> for always
+              being in our corner, and to{" "}
+              <span className="text-pink-300">Team Psychoholics</span> for
+              fierce competition that pushed us to excel.
+            </p>
+            <p className="text-green-200">
+              Consider supporting the amazing{" "}
+              <a
+                className="underline text-yellow-300 hover:text-pink-400"
+                href="https://square.link/u/6SD4E1mL"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Crypto & Privacy Village
+              </a>{" "}
+              - they create incredible challenges and foster this wonderful
+              community!
+            </p>
+          </div>
         </section>
 
         <footer className="mt-8 text-sm border border-yellow-500/40 bg-yellow-900/10 rounded-sm p-6">
