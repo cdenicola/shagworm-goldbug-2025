@@ -1,4 +1,6 @@
+import React, { useState } from "react";
 import "./App.css";
+import { Switch } from "./components/ui/switch";
 
 type Puzzle = {
   code: string;
@@ -75,6 +77,22 @@ export function DifficultyStars({ level, maxStars = 5 }: DifficultyProps) {
 }
 
 function App() {
+  const [isPirateMode, setIsPirateMode] = useState(true);
+
+  const pirateText = `Ahoy, matey! We be the crew of the Shagworm, victors of the mighty Crypto & Privacy Village Gold Bug Challenge at DEFCON 33, 2025. Once but humble sailors from the far-flung shores of Stanford's Applied Cyber guild, now we sail the seas of cipher and code, with a deck split 'twixt seasoned hands who've weathered many a Goldbug storm, and greenhorns who'd ne'er before set eyes on such a map of mysteries.
+
+Our charts be marked with trials o' varying peril—each puzzle marked by the Puzzle Masters with one to five gleamin' stars. One star be a calm harbor, five be a storm fit to snap a mast. All treasures we sought were 12-letter phrases—sometimes two or three words lashed together—aye, whether writ in upper, lower, or a mix o' cases, so long as the form be true. In Goldbug waters, the number 12 be more than mere count—it be a key to the very locks ye must pick.
+
+We charted our course through the isles of JRC, FLP, MOC, NUM, TTT, OMR, CCC, SSY, TPS, BLU, OWB, MAN, GOS, and MET, plundering each in turn, until the map lay complete before us.
+
+Should ye wish to parley or swap tales of the hunt, ye'll find us in the Discord tavern—look for @rlama__ or @cooper7840—and mayhap we'll trade secrets over a cask o' rum.`;
+
+  const landlubberText = `Hi! We're the shagworm team, winners of the DEFCON 33, 2025 Goldbug Challenge. We're a group of current and alumni Stanford Applied Cyber members, and we're excited to share our solutions writeup. Our favorite team fact was that our team was half-composed of people who have competed several years in a row, and half who have never even seen a Goldbug puzzle before!
+
+Each puzzle has a difficulty rating set by the puzzle masters of 1 to 5 stars - 1 being the easiest and 5 being the most difficult. All puzzles are a 12 letter (not case-sensitive) combination of words (exception meta puzzle). For example, "TwelveDigits", "twelvedigits", and "TWELVEDIGITS" are in the correct format. This is helpful to know in the context of Goldbug as you are usually looking for "12" as a key relation. Our team solved the puzzles in the following order: 1) JRC 2) FLP 3) MOC 4) NUM 5) TTT 6) OMR 7) CCC 8) SSY 9) TPS 10) BLU 11) OWB 12) MAN 13) GOS 14) MET. 
+
+If you have questions, feel free to ping us on discord: @rlama__ or @cooper7840`;
+
   return (
     <div className="min-h-screen bg-black text-green-300" style={{ fontFamily: "'VT323', ui-monospace, SFMono-Regular, Menlo, monospace" }}>
       <div className="mx-auto max-w-5xl px-4 py-6">
@@ -83,12 +101,22 @@ function App() {
         </div>
 
         <div className="border border-green-600/40 rounded-sm p-4 bg-green-900/10">
-          <p className="text-lg">
-            Ahoy, matey! This be me writeup for the DEF CON Crypto & Privacy Village Gold Bug 2025 treasure-hunt puzzle contest.
-            This page is a stylized outline you can edit to add full solutions, artifacts, and notes.
-            Links and colors pay homage to the CPV BBS aesthetic.
-          </p>
-          <p className="ansi-cursor mt-2 text-pink-400">PRESS ANY KEY TO CONTINUE</p>
+          <div className="flex items-center justify-between mb-4">
+            <div className="flex items-center gap-3">
+              <span className="text-yellow-300 font-mono text-sm">
+                {isPirateMode ? "🏴‍☠️ Pirate Mode" : "⚓ Landlubber Mode"}
+              </span>
+              <Switch
+                checked={isPirateMode}
+                onCheckedChange={setIsPirateMode}
+                className="data-[state=checked]:bg-yellow-500 data-[state=unchecked]:bg-green-600"
+              />
+            </div>
+          </div>
+          <div className="text-lg whitespace-pre-line">
+            {isPirateMode ? pirateText : landlubberText}
+          </div>
+          <p className="ansi-cursor mt-4 text-pink-400">PRESS ANY KEY TO CONTINUE</p>
         </div>
 
         <nav className="mt-6 border border-pink-500/40 bg-pink-900/10 rounded-sm p-4">
