@@ -110,8 +110,8 @@ If you have questions, feel free to ping us on discord: @rlama__ or @cooper7840`
   const bgClass =
     bg === "ocean" ? "bg-ocean" : bg === "parchment" ? "bg-parchment" : "bg-starry";
 
-  const base = import.meta.env.BASE_URL || "/";
-  const goldbugUrl = `${base}assets/pirate/goldbug.png`;
+  //const base = import.meta.env.BASE_URL || "/";
+  //const goldbugUrl = `${base}assets/pirate/goldbug.png`;
 
   return (
 
@@ -155,14 +155,14 @@ If you have questions, feel free to ping us on discord: @rlama__ or @cooper7840`
               Captain’s Log
             </h3>
             <div className="flex items-center gap-3">
+              <span className="text-yellow-300 font-mono text-sm">
+                {isPirateMode ? "🏴‍☠️ Pirate Mode" : "⚓ Landlubber Mode"}
+              </span>
               <Switch
                 checked={isPirateMode}
                 onCheckedChange={setIsPirateMode}
                 className="data-[state=checked]:bg-yellow-500 data-[state=unchecked]:bg-green-600"
               />
-              <span className="text-yellow-300 font-mono text-sm">
-                {isPirateMode ? "🏴‍☠️ Pirate Mode" : "⚓ Landlubber Mode"}
-              </span>
             </div>
           </div>
           <div className="text-lg whitespace-pre-line">
