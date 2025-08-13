@@ -203,8 +203,27 @@ function App() {
           </ul>
         </section>
 
-        <footer className="mt-8 text-sm text-green-500">
-          Theme inspired by CPV BBS aesthetic. Built with React + Tailwind. Repo instructions in README.
+        <footer className="mt-8 text-sm border border-green-600/40 bg-green-900/10 rounded-sm p-4">
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-2">
+            <div className="text-green-500">
+              Theme inspired by CPV BBS aesthetic. Built with React + Tailwind.
+            </div>
+            <div className="text-yellow-300 font-mono">
+              <span className="text-pink-400">►</span> Frontend crafted by{" "}
+              <a 
+                className="underline text-yellow-300 hover:text-pink-400" 
+                href="https://devin.ai" 
+                target="_blank" 
+                rel="noreferrer"
+              >
+                Devin AI
+              </a>{" "}
+              <span className="text-green-300">◄</span>
+            </div>
+          </div>
+          <div className="mt-2 text-xs text-green-500 text-center">
+            Repo instructions in README • <span className="ansi-cursor">Ready for deployment</span>
+          </div>
         </footer>
       </div>
     </div>
