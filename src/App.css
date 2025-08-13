@@ -1,6 +1,11 @@
 html, body {
   overflow-x: hidden;
   overscroll-behavior-y: none;
+  background-color: #000;
+  background-image: var(--parchment-bg, none);
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
 }
 
 #root {
@@ -9,6 +14,17 @@ html, body {
   margin: 0;
   padding: 0;
   text-align: left;
+  position: relative;
+}
+
+/* Subtle vignette for nautical/night ambiance */
+#root::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(ellipse at center, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0.6) 70%, rgba(0,0,0,0.85) 100%);
+  z-index: 0;
 }
 
 /* Minimal extras for ANSI cursor blink effect */
@@ -18,6 +34,7 @@ html, body {
   margin-left: 4px;
 }
 @keyframes blink { 50% { opacity: 0; } }
+<<<<<<< HEAD
 /* Pirate-themed background variants */
 .bg-ocean {
   background:
@@ -52,4 +69,12 @@ html, body {
     linear-gradient(180deg, #0a0f1a 0%, #090d15 50%, #05070c 100%);
   background-attachment: fixed, fixed, fixed, fixed, fixed, fixed, fixed;
   background-size: cover, cover, auto, auto, auto, auto, cover;
+}
+
+/* Very subtle treasure glint on filled stars */
+.star-glint { animation: glint 6s linear infinite; }
+@keyframes glint {
+  0%, 96%, 100% { text-shadow: none; }
+  97%, 99% { text-shadow: 0 0 6px rgba(255, 255, 0, 0.6); }
+  98% { text-shadow: 0 0 12px rgba(255, 255, 0, 0.9); }
 }
