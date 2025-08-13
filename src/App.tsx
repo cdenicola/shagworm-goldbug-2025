@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import "./App.css"
 import { Switch } from "./components/ui/switch"
 import PuzzleSection, { TPuzzle } from "./puzzle"
@@ -147,6 +147,49 @@ If you have questions, feel free to ping us on discord: @rlama__ or @cooper7840`
         ? "bg-parchment"
         : "bg-starry"
 
+  const shipFrames: string[] = [
+    String.raw`
+             )    )    )               
+             )_)  )_)  )_)              
+            )___))___))___)\            
+        )____)____)_____)\\       
+         _____|____|____|____\\\\__    
+---------\                   /---------
+   ^^^^^ ^^^^^^^^^^^^^^^^^^^^^         
+     ^^^^      ^^^^     ^^^    ^^      
+             ^^^^      ^^^             
+`,
+    String.raw`
+              )    )    )              
+              )_)  )_)  )_)             
+             )___))___))___)\           
+         )____)____)_____)\\      
+          _____|____|____|____\\\\__   
+---------\                   /---------
+     ^^^^^ ^^^^^^^^^^^^^^^^^^^^        
+       ^^^^      ^^^^     ^^^    ^^    
+               ^^^^      ^^^           
+`,
+    String.raw`
+             )    )    )               
+             )_)  )_)  )_)              
+            )___))___))___)\            
+        )____)____)_____)\\       
+         _____|____|____|____\\\\__    
+---------\                   /---------
+  ^^^^^ ^^^^^^^^^^^^^^^^^^^^^^^        
+    ^^^^      ^^^^     ^^^    ^^       
+            ^^^^      ^^^              
+`,
+  ]
+  const [shipFrame, setShipFrame] = useState(0)
+  useEffect(() => {
+    const id = setInterval(() => {
+      setShipFrame((i) => (i + 1) % shipFrames.length)
+    }, 220)
+    return () => clearInterval(id)
+  }, [])
+
   //const base = import.meta.env.BASE_URL || "/";
   //const goldbugUrl = `${base}assets/pirate/goldbug.png`;
 
@@ -238,7 +281,7 @@ If you have questions, feel free to ping us on discord: @rlama__ or @cooper7840`
                     <Badge color="bg-blue-500/20 text-blue-300 border-blue-400/40">
                       {p.theme}
                     </Badge>
-                    <DifficultyStars level={p.difficulty} />
+                    <DifficultyStars level={p.difficulty} size="text-sm" />
                   </div>
                 </li>
               </a>
@@ -340,12 +383,12 @@ If you have questions, feel free to ping us on discord: @rlama__ or @cooper7840`
           <div className="space-y-3">
             <p className="text-green-200">
               We are incredibly excited to have won the Crypto & Privacy
-              Village's Gold Bug Challenge and received a{" "}
+              Village&apos;s Gold Bug Challenge and received a{" "}
               <span className="text-yellow-300 font-bold">
                 DEFCON Black Badge
               </span>{" "}
-              - one of DEFCON's highest honors, granting us lifetime free entry
-              to DEFCON!
+              - one of DEFCON&apos;s highest honors, granting us lifetime free
+              entry to DEFCON!
             </p>
             <p className="text-green-200">
               Huge appreciation to the entire{" "}
@@ -383,22 +426,68 @@ If you have questions, feel free to ping us on discord: @rlama__ or @cooper7840`
         </section>
 
         <footer className="mt-8 text-sm border border-yellow-500/40 bg-yellow-900/10 rounded-sm p-6">
-          {/* Option 1: Pirate Ship ASCII Art */}
-          <div className="text-center mb-4">
-            <pre className="text-yellow-300 text-xs leading-none">
-              {String.raw`
-             )    )    )               
+          <h4 className="text-center text-pink-400 text-xl mb-4">
+            Animated ASCII Ships
+          </h4>
+          <div className="grid gap-4 md:grid-cols-3">
+            <div className="text-center">
+              <div className="inline-block anim-ship-bob">
+                <div className="inline-block anim-sail-sway">
+                  <pre className="text-yellow-300 text-xs leading-none">
+                    {String.raw`             )    )    )               
+             )_)  )_)  )_)              
+            )___))___))___)\            `}
+                  </pre>
+                </div>
+                <pre className="text-yellow-300 text-xs leading-none">
+                  {String.raw`        )____)____)_____)\\       
+         _____|____|____|____\\\\__    
+---------\                   /---------`}
+                </pre>
+                <pre className="text-yellow-300 text-xs leading-none anim-wave">
+                  {String.raw`   ^^^^^ ^^^^^^^^^^^^^^^^^^^^^         
+     ^^^^      ^^^^     ^^^    ^^      
+             ^^^^      ^^^             `}
+                </pre>
+              </div>
+              <div className="text-green-300 text-xs mt-1">
+                Variant A: CSS bob, sail sway, wave up/down
+              </div>
+            </div>
+
+            <div className="text-center">
+              <pre className="text-yellow-300 text-xs leading-none">
+                {shipFrames[shipFrame]}
+              </pre>
+              <div className="text-green-300 text-xs mt-1">
+                Variant B: Frame-cycling ASCII
+              </div>
+            </div>
+
+            <div className="text-center">
+              <div className="inline-block water-bg p-1 rounded-sm anim-ship-bob">
+                <pre className="text-yellow-300 text-xs leading-none">
+                  {String.raw`             )    )    )               
              )_)  )_)  )_)              
             )___))___))___)\            
         )____)____)_____)\\       
          _____|____|____|____\\\\__    
----------\                   /---------
-   ^^^^^ ^^^^^^^^^^^^^^^^^^^^^         
+---------\                   /---------`}
+                </pre>
+                <pre className="text-yellow-300 text-xs leading-none">
+                  {String.raw`   ^^^^^ ^^^^^^^^^^^^^^^^^^^^^         
      ^^^^      ^^^^     ^^^    ^^      
-             ^^^^      ^^^             
-`}
-            </pre>
-            <div className="text-pink-400 font-mono text-md mt-2">
+             ^^^^      ^^^             `}
+                </pre>
+              </div>
+              <div className="text-green-300 text-xs mt-1">
+                Variant C: Water shimmer + bob
+              </div>
+            </div>
+          </div>
+
+          <div className="text-center mt-6">
+            <div className="text-pink-400 font-mono text-md">
               ⚓ Frontend by Cadet{" "}
               <a
                 className="underline text-yellow-300 hover:text-green-300"
@@ -411,12 +500,11 @@ If you have questions, feel free to ping us on discord: @rlama__ or @cooper7840`
               of the SS Shagworm ⚓
             </div>
             <div className="text-green-300 text-xs mt-1">
-              "Ahoy! This treasure map was crafted with React & Tailwind by yer
-              friendly AI buccaneer!"
+              Ahoy! This treasure map was crafted with React &amp; Tailwind by
+              yer friendly AI buccaneer!
             </div>
           </div>
 
-          {/* Treasure Chest Divider */}
           <div className="text-center my-4">
             <span className="text-yellow-300">💰 ⚔️ 🗺️ ⚔️ 💰</span>
           </div>
