@@ -1,4 +1,4 @@
-import { TPuzzle } from "../../puzzle";
+import { TPuzzle } from "../../puzzle"
 
 const TTT: TPuzzle = {
   code: "TTT",
@@ -6,6 +6,6 @@ const TTT: TPuzzle = {
   theme: "The Adventures of TinTin",
   anchor: "ttt",
   difficulty: 2,
-};
+}
 
-export default TTT; 
+export default TTT

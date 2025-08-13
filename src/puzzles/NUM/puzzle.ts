@@ -1,4 +1,4 @@
-import { TPuzzle } from "../../puzzle";
+import { TPuzzle } from "../../puzzle"
 
 const NUM: TPuzzle = {
   code: "NUM",
@@ -6,6 +6,6 @@ const NUM: TPuzzle = {
   theme: "The Gold-Bug",
   anchor: "num",
   difficulty: 1,
-};
+}
 
-export default NUM;
+export default NUM

@@ -1,4 +1,4 @@
-import { TPuzzle } from "../../puzzle";
+import { TPuzzle } from "../../puzzle"
 
 const FLP: TPuzzle = {
   code: "FLP",
@@ -6,6 +6,6 @@ const FLP: TPuzzle = {
   theme: "Gold Coin",
   anchor: "flp",
   difficulty: 1,
-};
+}
 
-export default FLP; 
+export default FLP

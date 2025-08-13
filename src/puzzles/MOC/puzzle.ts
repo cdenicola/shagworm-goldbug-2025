@@ -1,4 +1,4 @@
-import { TPuzzle } from "../../puzzle";
+import { TPuzzle } from "../../puzzle"
 
 const MOC: TPuzzle = {
   code: "MOC",
@@ -6,6 +6,6 @@ const MOC: TPuzzle = {
   theme: "Goonies",
   anchor: "moc",
   difficulty: 3,
-};
+}
 
-export default MOC; 
+export default MOC
