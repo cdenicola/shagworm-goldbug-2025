@@ -307,6 +307,81 @@ function App() {
               🏴‍☠️
             </div>
           </div>
+
+          OPTION 6: Indiana Jones Style
+          <div className="text-center">
+            <div className="text-yellow-300">"It belongs in a museum... but this code belongs on the web!"</div>
+            <div className="text-pink-400 mt-2">
+              🎩 Crafted by Professor{" "}
+              <a href="https://devin.ai" className="underline text-yellow-300 hover:text-green-300">
+                Devin, Digital Archaeologist
+              </a>{" "}
+              🎩
+            </div>
+            <div className="text-green-300 text-xs mt-1">
+              "No snakes were harmed in the making of this frontend"
+            </div>
+          </div>
+
+          OPTION 7: Treasure Island Style
+          <div className="text-center">
+            <div className="text-yellow-300">"Fifteen men on a dead man's chest... but only one AI coded this!"</div>
+            <div className="text-pink-400 mt-2">
+              🦜 Yo ho ho and a bottle of... React components! - Captain{" "}
+              <a href="https://devin.ai" className="underline text-yellow-300 hover:text-green-300">
+                Devin
+              </a>{" "}
+              🦜
+            </div>
+          </div>
+
+          OPTION 8: National Treasure Style
+          <div className="text-center">
+            <div className="text-yellow-300">"I'm going to steal the... user's attention with great UX!"</div>
+            <div className="text-pink-400 mt-2">
+              🗽 Decoded by{" "}
+              <a href="https://devin.ai" className="underline text-yellow-300 hover:text-green-300">
+                Devin, Master of Digital Mysteries
+              </a>{" "}
+              🗽
+            </div>
+          </div>
+
+          OPTION 9: Minimal Pirate
+          <div className="text-center">
+            <div className="text-pink-400 text-lg">
+              ☠️ Coded by{" "}
+              <a href="https://devin.ai" className="underline text-yellow-300 hover:text-green-300">
+                Devin
+              </a>{" "}
+              ☠️
+            </div>
+            <div className="text-green-300 text-xs mt-1">
+              "Arrr! This be fine code, matey!"
+            </div>
+          </div>
+
+          OPTION 10: Adventure Map
+          <div className="text-center">
+            <pre className="text-yellow-300 text-xs leading-none">
+{String.raw`
+    🏝️     🏴‍☠️     ⚓
+      \     |     /
+       \    |    /
+        \   |   /
+         \  |  /
+          \ | /
+           \|/
+            X
+`}
+            </pre>
+            <div className="text-pink-400 mt-2">
+              Here be dragons... and excellent TypeScript by{" "}
+              <a href="https://devin.ai" className="underline text-yellow-300 hover:text-green-300">
+                Devin
+              </a>!
+            </div>
+          </div>
           
           */}
         </footer>
