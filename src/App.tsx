@@ -231,8 +231,187 @@ If you have questions, feel free to ping us on discord: @rlama__ or @cooper7840`
           </ul>
         </section>
 
-        <footer className="mt-8 text-sm text-green-500">
-          Theme inspired by CPV BBS aesthetic. Built with React + Tailwind. Repo instructions in README.
+        <footer className="mt-8 text-sm border border-yellow-500/40 bg-yellow-900/10 rounded-sm p-6">
+          {/* Option 1: Pirate Ship ASCII Art */}
+          <div className="text-center mb-4">
+            <pre className="text-yellow-300 text-xs leading-none">
+{String.raw`
+                    |    |    |
+                   )_)  )_)  )_)
+                  )___))___))___)\\
+                 )____)____)_____)\\\\
+               _____|____|____|____\\\\\\__
+      ---------\                   /---------
+        ^^^^^ ^^^^^^^^^^^^^^^^^^^^^
+          ^^^^      ^^^^     ^^^    ^^
+               ^^^^      ^^^
+`}
+            </pre>
+            <div className="text-pink-400 font-mono text-md mt-2">
+              ⚓ Frontend by Cadet{" "}
+              <a 
+                className="underline text-yellow-300 hover:text-green-300" 
+                href="https://devin.ai" 
+                target="_blank" 
+                rel="noreferrer"
+              >
+                Devin
+              </a>{" "}
+              of the SS Shagworm ⚓
+            </div>
+            <div className="text-green-300 text-xs mt-1">
+              "Ahoy! This treasure map was crafted with React & Tailwind by yer friendly AI buccaneer!"
+            </div>
+          </div>
+
+          {/* Treasure Chest Divider */}
+          <div className="text-center my-4">
+            <span className="text-yellow-300">💰 ⚔️ 🗺️ ⚔️ 💰</span>
+          </div>
+
+          {/* Alternative Options (commented out - user can choose) */}
+          {/* 
+          
+          OPTION 2: Compass Rose Design
+          <div className="text-center">
+            <pre className="text-yellow-300 text-xs">
+{String.raw`
+        N
+        |
+    W---+---E
+        |
+        S
+`}
+            </pre>
+            <div className="text-pink-400">
+              🧭 Navigate to adventure - Frontend charted by{" "}
+              <a href="https://devin.ai" className="underline text-yellow-300 hover:text-green-300">
+                Devin, Master Navigator
+              </a>{" "}
+              🧭
+            </div>
+          </div>
+
+          OPTION 3: Treasure Map Style
+          <div className="border-2 border-dashed border-yellow-500/60 p-3 bg-yellow-900/20">
+            <div className="text-center text-yellow-300">
+              📜 TREASURE MAP 📜
+            </div>
+            <div className="text-center text-pink-400 mt-2">
+              X marks the spot where{" "}
+              <a href="https://devin.ai" className="underline text-yellow-300 hover:text-green-300">
+                Devin the Code Pirate
+              </a>{" "}
+              buried this frontend treasure!
+            </div>
+            <div className="text-center text-green-300 text-xs mt-1">
+              "Follow the React components to find the golden user experience!"
+            </div>
+          </div>
+
+          OPTION 4: Adventure Quote Style
+          <div className="text-center">
+            <div className="text-yellow-300 text-lg">"Fortune favors the bold coder!"</div>
+            <div className="text-pink-400 mt-2">
+              ⚡ This digital adventure crafted by{" "}
+              <a href="https://devin.ai" className="underline text-yellow-300 hover:text-green-300">
+                Devin, AI Adventurer
+              </a>{" "}
+              ⚡
+            </div>
+            <div className="text-green-300 text-xs mt-1">
+              Armed with React, Tailwind, and a treasure trove of algorithms!
+            </div>
+          </div>
+
+          OPTION 5: Goonies Reference
+          <div className="text-center">
+            <div className="text-yellow-300">"Goonies never say die... and neither do good developers!"</div>
+            <div className="text-pink-400 mt-2">
+              🏴‍☠️ Frontend adventure by{" "}
+              <a href="https://devin.ai" className="underline text-yellow-300 hover:text-green-300">
+                Devin "Truffle Shuffle" AI
+              </a>{" "}
+              🏴‍☠️
+            </div>
+          </div>
+
+          OPTION 6: Indiana Jones Style
+          <div className="text-center">
+            <div className="text-yellow-300">"It belongs in a museum... but this code belongs on the web!"</div>
+            <div className="text-pink-400 mt-2">
+              🎩 Crafted by Professor{" "}
+              <a href="https://devin.ai" className="underline text-yellow-300 hover:text-green-300">
+                Devin, Digital Archaeologist
+              </a>{" "}
+              🎩
+            </div>
+            <div className="text-green-300 text-xs mt-1">
+              "No snakes were harmed in the making of this frontend"
+            </div>
+          </div>
+
+          OPTION 7: Treasure Island Style
+          <div className="text-center">
+            <div className="text-yellow-300">"Fifteen men on a dead man's chest... but only one AI coded this!"</div>
+            <div className="text-pink-400 mt-2">
+              🦜 Yo ho ho and a bottle of... React components! - Captain{" "}
+              <a href="https://devin.ai" className="underline text-yellow-300 hover:text-green-300">
+                Devin
+              </a>{" "}
+              🦜
+            </div>
+          </div>
+
+          OPTION 8: National Treasure Style
+          <div className="text-center">
+            <div className="text-yellow-300">"I'm going to steal the... user's attention with great UX!"</div>
+            <div className="text-pink-400 mt-2">
+              🗽 Decoded by{" "}
+              <a href="https://devin.ai" className="underline text-yellow-300 hover:text-green-300">
+                Devin, Master of Digital Mysteries
+              </a>{" "}
+              🗽
+            </div>
+          </div>
+
+          OPTION 9: Minimal Pirate
+          <div className="text-center">
+            <div className="text-pink-400 text-lg">
+              ☠️ Coded by{" "}
+              <a href="https://devin.ai" className="underline text-yellow-300 hover:text-green-300">
+                Devin
+              </a>{" "}
+              ☠️
+            </div>
+            <div className="text-green-300 text-xs mt-1">
+              "Arrr! This be fine code, matey!"
+            </div>
+          </div>
+
+          OPTION 10: Adventure Map
+          <div className="text-center">
+            <pre className="text-yellow-300 text-xs leading-none">
+{String.raw`
+    🏝️     🏴‍☠️     ⚓
+      \     |     /
+       \    |    /
+        \   |   /
+         \  |  /
+          \ | /
+           \|/
+            X
+`}
+            </pre>
+            <div className="text-pink-400 mt-2">
+              Here be dragons... and excellent TypeScript by{" "}
+              <a href="https://devin.ai" className="underline text-yellow-300 hover:text-green-300">
+                Devin
+              </a>!
+            </div>
+          </div>
+          
+          */}
         </footer>
       </div>
     </div>
