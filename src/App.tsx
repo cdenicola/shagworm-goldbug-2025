@@ -219,8 +219,8 @@ function App() {
                ^^^^      ^^^
 `}
             </pre>
-            <div className="text-pink-400 font-mono text-lg mt-2">
-              ⚓ Coded by Captain{" "}
+            <div className="text-pink-400 font-mono text-md mt-2">
+              ⚓ Frontend by Cadet{" "}
               <a 
                 className="underline text-yellow-300 hover:text-green-300" 
                 href="https://devin.ai" 
@@ -229,7 +229,7 @@ function App() {
               >
                 Devin
               </a>{" "}
-              of the SS Goldbug ⚓
+              of the SS Shagworm ⚓
             </div>
             <div className="text-green-300 text-xs mt-1">
               "Ahoy! This treasure map was crafted with React & Tailwind by yer friendly AI buccaneer!"
