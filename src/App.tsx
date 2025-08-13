@@ -5,23 +5,24 @@ type Puzzle = {
   title: string;
   theme: string;
   anchor: string;
+  difficulty: number;
 };
 
 const puzzles: Puzzle[] = [
-  { code: "BLU", title: "Blue Gold", theme: "The Mummy", anchor: "blu" },
-  { code: "GOS", title: "Garden of Secrets", theme: "National Treasure", anchor: "gos" },
-  { code: "SSY", title: "Sea Shanty", theme: "Pirates of the Caribbean", anchor: "ssy" },
-  { code: "CCC", title: "Curves of the Cursed Cay", theme: "Indiana Jones", anchor: "ccc" },
-  { code: "NUM", title: "Numbers", theme: "Gold-bug", anchor: "num" },
-  { code: "TPS", title: "Treasure Pursuit", theme: "Treasure Island / Planet", anchor: "tps" },
-  { code: "OWB", title: "Old World Baubles", theme: "Waterworld & coins", anchor: "owb" },
-  { code: "TTT", title: "Thomson and Thompson's Tangled Trails", theme: "The Adventures of TinTin", anchor: "ttt" },
-  { code: "JCR", title: "The Key to the Garden Adventure (Jr Crypto Puzzle)", theme: "Dora the Explorer", anchor: "jcr" },
-  { code: "MOC", title: "Misdeeds of Chunk", theme: "Goonies", anchor: "moc" },
-  { code: "MAN", title: "Smuggler's Manifest", theme: "Romancing the Stone", anchor: "man" },
-  { code: "OMR", title: "One More Roll", theme: "The Road to El Dorado", anchor: "omr" },
-  { code: "FLP", title: "I'll Flip You For It", theme: "pirate gold coin", anchor: "flp" },
-  { code: "MET", title: "Meta: The Treasure of Legrand", theme: "pirate treasure map", anchor: "met" },
+  { code: "BLU", title: "Blue Gold", theme: "The Mummy", anchor: "blu", difficulty: 2},
+  { code: "GOS", title: "Garden of Secrets", theme: "National Treasure", anchor: "gos", difficulty: 5},
+  { code: "SSY", title: "Sea Shanty", theme: "Pirates of the Caribbean", anchor: "ssy", difficulty: 3},
+  { code: "CCC", title: "Curves of the Cursed Cay", theme: "Indiana Jones", anchor: "ccc", difficulty: 5},
+  { code: "NUM", title: "Numbers", theme: "The Gold-Bug", anchor: "num", difficulty: 1},
+  { code: "TPS", title: "Treasure Pursuit", theme: "Treasure Island / Planet", anchor: "tps", difficulty: 5},
+  { code: "OWB", title: "Old World Baubles", theme: "Waterworld", anchor: "owb", difficulty: 4},
+  { code: "TTT", title: "Thomson and Thompson's Tangled Trails", theme: "The Adventures of TinTin", anchor: "ttt", difficulty: 2 },
+  { code: "JCR", title: "The Key to the Garden Adventure (Jr Crypto Puzzle)", theme: "Dora the Explorer", anchor: "jcr" , difficulty: 1},
+  { code: "MOC", title: "Misdeeds of Chunk", theme: "Goonies", anchor: "moc", difficulty: 3 },
+  { code: "MAN", title: "Smuggler's Manifest", theme: "Romancing the Stone", anchor: "man", difficulty: 4 },
+  { code: "OMR", title: "One More Roll", theme: "The Road to El Dorado", anchor: "omr", difficulty: 1},
+  { code: "FLP", title: "I'll Flip You For It", theme: "Gold Coin", anchor: "flp", difficulty: 1 },
+  { code: "MET", title: "Meta: The Treasure of Legrand", theme: "Treasure Map", anchor: "met", difficulty: 5 },
 ];
 
 function AnsiHeader() {
@@ -31,8 +32,8 @@ function AnsiHeader() {
 {String.raw`
 ███████╗██╗  ██╗ █████╗  ██████╗ ██╗    ██╗ ██████╗ ██████╗ ███╗   ███╗
 ██═════╝██║  ██║██╔══██╗██╔════╝ ██║    ██║██╔═══██╗██╔══██╗████╗ ████║
- ║█████╗███████║███████║██║ ████╗██║ █╗ ██║██║   ██║██████╔╝██╔████╔██║
- ╚═══██║██╔══██║██╔══██║██║ ╚═██║██║███╗██║██║   ██║██╔══██╗██║╚██╔╝██║
+███████╗███████║███████║██║ ████╗██║ █╗ ██║██║   ██║██████╔╝██╔████╔██║
+╚════██║██╔══██║██╔══██║██║ ╚═██║██║███╗██║██║   ██║██╔══██╗██║╚██╔╝██║
 ███████║██║  ██║██║  ██║╚██████╔╝╚███╔███╔╝╚██████╔╝██║  ██║██║ ╚═╝ ██║
 ╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝ ╚═════╝  ╚══╝╚══╝  ╚═════╝ ╚═╝  ╚═╝╚═╝     ╚═╝
 `}
@@ -94,6 +95,7 @@ function App() {
           <h2 className="text-2xl text-pink-400 mb-2">Puzzle Index</h2>
           <ul className="grid md:grid-cols-2 gap-2">
             {puzzles.map((p) => (
+              <a href={`#${p.anchor}`}>
               <li key={p.code} className="flex items-center justify-between gap-2 border border-green-600/30 rounded-sm px-2 py-1 hover:bg-green-900/20">
                 <div className="flex items-center gap-2">
                   <Badge>{p.code}</Badge>
@@ -101,9 +103,10 @@ function App() {
                 </div>
                 <div className="flex items-center gap-2">
                   <Badge color="bg-blue-500/20 text-blue-300 border-blue-400/40">{p.theme}</Badge>
-                  <DifficultyStars level={0} />
+                  <DifficultyStars level={p.difficulty} />
                 </div>
               </li>
+              </a>
             ))}
           </ul>
           <p className="mt-3 text-sm">
@@ -138,14 +141,12 @@ function App() {
                 <div className="flex flex-wrap items-center gap-2">
                   <Badge>{p.code}</Badge>
                   <h3 className="text-3xl text-green-200">{p.title}</h3>
-                  <div className="ml-auto">
-                    <DifficultyStars level={0} />
-                  </div>
-                </div>
-                <div className="mt-1">
                   <span className="px-2 py-0.5 border bg-blue-500/20 text-blue-300 border-blue-400/40 rounded-sm font-mono text-xs">
                     {p.theme}
                   </span>
+                  <div className="ml-auto">
+                    <DifficultyStars level={p.difficulty} />
+                  </div>
                 </div>
               </header>
 
