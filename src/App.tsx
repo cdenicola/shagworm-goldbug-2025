@@ -340,13 +340,13 @@ If you have questions, feel free to ping us on discord: @rlama__ or @cooper7840`
           <h3 className="text-2xl text-pink-400 mb-2">Final Boarding</h3>
           <div className="space-y-3">
             <p className="text-green-200">
-              We are incredibly excited to have won the Crypto &amp; Privacy
-              Village&apos;s Gold Bug Challenge and received a{" "}
+              We are incredibly excited to have won the Crypto & Privacy
+              Village's Gold Bug Challenge and received a{" "}
               <span className="text-yellow-300 font-bold">
                 DEFCON Black Badge
               </span>{" "}
-              - one of DEFCON&apos;s highest honors, granting us lifetime free
-              entry to DEFCON!
+              - one of DEFCON's highest honors, granting us lifetime free entry
+              to DEFCON!
             </p>
             <p className="text-green-200">
               Huge appreciation to the entire{" "}
