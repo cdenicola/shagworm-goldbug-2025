@@ -262,6 +262,24 @@ If you have questions, feel free to ping us on discord: @rlama__ or @cooper7840`
       }
 
       if (hasScrolled) {
+        if (event.key === "G") {
+          event.preventDefault()
+          const maxHeight = Math.max(
+            document.body.scrollHeight,
+            document.documentElement.scrollHeight
+          )
+          window.scrollTo({
+            top: maxHeight,
+            behavior: "smooth",
+          })
+          setKeySequence("")
+          if (keySequenceTimeout) {
+            clearTimeout(keySequenceTimeout)
+            setKeySequenceTimeout(null)
+          }
+          return
+        }
+
         const key = event.key.toLowerCase()
 
         switch (key) {
@@ -314,22 +332,6 @@ If you have questions, feel free to ping us on discord: @rlama__ or @cooper7840`
               setKeySequenceTimeout(timeout)
             }
             break
-          case "G": {
-            event.preventDefault()
-            window.scrollTo({
-              top: Math.max(
-                document.body.scrollHeight,
-                document.documentElement.scrollHeight
-              ),
-              behavior: "smooth",
-            })
-            setKeySequence("")
-            if (keySequenceTimeout) {
-              clearTimeout(keySequenceTimeout)
-              setKeySequenceTimeout(null)
-            }
-            break
-          }
           case "?":
             event.preventDefault()
             showHelpToast()
@@ -589,7 +591,7 @@ If you have questions, feel free to ping us on discord: @rlama__ or @cooper7840`
 
         <section className="mt-10 space-y-10">
           {puzzles.map((p) => (
-            <PuzzleSection p={p} />
+            <PuzzleSection key={p.code} p={p} />
           ))}
         </section>
 
