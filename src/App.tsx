@@ -301,12 +301,42 @@ If you have questions, feel free to ping us on discord: @rlama__ or @cooper7840`
           </ul>
         </section>
 
-        <footer className="mt-8 text-sm text-green-500 space-y-1">
-          <div>Theme inspired by CPV BBS aesthetic. Built with React + Tailwind.</div>
-          <div>
-            Imagery and inspiration:{" "}
-            <a className="underline text-yellow-300" href="https://defcon.social/@goldbug" target="_blank" rel="noreferrer">defcon.social/@goldbug</a>,{" "}
-            <a className="underline text-yellow-300" href="https://goldbug.cryptovillage.org/puzzles.html" target="_blank" rel="noreferrer">goldbug.cryptovillage.org/puzzles</a>.
+        <footer className="mt-8 text-sm border border-yellow-500/40 bg-yellow-900/10 rounded-sm p-6">
+          {/* Option 1: Pirate Ship ASCII Art */}
+          <div className="text-center mb-4">
+            <pre className="text-yellow-300 text-xs leading-none">
+{String.raw`
+                    |    |    |
+                   )_)  )_)  )_)
+                  )___))___))___)\\
+                 )____)____)_____)\\\\
+               _____|____|____|____\\\\\\__
+      ---------\                   /---------
+        ^^^^^ ^^^^^^^^^^^^^^^^^^^^^
+          ^^^^      ^^^^     ^^^    ^^
+               ^^^^      ^^^
+`}
+            </pre>
+            <div className="text-pink-400 font-mono text-md mt-2">
+              ⚓ Frontend by Cadet{" "}
+              <a 
+                className="underline text-yellow-300 hover:text-green-300" 
+                href="https://devin.ai" 
+                target="_blank" 
+                rel="noreferrer"
+              >
+                Devin
+              </a>{" "}
+              of the SS Shagworm ⚓
+            </div>
+            <div className="text-green-300 text-xs mt-1">
+              "Ahoy! This treasure map was crafted with React & Tailwind by yer friendly AI buccaneer!"
+            </div>
+          </div>
+
+          {/* Treasure Chest Divider */}
+          <div className="text-center my-4">
+            <span className="text-yellow-300">💰 ⚔️ 🗺️ ⚔️ 💰</span>
           </div>
         </footer>
       </div>
