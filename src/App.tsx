@@ -238,15 +238,12 @@ If you have questions, feel free to ping us on discord: @rlama__ or @cooper7840`
             break
           case "G": {
             event.preventDefault()
-            const footer = document.querySelector("footer:last-of-type")
-            if (footer) {
-              footer.scrollIntoView({ behavior: "smooth", block: "end" })
-            } else {
+            setTimeout(() => {
               window.scrollTo({
-                top: document.documentElement.scrollHeight,
+                top: document.body.scrollHeight,
                 behavior: "smooth",
               })
-            }
+            }, 10)
             setKeySequence("")
             if (keySequenceTimeout) {
               clearTimeout(keySequenceTimeout)
