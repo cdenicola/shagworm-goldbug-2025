@@ -134,8 +134,6 @@ If you have questions, feel free to ping us on discord: @rlama__ or @cooper7840`
   const bgClass =
     bg === "ocean" ? "bg-ocean" : bg === "parchment" ? "bg-parchment" : "bg-starry";
 
-  const base = import.meta.env.BASE_URL || "/";
-  const goldbugUrl = `${base}assets/pirate/goldbug.png`;
   return (
     <div
       className={`min-h-screen text-green-300 relative ${bgClass}`}
@@ -165,38 +163,8 @@ If you have questions, feel free to ping us on discord: @rlama__ or @cooper7840`
           {sfxOn ? "SFX: ON" : "SFX: OFF"}
         </button>
       </div>
-    <div
-      className={`min-h-screen text-green-300 relative ${bgClass}`}
-      style={{
 
-      }}
-    >
-      <MatrixRain />
-      <CRTOverlay />
-
-      {showIntro && (
-        <div className="fixed inset-0 z-20 flex items-center justify-center bg-black/80">
-          <div className="text-center p-6 border border-yellow-500/40 rounded-sm bg-black/40">
-            <div className="text-yellow-300 text-3xl font-mono mb-3">CPV // GOLD BUG // JACK-IN</div>
-            <div className="text-green-200 font-mono">Press any key to continue</div>
-            <div className="text-pink-400 font-mono ansi-cursor mt-2">_</div>
-          </div>
-        </div>
-      )}
-
-      <div className="fixed right-4 top-4 z-20">
-        <button
-          className={`px-3 py-1 font-mono text-sm border rounded-sm ${sfxOn ? "bg-green-500/20 text-green-300 border-green-400/50" : "bg-pink-500/10 text-pink-300 border-pink-400/40"} hover:scale-[1.03] transition`}
-          onClick={() => setSfxOn(v => !v)}
-          onMouseEnter={onHover}
-          onMouseDown={onClick}
-          aria-pressed={sfxOn}
-        >
-          {sfxOn ? "SFX: ON" : "SFX: OFF"}
-        </button>
-      </div>
-
->      <div className="mx-auto max-w-5xl px-4 py-6">
+      <div className="mx-auto max-w-5xl px-4 py-6">
         <div className="mb-6">
           <AnsiHeader />
         </div>
@@ -251,27 +219,7 @@ If you have questions, feel free to ping us on discord: @rlama__ or @cooper7840`
             Links and colors pay homage to the CPV BBS aesthetic.
           </p>
           <p className="ansi-cursor mt-2 text-pink-400">PRESS ANY KEY TO CONTINUE</p>
-          <div className="flex items-center justify-between mb-4">
-            <h3 className="text-2xl text-green-200">
-              <span className="inline mr-2 text-green-200" aria-hidden>🏴‍☠️</span>
-              Captain’s Log
-            </h3>
-            <div className="flex items-center gap-3">
-              <Switch
-                checked={isPirateMode}
-                onCheckedChange={setIsPirateMode}
-                className="data-[state=checked]:bg-yellow-500 data-[state=unchecked]:bg-green-600"
-              />
-              <span className="text-yellow-300 font-mono text-sm">
-                {isPirateMode ? "🏴‍☠️ Pirate Mode" : "⚓ Landlubber Mode"}
-              </span>
-            </div>
-          </div>
-          <div className="text-lg whitespace-pre-line">
-            {isPirateMode ? pirateText : landlubberText}
-          </div>
-          <p className="ansi-cursor mt-4 text-pink-400">PRESS ANY KEY TO CONTINUE</p>
->        </div>
+        </div>
 
         <nav className="mt-6 border border-pink-500/40 bg-pink-900/10 rounded-sm p-4">
           <h2 className="text-2xl text-pink-400 mb-2"><span className="inline mr-2 text-yellow-300" aria-hidden>🧭</span> Puzzle Index</h2>
@@ -358,44 +306,6 @@ If you have questions, feel free to ping us on discord: @rlama__ or @cooper7840`
           </ul>
         </section>
 
-        <footer className="mt-8 text-sm border border-yellow-500/40 bg-yellow-900/10 rounded-sm p-6">
-          {/* Option 1: Pirate Ship ASCII Art */}
-          <div className="text-center mb-4">
-            <pre className="text-yellow-300 text-xs leading-none">
-              {String.raw`
-                    |    |    |
-                   )_)  )_)  )_)
-                  )___))___))___)\\
-                 )____)____)_____)\\\\
-               _____|____|____|____\\\\\\__
-      ---------\                   /---------
-        ^^^^^ ^^^^^^^^^^^^^^^^^^^^^
-          ^^^^      ^^^^     ^^^    ^^
-               ^^^^      ^^^
-`}
-            </pre>
-            <div className="text-pink-400 font-mono text-md mt-2">
-              ⚓ Frontend by Cadet{" "}
-              <a
-                className="underline text-yellow-300 hover:text-green-300"
-                href="https://devin.ai"
-                target="_blank"
-                rel="noreferrer"
-              >
-                Devin
-              </a>{" "}
-              of the SS Shagworm ⚓
-            </div>
-            <div className="text-green-300 text-xs mt-1">
-              "Ahoy! This treasure map was crafted with React & Tailwind by yer
-              friendly AI buccaneer!"
-            </div>
-          </div>
-
-          {/* Treasure Chest Divider */}
-          <div className="text-center my-4">
-            <span className="text-yellow-300">💰 ⚔️ 🗺️ ⚔️ 💰</span>
-          </div>
         <footer className="mt-8 text-sm border border-yellow-500/40 bg-yellow-900/10 rounded-sm p-6">
           <div className="text-center mb-4">
             <pre className="text-yellow-300 text-xs leading-none">
