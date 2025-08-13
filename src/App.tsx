@@ -122,6 +122,8 @@ function App() {
   const [keySequence, setKeySequence] = useState("")
   const [keySequenceTimeout, setKeySequenceTimeout] =
     useState<NodeJS.Timeout | null>(null)
+  const [showHelp, setShowHelp] = useState(false)
+  const [currentPuzzleIndex, setCurrentPuzzleIndex] = useState(0)
 
   const { showHelp } = useKeyboardNavigation({ puzzles })
 
@@ -160,12 +162,36 @@ If you have questions, feel free to ping us on discord: @rlama__ or @cooper7840`
       const element = document.getElementById(firstPuzzleAnchor)
       if (element) {
         element.scrollIntoView({ behavior: "smooth" })
+        setCurrentPuzzleIndex(0)
       }
     }
   }, [])
 
+  const navigateToPuzzle = useCallback((index: number) => {
+    if (index >= 0 && index < puzzles.length) {
+      const puzzleAnchor = puzzles[index]?.anchor
+      if (puzzleAnchor) {
+        const element = document.getElementById(puzzleAnchor)
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth" })
+          setCurrentPuzzleIndex(index)
+        }
+      }
+    }
+  }, [])
+
+  const showHelpToast = useCallback(() => {
+    setShowHelp(true)
+    setTimeout(() => setShowHelp(false), 4000)
+  }, [])
+
   const handleKeyDown = useCallback(
     (event: KeyboardEvent) => {
+      if (showHelp) {
+        setShowHelp(false)
+        return
+      }
+
       if (!hasScrolled && event.key) {
         navigateToFirstPuzzle()
         setHasScrolled(true)
@@ -181,6 +207,18 @@ If you have questions, feel free to ping us on discord: @rlama__ or @cooper7840`
           case "k":
             event.preventDefault()
             window.scrollBy({ top: -100, behavior: "smooth" })
+            break
+          case "h":
+            event.preventDefault()
+            if (currentPuzzleIndex > 0) {
+              navigateToPuzzle(currentPuzzleIndex - 1)
+            }
+            break
+          case "l":
+            event.preventDefault()
+            if (currentPuzzleIndex < puzzles.length - 1) {
+              navigateToPuzzle(currentPuzzleIndex + 1)
+            }
             break
           case "g":
             if (keySequenceTimeout) {
@@ -203,15 +241,28 @@ If you have questions, feel free to ping us on discord: @rlama__ or @cooper7840`
             break
           case "G":
             event.preventDefault()
-            window.scrollTo({
-              top: document.body.scrollHeight,
-              behavior: "smooth",
-            })
+            setTimeout(() => {
+              const scrollHeight = Math.max(
+                document.body.scrollHeight,
+                document.body.offsetHeight,
+                document.documentElement.clientHeight,
+                document.documentElement.scrollHeight,
+                document.documentElement.offsetHeight
+              )
+              window.scrollTo({
+                top: scrollHeight,
+                behavior: "smooth",
+              })
+            }, 0)
             setKeySequence("")
             if (keySequenceTimeout) {
               clearTimeout(keySequenceTimeout)
               setKeySequenceTimeout(null)
             }
+            break
+          case "?":
+            event.preventDefault()
+            showHelpToast()
             break
           default:
             setKeySequence("")
@@ -223,7 +274,16 @@ If you have questions, feel free to ping us on discord: @rlama__ or @cooper7840`
         }
       }
     },
-    [hasScrolled, keySequence, keySequenceTimeout, navigateToFirstPuzzle]
+    [
+      hasScrolled,
+      keySequence,
+      keySequenceTimeout,
+      navigateToFirstPuzzle,
+      currentPuzzleIndex,
+      navigateToPuzzle,
+      showHelpToast,
+      showHelp,
+    ]
   )
 
   const handleScroll = useCallback(() => {
