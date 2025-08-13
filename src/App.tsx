@@ -287,7 +287,7 @@ If you have questions, feel free to ping us on discord: @rlama__ or @cooper7840`
               <span className="inline mr-2 text-blue-300" aria-hidden>
                 ⚓
               </span>{" "}
-              Artifacts &amp; Downloads
+              Treasure Trove of Links
             </h3>
             <p className="text-green-200">
               Relevant links and resources for cybersecurity adventurers.
