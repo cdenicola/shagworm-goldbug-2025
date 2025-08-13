@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useEffect, useCallback } from "react"
 import "./App.css"
 import { Switch } from "./components/ui/switch"
 import PuzzleSection, { TPuzzle } from "./puzzle"
@@ -117,6 +117,10 @@ export function DifficultyStars({
 function App() {
   const [isPirateMode, setIsPirateMode] = useState(true)
   const [bg, setBg] = useState<"ocean" | "parchment" | "starry">("ocean")
+  const [hasScrolled, setHasScrolled] = useState(false)
+  const [keySequence, setKeySequence] = useState("")
+  const [keySequenceTimeout, setKeySequenceTimeout] =
+    useState<NodeJS.Timeout | null>(null)
 
   const pirateText = `Ahoy, matey! We be the crew of the Shagworm, victors of the mighty Crypto & Privacy Village Gold Bug Challenge at DEFCON 33, 2025. Once but humble sailors from the far-flung shores of Stanford's Applied Cyber guild, now we sail the seas of cipher and code, with a deck split 'twixt seasoned hands who've weathered many a Gold Bug storm, and greenhorns who'd ne'er before set eyes on such a map of mysteries.
 
@@ -146,6 +150,97 @@ If you have questions, feel free to ping us on discord: @rlama__ or @cooper7840`
       : bg === "parchment"
         ? "bg-parchment"
         : "bg-starry"
+
+  const navigateToFirstPuzzle = useCallback(() => {
+    const firstPuzzleAnchor = puzzles[0]?.anchor
+    if (firstPuzzleAnchor) {
+      const element = document.getElementById(firstPuzzleAnchor)
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" })
+      }
+    }
+  }, [])
+
+  const handleKeyDown = useCallback(
+    (event: KeyboardEvent) => {
+      if (!hasScrolled && event.key) {
+        navigateToFirstPuzzle()
+        setHasScrolled(true)
+        return
+      }
+
+      if (hasScrolled) {
+        switch (event.key.toLowerCase()) {
+          case "j":
+            event.preventDefault()
+            window.scrollBy({ top: 100, behavior: "smooth" })
+            break
+          case "k":
+            event.preventDefault()
+            window.scrollBy({ top: -100, behavior: "smooth" })
+            break
+          case "g":
+            if (keySequenceTimeout) {
+              clearTimeout(keySequenceTimeout)
+            }
+
+            if (keySequence === "g") {
+              event.preventDefault()
+              window.scrollTo({ top: 0, behavior: "smooth" })
+              setKeySequence("")
+              setKeySequenceTimeout(null)
+            } else {
+              setKeySequence("g")
+              const timeout = setTimeout(() => {
+                setKeySequence("")
+                setKeySequenceTimeout(null)
+              }, 1000)
+              setKeySequenceTimeout(timeout)
+            }
+            break
+          case "G":
+            event.preventDefault()
+            window.scrollTo({
+              top: document.body.scrollHeight,
+              behavior: "smooth",
+            })
+            setKeySequence("")
+            if (keySequenceTimeout) {
+              clearTimeout(keySequenceTimeout)
+              setKeySequenceTimeout(null)
+            }
+            break
+          default:
+            setKeySequence("")
+            if (keySequenceTimeout) {
+              clearTimeout(keySequenceTimeout)
+              setKeySequenceTimeout(null)
+            }
+            break
+        }
+      }
+    },
+    [hasScrolled, keySequence, keySequenceTimeout, navigateToFirstPuzzle]
+  )
+
+  const handleScroll = useCallback(() => {
+    if (!hasScrolled && window.scrollY > 0) {
+      setHasScrolled(true)
+    }
+  }, [hasScrolled])
+
+  useEffect(() => {
+    window.addEventListener("keydown", handleKeyDown)
+    window.addEventListener("scroll", handleScroll)
+
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown)
+      window.removeEventListener("scroll", handleScroll)
+      if (keySequenceTimeout) {
+        clearTimeout(keySequenceTimeout)
+      }
+    }
+  }, [handleKeyDown, handleScroll, keySequenceTimeout])
 
   //const base = import.meta.env.BASE_URL || "/";
   //const goldbugUrl = `${base}assets/pirate/goldbug.png`;
