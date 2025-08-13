@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./App.css";
+import { Avatar, AvatarFallback } from "./components/ui/avatar";
 import { Switch } from "./components/ui/switch";
 
 type Puzzle = {
@@ -26,6 +27,16 @@ const puzzles: Puzzle[] = [
   { code: "FLP", title: "I'll Flip You For It", theme: "Gold Coin", anchor: "flp", difficulty: 1 },
   { code: "MET", title: "Meta: The Treasure of Legrand", theme: "Treasure Map", anchor: "met", difficulty: 5 },
 ];
+
+type CrewMember = {
+  name: string;
+  role: string;
+  rolePirate?: string;
+  emoji?: string;
+  links?: { label: string; href: string }[];
+};
+
+const crew: CrewMember[] = [];
 
 function AnsiHeader() {
   return (
@@ -157,6 +168,66 @@ If you have questions, feel free to ping us on discord: @rlama__ or @cooper7840`
           </div>
           <p className="ansi-cursor mt-4 text-pink-400">PRESS ANY KEY TO CONTINUE</p>
         </div>
+
+
+        <section id="crew" className="mt-6 border border-yellow-500/40 bg-yellow-900/10 rounded-sm p-4">
+          <div className="flex items-center justify-between mb-3">
+            <h2 className="text-2xl text-yellow-300">
+              ☠️ Crew Manifest <span className="text-pink-400">•</span> Meet the Shagworm Crew
+            </h2>
+            <span className="hidden md:inline-block font-mono text-sm text-green-200">⚓ All hands who sailed the Gold Bug seas</span>
+          </div>
+
+          {crew.length === 0 ? (
+            <div className="border border-green-600/40 bg-green-900/10 rounded-sm p-4 text-green-200">
+              No crew listed yet. Share the team roster and I’ll chart it here as proper pirates with ranks and trinkets.
+            </div>
+          ) : (
+            <ul className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+              {crew.map((m) => (
+                <li key={m.name} className="border border-green-600/30 rounded-sm p-3 bg-black/40">
+                  <div className="flex items-center gap-3">
+                    <Avatar className="h-10 w-10 border border-yellow-500/40">
+                      <AvatarFallback className="text-yellow-300 bg-yellow-900/30">
+                        {m.emoji ?? "🦜"}
+                      </AvatarFallback>
+                    </Avatar>
+                    <div className="min-w-0">
+                      <div className="flex items-center gap-2">
+                        <span className="font-mono text-lg text-green-200 truncate">{m.name}</span>
+                        <span className="px-2 py-0.5 border bg-yellow-500/20 text-yellow-300 border-yellow-400/40 rounded-sm font-mono text-xs">
+                          {m.rolePirate ?? m.role}
+                        </span>
+                      </div>
+                      <div className="text-sm text-green-300/80">
+                        {m.role}
+                      </div>
+                    </div>
+                  </div>
+                  {m.links && m.links.length > 0 && (
+                    <div className="mt-2 flex flex-wrap gap-2">
+                      {m.links.map((l) => (
+                        <a
+                          key={l.href}
+                          href={l.href}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="underline text-pink-400 hover:text-yellow-300 font-mono text-xs"
+                        >
+                          {l.label}
+                        </a>
+                      ))}
+                    </div>
+                  )}
+                </li>
+              ))}
+            </ul>
+          )}
+
+          <div className="mt-3 text-center text-yellow-300">
+            🗺️ ⚔️ 🏴‍☠️ ⚓ 🐚
+          </div>
+        </section>
 
         <nav className="mt-6 border border-pink-500/40 bg-pink-900/10 rounded-sm p-4">
           <h2 className="text-2xl text-pink-400 mb-2"><span className="inline mr-2 text-yellow-300" aria-hidden>🧭</span> Puzzle Index</h2>
