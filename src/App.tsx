@@ -141,7 +141,6 @@ If you have questions, feel free to ping us on discord: @rlama__ or @cooper7840`
       : bg === "parchment"
         ? "bg-parchment"
         : "bg-starry"
-    bg === "ocean" ? "bg-ocean" : bg === "parchment" ? "bg-parchment" : "bg-starry";
 
   //const base = import.meta.env.BASE_URL || "/";
   //const goldbugUrl = `${base}assets/pirate/goldbug.png`;
@@ -325,11 +324,44 @@ If you have questions, feel free to ping us on discord: @rlama__ or @cooper7840`
 
         <section className="mt-10 border border-pink-500/40 bg-pink-900/10 rounded-sm p-4">
           <h3 className="text-2xl text-pink-400 mb-2">Closing Notes</h3>
-          <ul className="list-[♥] pl-6 space-y-1">
-            <li>Shout-outs</li>
-            <li>Lessons learned</li>
-            <li>Future improvements</li>
-          </ul>
+          <div className="space-y-3">
+            <p className="text-green-200">
+              We are incredibly excited to have won the Crypto & Privacy
+              Village's Goldbug Challenge and received a{" "}
+              <span className="text-yellow-300 font-bold">
+                DEFCON Black Badge
+              </span>{" "}
+              - one of DEFCON's highest honors, granting us lifetime free entry
+              to DEFCON!
+            </p>
+            <p className="text-green-200">
+              Endlessly thankful for our brilliant team: Cooper de Nicola,
+              George Hosono, Roberto Lama, Jack Cable, Keely Podosin, Seyma
+              Kilic, and Teddy Zhang. Huge appreciation to the entire{" "}
+              <span className="text-blue-300">Stanford Applied Cyber</span>{" "}
+              community for their support.
+            </p>
+            <p className="text-green-200">
+              Special thanks to our mentor{" "}
+              <span className="text-yellow-300">Alex Keller</span> for always
+              being in our corner, and to{" "}
+              <span className="text-pink-300">Team Psychoholics</span> for such
+              fierce competition that pushed us to excel.
+            </p>
+            <p className="text-green-200">
+              Consider supporting the amazing{" "}
+              <a
+                className="underline text-yellow-300 hover:text-pink-400"
+                href="https://square.link/u/6SD4E1mL"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Crypto & Privacy Village
+              </a>{" "}
+              - they create incredible challenges and foster this wonderful
+              community!
+            </p>
+          </div>
         </section>
 
         <footer className="mt-8 text-sm border border-yellow-500/40 bg-yellow-900/10 rounded-sm p-6">
