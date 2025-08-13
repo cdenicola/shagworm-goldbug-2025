@@ -103,7 +103,7 @@ If you have questions, feel free to ping us on discord: @rlama__ or @cooper7840`
   return (
 
     <div
-      className="min-h-screen bg-black/80 text-green-300 relative"
+      className={`min-h-screen text-green-300 relative ${bgClass}`}
       style={{
         fontFamily: "'VT323', ui-monospace, SFMono-Regular, Menlo, monospace",
       }}
