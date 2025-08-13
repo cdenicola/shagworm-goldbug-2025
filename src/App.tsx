@@ -10,6 +10,18 @@ type Puzzle = {
   difficulty: number;
 };
 
+type TeamMember = {
+  name: string;
+  pirateRole: string;
+  normalRole: string;
+  social: {
+    discord?: string;
+    github?: string;
+    twitter?: string;
+    linkedin?: string;
+  };
+};
+
 const puzzles: Puzzle[] = [
   { code: "BLU", title: "Blue Gold", theme: "The Mummy", anchor: "blu", difficulty: 2},
   { code: "GOS", title: "Garden of Secrets", theme: "National Treasure", anchor: "gos", difficulty: 5},
@@ -25,6 +37,39 @@ const puzzles: Puzzle[] = [
   { code: "OMR", title: "One More Roll", theme: "The Road to El Dorado", anchor: "omr", difficulty: 1},
   { code: "FLP", title: "I'll Flip You For It", theme: "Gold Coin", anchor: "flp", difficulty: 1 },
   { code: "MET", title: "Meta: The Treasure of Legrand", theme: "Treasure Map", anchor: "met", difficulty: 5 },
+];
+
+const crewMembers: TeamMember[] = [
+  {
+    name: "Captain Placeholder",
+    pirateRole: "Captain of the Shagworm",
+    normalRole: "Team Lead",
+    social: { discord: "captain_placeholder", github: "captain-placeholder" }
+  },
+  {
+    name: "First Mate Example",
+    pirateRole: "First Mate & Navigator",
+    normalRole: "Senior Cryptographer",
+    social: { discord: "firstmate_example", github: "firstmate-example" }
+  },
+  {
+    name: "Quartermaster Demo",
+    pirateRole: "Quartermaster & Keeper of Codes",
+    normalRole: "Security Researcher",
+    social: { discord: "quartermaster_demo", github: "quartermaster-demo" }
+  },
+  {
+    name: "Bosun Sample",
+    pirateRole: "Bosun & Master of Puzzles",
+    normalRole: "Cryptanalyst",
+    social: { discord: "bosun_sample", github: "bosun-sample", twitter: "bosun_sample" }
+  },
+  {
+    name: "Gunner Test",
+    pirateRole: "Master Gunner & Code Breaker",
+    normalRole: "Security Engineer",
+    social: { discord: "gunner_test", github: "gunner-test", linkedin: "gunner-test" }
+  }
 ];
 
 function AnsiHeader() {
@@ -78,6 +123,7 @@ export function DifficultyStars({ level, maxStars = 5 }: DifficultyProps) {
 
 function App() {
   const [isPirateMode, setIsPirateMode] = useState(true);
+  const [isCrewPirateMode, setIsCrewPirateMode] = useState(true);
 
   const pirateText = `Ahoy, matey! We be the crew of the Shagworm, victors of the mighty Crypto & Privacy Village Gold Bug Challenge at DEFCON 33, 2025. Once but humble sailors from the far-flung shores of Stanford's Applied Cyber guild, now we sail the seas of cipher and code, with a deck split 'twixt seasoned hands who've weathered many a Goldbug storm, and greenhorns who'd ne'er before set eyes on such a map of mysteries.
 
@@ -98,6 +144,62 @@ If you have questions, feel free to ping us on discord: @rlama__ or @cooper7840`
       <div className="mx-auto max-w-5xl px-4 py-6">
         <div className="mb-6">
           <AnsiHeader />
+        </div>
+
+        <div className="mb-6 border border-cyan-600/40 rounded-sm p-4 bg-cyan-900/10">
+          <div className="flex items-center justify-between mb-4">
+            <h2 className="text-2xl text-cyan-400">⚓ Crew Manifest</h2>
+            <div className="flex items-center gap-3">
+              <span className="text-yellow-300 font-mono text-sm">
+                {isCrewPirateMode ? "🏴‍☠️ Pirate Crew" : "⚓ Team Members"}
+              </span>
+              <Switch
+                checked={isCrewPirateMode}
+                onCheckedChange={setIsCrewPirateMode}
+                className="data-[state=checked]:bg-yellow-500 data-[state=unchecked]:bg-cyan-600"
+              />
+            </div>
+          </div>
+          
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {crewMembers.map((member, index) => (
+              <div key={index} className="border border-cyan-600/30 rounded-sm p-3 bg-cyan-900/20">
+                <h3 className="text-lg text-cyan-300 font-bold">{member.name}</h3>
+                <p className="text-yellow-300 text-sm mb-2">
+                  {isCrewPirateMode ? member.pirateRole : member.normalRole}
+                </p>
+                <div className="flex flex-wrap gap-2">
+                  {member.social.discord && (
+                    <Badge color="bg-purple-500/20 text-purple-300 border-purple-400/40">
+                      Discord: {member.social.discord}
+                    </Badge>
+                  )}
+                  {member.social.github && (
+                    <Badge color="bg-gray-500/20 text-gray-300 border-gray-400/40">
+                      GitHub: {member.social.github}
+                    </Badge>
+                  )}
+                  {member.social.twitter && (
+                    <Badge color="bg-blue-500/20 text-blue-300 border-blue-400/40">
+                      Twitter: {member.social.twitter}
+                    </Badge>
+                  )}
+                  {member.social.linkedin && (
+                    <Badge color="bg-blue-600/20 text-blue-200 border-blue-500/40">
+                      LinkedIn: {member.social.linkedin}
+                    </Badge>
+                  )}
+                </div>
+              </div>
+            ))}
+          </div>
+          
+          <p className="mt-4 text-sm text-cyan-400">
+            {isCrewPirateMode 
+              ? "🏴‍☠️ These brave souls sailed the treacherous waters of cryptography to claim victory!"
+              : "👥 Our diverse team of current and former Stanford Applied Cyber members who conquered the Gold Bug challenge."
+            }
+          </p>
         </div>
 
         <div className="border border-green-600/40 rounded-sm p-4 bg-green-900/10">
