@@ -275,15 +275,15 @@ If you have questions, feel free to ping us on discord: @rlama__ or @cooper7840`
           <div className="text-center mb-4">
             <pre className="text-yellow-300 text-xs leading-none">
               {String.raw`
-                )    )    )                
-               )_)  )_)  )_)               
-              )___))___))___)\\              
-             )____)____)_____)\\\\             
-           _____|____|____|____\\\\\\__           
-   ---------\                   /---------
-      ^^^^^ ^^^^^^^^^^^^^^^^^^^^^          
-        ^^^^      ^^^^     ^^^    ^^      
-                ^^^^      ^^^                
+             )    )    )               
+             )_)  )_)  )_)              
+            )___))___))___)\            
+        )____)____)_____)\\       
+         _____|____|____|____\\\\__    
+---------\                   /---------
+   ^^^^^ ^^^^^^^^^^^^^^^^^^^^^         
+     ^^^^      ^^^^     ^^^    ^^      
+             ^^^^      ^^^             
 `}
             </pre>
             <div className="text-pink-400 font-mono text-md mt-2">
