@@ -121,6 +121,8 @@ function App() {
   const [keySequence, setKeySequence] = useState("")
   const [keySequenceTimeout, setKeySequenceTimeout] =
     useState<NodeJS.Timeout | null>(null)
+  const [showHelp, setShowHelp] = useState(false)
+  const [currentPuzzleIndex, setCurrentPuzzleIndex] = useState(0)
 
   const pirateText = `Ahoy, matey! We be the crew of the Shagworm, victors of the mighty Crypto & Privacy Village Gold Bug Challenge at DEFCON 33, 2025. Once but humble sailors from the far-flung shores of Stanford's Applied Cyber guild, now we sail the seas of cipher and code, with a deck split 'twixt seasoned hands who've weathered many a Gold Bug storm, and greenhorns who'd ne'er before set eyes on such a map of mysteries.
 
@@ -157,12 +159,36 @@ If you have questions, feel free to ping us on discord: @rlama__ or @cooper7840`
       const element = document.getElementById(firstPuzzleAnchor)
       if (element) {
         element.scrollIntoView({ behavior: "smooth" })
+        setCurrentPuzzleIndex(0)
       }
     }
   }, [])
 
+  const navigateToPuzzle = useCallback((index: number) => {
+    if (index >= 0 && index < puzzles.length) {
+      const puzzleAnchor = puzzles[index]?.anchor
+      if (puzzleAnchor) {
+        const element = document.getElementById(puzzleAnchor)
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth" })
+          setCurrentPuzzleIndex(index)
+        }
+      }
+    }
+  }, [])
+
+  const showHelpToast = useCallback(() => {
+    setShowHelp(true)
+    setTimeout(() => setShowHelp(false), 4000)
+  }, [])
+
   const handleKeyDown = useCallback(
     (event: KeyboardEvent) => {
+      if (showHelp) {
+        setShowHelp(false)
+        return
+      }
+
       if (!hasScrolled && event.key) {
         navigateToFirstPuzzle()
         setHasScrolled(true)
@@ -178,6 +204,18 @@ If you have questions, feel free to ping us on discord: @rlama__ or @cooper7840`
           case "k":
             event.preventDefault()
             window.scrollBy({ top: -100, behavior: "smooth" })
+            break
+          case "h":
+            event.preventDefault()
+            if (currentPuzzleIndex > 0) {
+              navigateToPuzzle(currentPuzzleIndex - 1)
+            }
+            break
+          case "l":
+            event.preventDefault()
+            if (currentPuzzleIndex < puzzles.length - 1) {
+              navigateToPuzzle(currentPuzzleIndex + 1)
+            }
             break
           case "g":
             if (keySequenceTimeout) {
@@ -200,15 +238,28 @@ If you have questions, feel free to ping us on discord: @rlama__ or @cooper7840`
             break
           case "G":
             event.preventDefault()
-            window.scrollTo({
-              top: document.body.scrollHeight,
-              behavior: "smooth",
-            })
+            setTimeout(() => {
+              const scrollHeight = Math.max(
+                document.body.scrollHeight,
+                document.body.offsetHeight,
+                document.documentElement.clientHeight,
+                document.documentElement.scrollHeight,
+                document.documentElement.offsetHeight
+              )
+              window.scrollTo({
+                top: scrollHeight,
+                behavior: "smooth",
+              })
+            }, 0)
             setKeySequence("")
             if (keySequenceTimeout) {
               clearTimeout(keySequenceTimeout)
               setKeySequenceTimeout(null)
             }
+            break
+          case "?":
+            event.preventDefault()
+            showHelpToast()
             break
           default:
             setKeySequence("")
@@ -220,7 +271,16 @@ If you have questions, feel free to ping us on discord: @rlama__ or @cooper7840`
         }
       }
     },
-    [hasScrolled, keySequence, keySequenceTimeout, navigateToFirstPuzzle]
+    [
+      hasScrolled,
+      keySequence,
+      keySequenceTimeout,
+      navigateToFirstPuzzle,
+      currentPuzzleIndex,
+      navigateToPuzzle,
+      showHelpToast,
+      showHelp,
+    ]
   )
 
   const handleScroll = useCallback(() => {
@@ -381,7 +441,7 @@ If you have questions, feel free to ping us on discord: @rlama__ or @cooper7840`
               <span className="inline mr-2 text-blue-300" aria-hidden>
                 ⚓
               </span>{" "}
-              Treasure Trove of Links
+              Artifacts &amp; Downloads
             </h3>
             <p className="text-green-200">
               Relevant links and resources for cybersecurity adventurers.
@@ -524,6 +584,41 @@ If you have questions, feel free to ping us on discord: @rlama__ or @cooper7840`
           </div>
         </footer>
       </div>
+
+      {/* Help Toast */}
+      {showHelp && (
+        <div className="fixed top-4 right-4 z-50 border border-yellow-500/60 bg-black/90 backdrop-blur-sm rounded-sm p-4 font-mono text-sm animate-in fade-in duration-300">
+          <div className="text-yellow-300 mb-2 flex items-center gap-2">
+            <span className="text-pink-400">⚓</span>
+            <span className="font-bold">Keyboard Navigation</span>
+          </div>
+          <div className="space-y-1 text-green-200">
+            <div className="flex justify-between gap-4">
+              <span className="text-yellow-300">j/k</span>
+              <span>scroll down/up</span>
+            </div>
+            <div className="flex justify-between gap-4">
+              <span className="text-yellow-300">h/l</span>
+              <span>prev/next puzzle</span>
+            </div>
+            <div className="flex justify-between gap-4">
+              <span className="text-yellow-300">gg</span>
+              <span>go to top</span>
+            </div>
+            <div className="flex justify-between gap-4">
+              <span className="text-yellow-300">G</span>
+              <span>go to bottom</span>
+            </div>
+            <div className="flex justify-between gap-4">
+              <span className="text-yellow-300">?</span>
+              <span>show this help</span>
+            </div>
+          </div>
+          <div className="mt-2 text-xs text-pink-400 opacity-80">
+            Press any key to dismiss
+          </div>
+        </div>
+      )}
     </div>
   )
 }
