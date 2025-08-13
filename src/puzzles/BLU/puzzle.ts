@@ -1,6 +1,6 @@
-import { TPuzzle } from "../../puzzle";
-import artifact1 from "./artifact1.png";
-import artifact2 from "./artifact2.png";
+import { TPuzzle } from "../../puzzle"
+import artifact1 from "./artifact1.png"
+import artifact2 from "./artifact2.png"
 
 const BLU: TPuzzle = {
   code: "BLU",
@@ -8,7 +8,8 @@ const BLU: TPuzzle = {
   theme: "The Mummy",
   anchor: "blu",
   difficulty: 2,
-  prompt: "The text provided: \"Blue Gold beneath Hamunaptra? Or perhaps something else?\". The original image provided is Artifact 1.",
+  prompt:
+    'The text provided: "Blue Gold beneath Hamunaptra? Or perhaps something else?". The original image provided is Artifact 1.',
   approach: [
     `
     Our first thought here was there are 12 pairs of horizontally-adjacent scarabs, each representing a character combination, set out in a 4x3 grid. The key to validate this idea would be to find some formula for combining colors into a letter. Assuming this method was correct, we figured the order of the pairs would have to read top to bottom, then left to right, since the most top left pair was (White + Red), then the next pair to the right of that was also (White + Red). It seemed unlikely that the same letter would be next to each other at the start of a word. 
@@ -26,9 +27,13 @@ const BLU: TPuzzle = {
     `
     We tried several combinations of color addition/subtraction, but most of the time, our reasoning left us with some invalid character that was not an alphabetic character. Finally, we came up with the right color subtraction using GIMP, (a decomposition of RGB) where all the characters were valid (see artifact 2).
     `,
-    `Clear white dots were filled in, black/dark grey were empty. The red layer was PFTA, green layer, REOS, and blue layer ERBK. If you order them first by RGB layer, left to right, you get the correct answer.`
+    `Clear white dots were filled in, black/dark grey were empty. The red layer was PFTA, green layer, REOS, and blue layer ERBK. If you order them first by RGB layer, left to right, you get the correct answer.`,
   ],
-  tools: ["GIMP", "Bitwise operations", "Color theory (additive vs subtractive)"],
+  tools: [
+    "GIMP",
+    "Bitwise operations",
+    "Color theory (additive vs subtractive)",
+  ],
   solution: "PREFERTOBASK (PreferToBask)",
   artifacts: [
     {
@@ -39,9 +44,10 @@ const BLU: TPuzzle = {
     {
       type: "image",
       url: artifact2,
-      description: "The scarabs with the correct color subtraction (ordered R, G, B from top to bottom).",
+      description:
+        "The scarabs with the correct color subtraction (ordered R, G, B from top to bottom).",
     },
   ],
-};
+}
 
-export default BLU;
+export default BLU

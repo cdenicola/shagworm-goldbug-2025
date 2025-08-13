@@ -1,24 +1,24 @@
-import { DifficultyStars } from "./App";
-import { Badge } from "./components/ui/badge";
+import { DifficultyStars } from "./App"
+import { Badge } from "./components/ui/badge"
 
 export type TArtifact = {
-  type: "image" | "file";
-  url: string;
-  description?: string;
-};
+  type: "image" | "file"
+  url: string
+  description?: string
+}
 
 export type TPuzzle = {
-  code: string;
-  title: string;
-  theme: string;
-  anchor: string;
-  difficulty: number;
-  prompt?: string;
-  approach?: string[];
-  tools?: string[];
-  solution?: string;
-  artifacts?: TArtifact[];
-};
+  code: string
+  title: string
+  theme: string
+  anchor: string
+  difficulty: number
+  prompt?: string
+  approach?: string[]
+  tools?: string[]
+  solution?: string
+  artifacts?: TArtifact[]
+}
 
 export default function PuzzleSection({ p }: { p: TPuzzle }) {
   return (
@@ -103,5 +103,5 @@ export default function PuzzleSection({ p }: { p: TPuzzle }) {
         </a>
       </footer>
     </article>
-  );
+  )
 }

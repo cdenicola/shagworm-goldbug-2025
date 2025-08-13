@@ -1,4 +1,4 @@
-import { TPuzzle } from "../../puzzle";
+import { TPuzzle } from "../../puzzle"
 
 const MAN: TPuzzle = {
   code: "MAN",
@@ -6,6 +6,6 @@ const MAN: TPuzzle = {
   theme: "Romancing the Stone",
   anchor: "man",
   difficulty: 4,
-};
+}
 
-export default MAN; 
+export default MAN

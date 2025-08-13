@@ -1,4 +1,4 @@
-import { TPuzzle } from "../../puzzle";
+import { TPuzzle } from "../../puzzle"
 
 const OMR: TPuzzle = {
   code: "OMR",
@@ -6,6 +6,6 @@ const OMR: TPuzzle = {
   theme: "The Road to El Dorado",
   anchor: "omr",
   difficulty: 1,
-};
+}
 
-export default OMR; 
+export default OMR

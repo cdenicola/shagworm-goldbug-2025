@@ -1,4 +1,4 @@
-import { TPuzzle } from "../../puzzle";
+import { TPuzzle } from "../../puzzle"
 
 const GOS: TPuzzle = {
   code: "GOS",
@@ -6,6 +6,6 @@ const GOS: TPuzzle = {
   theme: "National Treasure",
   anchor: "gos",
   difficulty: 5,
-};
+}
 
-export default GOS;
+export default GOS

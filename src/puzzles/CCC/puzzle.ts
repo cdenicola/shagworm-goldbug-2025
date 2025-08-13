@@ -1,4 +1,4 @@
-import { TPuzzle } from "../../puzzle";
+import { TPuzzle } from "../../puzzle"
 
 const CCC: TPuzzle = {
   code: "CCC",
@@ -6,6 +6,6 @@ const CCC: TPuzzle = {
   theme: "Indiana Jones",
   anchor: "ccc",
   difficulty: 5,
-};
+}
 
-export default CCC;
+export default CCC

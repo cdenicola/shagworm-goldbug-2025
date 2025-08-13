@@ -1,4 +1,4 @@
-import { TPuzzle } from "../../puzzle";
+import { TPuzzle } from "../../puzzle"
 
 const OWB: TPuzzle = {
   code: "OWB",
@@ -6,6 +6,6 @@ const OWB: TPuzzle = {
   theme: "Waterworld",
   anchor: "owb",
   difficulty: 4,
-};
+}
 
-export default OWB; 
+export default OWB

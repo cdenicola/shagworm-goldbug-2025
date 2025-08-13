@@ -1,4 +1,4 @@
-import { TPuzzle } from "../../puzzle";
+import { TPuzzle } from "../../puzzle"
 
 const MET: TPuzzle = {
   code: "MET",
@@ -6,6 +6,6 @@ const MET: TPuzzle = {
   theme: "Treasure Map",
   anchor: "met",
   difficulty: 5,
-};
+}
 
-export default MET; 
+export default MET

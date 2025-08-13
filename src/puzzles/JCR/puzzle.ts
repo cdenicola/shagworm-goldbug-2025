@@ -1,4 +1,4 @@
-import { TPuzzle } from "../../puzzle";
+import { TPuzzle } from "../../puzzle"
 
 const JCR: TPuzzle = {
   code: "JCR",
@@ -6,6 +6,6 @@ const JCR: TPuzzle = {
   theme: "Dora the Explorer",
   anchor: "jcr",
   difficulty: 1,
-};
+}
 
-export default JCR; 
+export default JCR
