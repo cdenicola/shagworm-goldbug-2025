@@ -123,7 +123,10 @@ function App() {
   const [keySequenceTimeout, setKeySequenceTimeout] =
     useState<NodeJS.Timeout | null>(null)
   const [showHelp, setShowHelp] = useState(false)
-  const [currentPuzzleIndex, setCurrentPuzzleIndex] = useState(0)
+  const [pressedKeys, setPressedKeys] = useState<Set<string>>(new Set())
+  const [scrollAnimationId, setScrollAnimationId] = useState<number | null>(
+    null
+  )
 
   const { showHelp } = useKeyboardNavigation({ puzzles })
 
@@ -162,7 +165,6 @@ If you have questions, feel free to ping us on discord: @rlama__ or @cooper7840`
       const element = document.getElementById(firstPuzzleAnchor)
       if (element) {
         element.scrollIntoView({ behavior: "smooth" })
-        setCurrentPuzzleIndex(0)
       }
     }
   }, [])
@@ -174,7 +176,6 @@ If you have questions, feel free to ping us on discord: @rlama__ or @cooper7840`
         const element = document.getElementById(puzzleAnchor)
         if (element) {
           element.scrollIntoView({ behavior: "smooth" })
-          setCurrentPuzzleIndex(index)
         }
       }
     }
@@ -184,6 +185,71 @@ If you have questions, feel free to ping us on discord: @rlama__ or @cooper7840`
     setShowHelp(true)
     setTimeout(() => setShowHelp(false), 4000)
   }, [])
+
+  const getCurrentVisiblePuzzleIndex = useCallback(() => {
+    const viewportCenter = window.scrollY + window.innerHeight / 2
+
+    for (let i = 0; i < puzzles.length; i++) {
+      const element = document.getElementById(puzzles[i].anchor)
+      if (element) {
+        const rect = element.getBoundingClientRect()
+        const elementTop = window.scrollY + rect.top
+        const elementBottom = elementTop + rect.height
+
+        if (viewportCenter >= elementTop && viewportCenter <= elementBottom) {
+          return i
+        }
+      }
+    }
+
+    let closestIndex = 0
+    let closestDistance = Infinity
+
+    for (let i = 0; i < puzzles.length; i++) {
+      const element = document.getElementById(puzzles[i].anchor)
+      if (element) {
+        const rect = element.getBoundingClientRect()
+        const elementTop = window.scrollY + rect.top
+        const distance = Math.abs(viewportCenter - elementTop)
+
+        if (distance < closestDistance) {
+          closestDistance = distance
+          closestIndex = i
+        }
+      }
+    }
+
+    return closestIndex
+  }, [])
+
+  const startSmoothScroll = useCallback(
+    (direction: "up" | "down") => {
+      if (scrollAnimationId) {
+        cancelAnimationFrame(scrollAnimationId)
+      }
+
+      const scroll = () => {
+        const scrollAmount = direction === "down" ? 8 : -8
+        window.scrollBy(0, scrollAmount)
+
+        if (pressedKeys.has("j") || pressedKeys.has("k")) {
+          const newAnimationId = requestAnimationFrame(scroll)
+          setScrollAnimationId(newAnimationId)
+        }
+      }
+
+      const animationId = requestAnimationFrame(scroll)
+      setScrollAnimationId(animationId)
+    },
+    [pressedKeys, scrollAnimationId]
+  )
+
+  const stopSmoothScroll = useCallback(() => {
+    if (scrollAnimationId) {
+      cancelAnimationFrame(scrollAnimationId)
+      setScrollAnimationId(null)
+    }
+  }, [scrollAnimationId])
 
   const handleKeyDown = useCallback(
     (event: KeyboardEvent) => {
@@ -199,27 +265,39 @@ If you have questions, feel free to ping us on discord: @rlama__ or @cooper7840`
       }
 
       if (hasScrolled) {
-        switch (event.key.toLowerCase()) {
+        const key = event.key.toLowerCase()
+
+        switch (key) {
           case "j":
             event.preventDefault()
-            window.scrollBy({ top: 100, behavior: "smooth" })
+            if (!pressedKeys.has("j")) {
+              setPressedKeys((prev) => new Set(prev).add("j"))
+              startSmoothScroll("down")
+            }
             break
           case "k":
             event.preventDefault()
-            window.scrollBy({ top: -100, behavior: "smooth" })
-            break
-          case "h":
-            event.preventDefault()
-            if (currentPuzzleIndex > 0) {
-              navigateToPuzzle(currentPuzzleIndex - 1)
+            if (!pressedKeys.has("k")) {
+              setPressedKeys((prev) => new Set(prev).add("k"))
+              startSmoothScroll("up")
             }
             break
-          case "l":
+          case "h": {
             event.preventDefault()
-            if (currentPuzzleIndex < puzzles.length - 1) {
-              navigateToPuzzle(currentPuzzleIndex + 1)
+            const currentIndex = getCurrentVisiblePuzzleIndex()
+            if (currentIndex > 0) {
+              navigateToPuzzle(currentIndex - 1)
             }
             break
+          }
+          case "l": {
+            event.preventDefault()
+            const currentIndexL = getCurrentVisiblePuzzleIndex()
+            if (currentIndexL < puzzles.length - 1) {
+              navigateToPuzzle(currentIndexL + 1)
+            }
+            break
+          }
           case "g":
             if (keySequenceTimeout) {
               clearTimeout(keySequenceTimeout)
@@ -279,11 +357,32 @@ If you have questions, feel free to ping us on discord: @rlama__ or @cooper7840`
       keySequence,
       keySequenceTimeout,
       navigateToFirstPuzzle,
-      currentPuzzleIndex,
+      getCurrentVisiblePuzzleIndex,
       navigateToPuzzle,
       showHelpToast,
       showHelp,
+      pressedKeys,
+      startSmoothScroll,
     ]
+  )
+
+  const handleKeyUp = useCallback(
+    (event: KeyboardEvent) => {
+      const key = event.key.toLowerCase()
+
+      if (key === "j" || key === "k") {
+        setPressedKeys((prev) => {
+          const newSet = new Set(prev)
+          newSet.delete(key)
+          return newSet
+        })
+
+        if (!pressedKeys.has("j") && !pressedKeys.has("k")) {
+          stopSmoothScroll()
+        }
+      }
+    },
+    [pressedKeys, stopSmoothScroll]
   )
 
   const handleScroll = useCallback(() => {
@@ -294,16 +393,27 @@ If you have questions, feel free to ping us on discord: @rlama__ or @cooper7840`
 
   useEffect(() => {
     window.addEventListener("keydown", handleKeyDown)
+    window.addEventListener("keyup", handleKeyUp)
     window.addEventListener("scroll", handleScroll)
 
     return () => {
       window.removeEventListener("keydown", handleKeyDown)
+      window.removeEventListener("keyup", handleKeyUp)
       window.removeEventListener("scroll", handleScroll)
       if (keySequenceTimeout) {
         clearTimeout(keySequenceTimeout)
       }
+      if (scrollAnimationId) {
+        cancelAnimationFrame(scrollAnimationId)
+      }
     }
-  }, [handleKeyDown, handleScroll, keySequenceTimeout])
+  }, [
+    handleKeyDown,
+    handleKeyUp,
+    handleScroll,
+    keySequenceTimeout,
+    scrollAnimationId,
+  ])
 
   //const base = import.meta.env.BASE_URL || "/";
   //const goldbugUrl = `${base}assets/pirate/goldbug.png`;
@@ -378,28 +488,26 @@ If you have questions, feel free to ping us on discord: @rlama__ or @cooper7840`
           </h2>
           <ul className="grid md:grid-cols-2 gap-2">
             {puzzles.map((p) => (
-              <a href={`#${p.anchor}`}>
-                <li
-                  key={p.code}
-                  className="flex items-center justify-between gap-2 border border-green-600/30 rounded-sm px-2 py-1 hover:bg-green-900/20"
-                >
-                  <div className="flex items-center gap-2">
-                    <Badge>{p.code}</Badge>
-                    <a
-                      className="underline text-green-200 hover:text-yellow-300"
-                      href={`#${p.anchor}`}
-                    >
-                      {p.title}
-                    </a>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <Badge color="bg-blue-500/20 text-blue-300 border-blue-400/40">
-                      {p.theme}
-                    </Badge>
-                    <DifficultyStars level={p.difficulty} size="text-sm" />
-                  </div>
-                </li>
-              </a>
+              <li
+                key={p.code}
+                className="flex items-center justify-between gap-2 border border-green-600/30 rounded-sm px-2 py-1 hover:bg-green-900/20"
+              >
+                <div className="flex items-center gap-2">
+                  <Badge>{p.code}</Badge>
+                  <a
+                    className="underline text-green-200 hover:text-yellow-300"
+                    href={`#${p.anchor}`}
+                  >
+                    {p.title}
+                  </a>
+                </div>
+                <div className="flex items-center gap-2">
+                  <Badge color="bg-blue-500/20 text-blue-300 border-blue-400/40">
+                    {p.theme}
+                  </Badge>
+                  <DifficultyStars level={p.difficulty} size="text-sm" />
+                </div>
+              </li>
             ))}
           </ul>
           <p className="mt-3 text-sm">
