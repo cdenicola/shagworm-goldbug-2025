@@ -1,50 +1,77 @@
-# React + TypeScript + Vite
+# SHAGWORM — Gold Bug 2025 Write-up
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Static site for our DEF CON Gold Bug 2025 write-up, styled with a BBS/ANSI vibe. Built with Vite + React + TypeScript, deployed to GitHub Pages.
 
-Currently, two official plugins are available:
+Live (after merge to main):
+- https://cdenicola.github.io/shagworm-goldbug-2025/
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Local development
 
-## Expanding the ESLint configuration
+Prereqs:
+- Node.js 20+ (Actions use Node 22), npm 9+
+- Git
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+Install:
+```bash
+npm ci
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
-
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+Run the dev server:
+```bash
+npm run dev
 ```
+Then open the URL Vite prints (typically http://localhost:5173).
+
+Build production assets:
+```bash
+npm run build
+```
+This generates a production bundle in dist/.
+
+Preview the production build locally:
+```bash
+npm run preview
+```
+Vite will serve the dist build (defaults to http://localhost:4173).
+
+## Project scripts
+
+- dev: Launch Vite dev server
+- build: Type-check (tsc -b) and build with Vite
+- preview: Serve the built dist folder
+
+From package.json:
+```json
+{
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "lint": "eslint .",
+    "preview": "vite preview"
+  }
+}
+```
+
+## GitHub Pages deployment
+
+- Project Pages URL: https://cdenicola.github.io/shagworm-goldbug-2025/
+- Vite is configured with base: "/shagworm-goldbug-2025/" in vite.config.ts so assets load from the correct subpath.
+- The repo includes a GitHub Actions workflow at .github/workflows/pages.yml that:
+  - Checks out the repo
+  - Uses Node 22
+  - Runs npm ci and npm run build
+  - Uploads dist and deploys via actions/deploy-pages
+
+Deploys occur on pushes to main.
+
+## Notes
+
+- ANSI/BBS “SHAGWORM” banner and retro styling are included.
+- Each puzzle section includes placeholders for write-up content and DifficultyStars for difficulty.
+- If you change the repository name or hosting path, update base in vite.config.ts accordingly.
+
+## Troubleshooting
+
+- 404s for CSS/JS on GitHub Pages: Ensure base in vite.config.ts is "/shagworm-goldbug-2025/" and that the Pages workflow completed successfully.
+- Dev server won’t start: Check Node version (use Node 20+), remove node_modules and run npm ci again.
+- Preview differs from dev: Use npm run build && npm run preview to test the production output exactly as deployed.
