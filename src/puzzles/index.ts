@@ -1,0 +1,14 @@
+export { default as BLU } from "./BLU/puzzle";
+export { default as GOS } from "./GOS/puzzle";
+export { default as SSY } from "./SSY/puzzle";
+export { default as CCC } from "./CCC/puzzle";
+export { default as NUM } from "./NUM/puzzle";
+export { default as TPS } from "./TPS/puzzle";
+export { default as OWB } from "./OWB/puzzle";
+export { default as TTT } from "./TTT/puzzle";
+export { default as JCR } from "./JCR/puzzle";
+export { default as MOC } from "./MOC/puzzle";
+export { default as MAN } from "./MAN/puzzle";
+export { default as OMR } from "./OMR/puzzle";
+export { default as FLP } from "./FLP/puzzle";
+export { default as MET } from "./MET/puzzle";
