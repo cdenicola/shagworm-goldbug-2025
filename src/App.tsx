@@ -24,8 +24,21 @@ const puzzles: TPuzzle[] = [
 
 function AnsiHeader() {
   return (
-    <div id="top" className="font-mono">
-      <pre className="whitespace-pre-wrap leading-none text-[10px] sm:text-base md:text-lg text-yellow-300">
+    <div id="top" className="font-mono overflow-x-auto">
+      <pre
+        className="
+          whitespace-pre                 /* never wrap */
+          text-[clamp(6px,2vw,20px)]     /* responsive size */
+          leading-[1.4]                  /* tighten vertical spacing */
+          [font-variant-ligatures:none]  /* no ligatures */
+          text-yellow-300
+        "
+        style={{
+          fontFamily:
+            `"DejaVu Sans Mono","Cascadia Mono","Fira Mono","JetBrains Mono",` +
+            `"Menlo","Consolas","Liberation Mono",monospace`,
+        }}
+      >
         {String.raw`
 ███████╗██╗  ██╗ █████╗  ██████╗ ██╗    ██╗ ██████╗ ██████╗ ███╗   ███╗
 ██═════╝██║  ██║██╔══██╗██╔════╝ ██║    ██║██╔═══██╗██╔══██╗████╗ ████║
