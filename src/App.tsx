@@ -286,10 +286,10 @@ If you have questions, feel free to ping us on discord: @rlama__ or @cooper7840`
               <span className="inline mr-2 text-blue-300" aria-hidden>
                 ⚓
               </span>{" "}
-              Artifacts & Downloads
+              Treasure Trove of Links
             </h3>
             <p className="text-green-200">
-              Drop links to screenshots, PDFs, or code repos here.
+              Relevant links and resources for cybersecurity adventurers.
             </p>
             <div className="mt-3">
               <div className="flex gap-3 overflow-x-auto">
@@ -301,6 +301,14 @@ If you have questions, feel free to ping us on discord: @rlama__ or @cooper7840`
                   {
                     label: "defcon.social/@goldbug",
                     href: "https://defcon.social/@goldbug",
+                  },
+                  {
+                    label: "Stanford Applied Cyber",
+                    href: "https://applied-cyber.stanford.edu/",
+                  },
+                  {
+                    label: "DEFCON 33",
+                    href: "https://defcon.org/html/defcon-33/dc-33-index.html",
                   },
                 ].map((it) => (
                   <a
