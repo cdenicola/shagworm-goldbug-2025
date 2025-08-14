@@ -206,28 +206,28 @@ body {
 /* Subtle worm-like roll for ASCII header: 1.5s motion, ~6.5s pause */
 @keyframes title-worm {
   0% {
-    transform: translateY(0);
+    transform: translateX(0);
   }
   5% {
-    transform: translateY(0);
+    transform: translateX(0);
   }
   12% {
-    transform: translateY(-1.5px);
+    transform: translateX(1.5px);
   }
   18% {
-    transform: translateY(1px);
+    transform: translateX(-1px);
   }
   24% {
-    transform: translateY(-0.8px);
+    transform: translateX(0.8px);
   }
   30% {
-    transform: translateY(0.6px);
+    transform: translateX(-0.6px);
   }
   35% {
-    transform: translateY(0);
+    transform: translateX(0);
   }
   100% {
-    transform: translateY(0);
+    transform: translateX(0);
   }
 }
 .ansi-title-line {
