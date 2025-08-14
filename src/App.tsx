@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from "react"
+import React, { useState } from "react"
 import "./App.css"
 import { Switch } from "./components/ui/switch"
 import PuzzleSection, { TPuzzle } from "./puzzle"
@@ -118,15 +118,8 @@ export function DifficultyStars({
 function App() {
   const [isPirateMode, setIsPirateMode] = useState(true)
   const [bg, setBg] = useState<"ocean" | "parchment" | "starry">("ocean")
-  const [hasScrolled, setHasScrolled] = useState(false)
-  const [keySequence, setKeySequence] = useState("")
-  const [keySequenceTimeout, setKeySequenceTimeout] =
-    useState<NodeJS.Timeout | null>(null)
-  const [showHelp, setShowHelp] = useState(false)
-  const [pressedKeys, setPressedKeys] = useState<Set<string>>(new Set())
-  const [scrollAnimationId, setScrollAnimationId] = useState<number | null>(
-    null
-  )
+
+  const { showHelp } = useKeyboardNavigation({ puzzles })
 
   const { showHelp } = useKeyboardNavigation({ puzzles })
 
@@ -159,6 +152,7 @@ If you have questions, feel free to ping us on discord: @rlama__ or @cooper7840`
         ? "bg-parchment"
         : "bg-starry"
 
+<<<<<<< HEAD
   const navigateToFirstPuzzle = useCallback(() => {
     const firstPuzzleAnchor = puzzles[0]?.anchor
     if (firstPuzzleAnchor) {
