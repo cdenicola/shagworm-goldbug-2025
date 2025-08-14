@@ -207,7 +207,7 @@ If you have questions, feel free to ping us on discord: @rlama__ or @cooper7840`
               <span className="inline mr-2 text-green-200" aria-hidden>
                 🏴‍☠️
               </span>
-              Captain’s Log
+              Captain's Log
             </h3>
             <div className="flex items-center gap-3">
               <span className="text-yellow-300 font-mono text-sm">
@@ -354,7 +354,9 @@ If you have questions, feel free to ping us on discord: @rlama__ or @cooper7840`
 
         <section className="mt-10 space-y-10">
           {puzzles.map((p) => (
-            <PuzzleSection key={p.code} p={p} />
+            <div key={p.code} className="relative">
+              <PuzzleSection p={p} />
+            </div>
           ))}
         </section>
 
