@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useEffect, useMemo, useRef, useState } from "react"
 import "./App.css"
 import { Switch } from "./components/ui/switch"
 import PuzzleSection, { TPuzzle } from "./puzzle"
@@ -118,6 +118,76 @@ function App() {
   const [isPirateMode, setIsPirateMode] = useState(true)
   const [bg, setBg] = useState<"ocean" | "parchment" | "starry">("ocean")
 
+  const [enterEnabled, setEnterEnabled] = useState(true)
+  const [currentPuzzleIndex, setCurrentPuzzleIndex] = useState<number | null>(
+    null
+  )
+  const [showHelp, setShowHelp] = useState(false)
+  const helpTimerRef = useRef<number | null>(null)
+  const scrollingRAF = useRef<number | null>(null)
+  const heldKeys = useRef<{ j?: boolean; k?: boolean }>({})
+
+  const anchors = useMemo(() => puzzles.map((p) => p.anchor), [])
+
+  const stopScrolling = () => {
+    if (scrollingRAF.current !== null) {
+      cancelAnimationFrame(scrollingRAF.current)
+      scrollingRAF.current = null
+    }
+  }
+
+  const startScrolling = () => {
+    const speed = 2.5
+    const step = () => {
+      let dy = 0
+      if (heldKeys.current.j) dy += speed
+      if (heldKeys.current.k) dy -= speed
+      if (dy !== 0) {
+        window.scrollBy({ top: dy, behavior: "auto" })
+        scrollingRAF.current = requestAnimationFrame(step)
+      } else {
+        stopScrolling()
+      }
+    }
+    if (scrollingRAF.current === null) {
+      scrollingRAF.current = requestAnimationFrame(step)
+    }
+  }
+
+  const scrollToIndex = (idx: number) => {
+    const id = anchors[idx]
+    const el = id ? document.getElementById(id) : null
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth", block: "start" })
+    }
+  }
+
+  const handleEnter = () => {
+    if (!enterEnabled) return
+    scrollToIndex(0)
+    setEnterEnabled(false)
+  }
+
+  const goNext = () => {
+    if (currentPuzzleIndex == null) {
+      scrollToIndex(0)
+    } else if (currentPuzzleIndex < anchors.length - 1) {
+      scrollToIndex(currentPuzzleIndex + 1)
+    }
+  }
+
+  const goPrev = () => {
+    if (currentPuzzleIndex == null || currentPuzzleIndex <= 0) return
+    scrollToIndex(currentPuzzleIndex - 1)
+  }
+
+  const isTypingTarget = (el: EventTarget | null) => {
+    if (!(el instanceof HTMLElement)) return false
+    const tag = el.tagName.toLowerCase()
+    if (el.isContentEditable) return true
+    return tag === "input" || tag === "textarea" || tag === "select"
+  }
+
   const pirateText = `Ahoy, matey! We be the crew of the Shagworm, victors of the mighty Crypto & Privacy Village Gold Bug Challenge at DEFCON 33, 2025. Once but humble sailors from the far-flung shores of Stanford's Applied Cyber guild, now we sail the seas of cipher and code, with a deck split 'twixt seasoned hands who've weathered many a Gold Bug storm, and greenhorns who'd ne'er before set eyes on such a map of mysteries.
 
 Our charts be marked with trials o' varying peril—each puzzle marked by the Puzzle Masters with one to five gleamin' stars. One star be a calm harbor, five be a storm fit to snap a mast. All treasures we sought were 12-letter phrases—sometimes two or three words lashed together—aye, whether writ in upper, lower, or a mix o' cases, so long as the form be true. In Gold Bug waters, the number 12 be more than mere count—it be a key to the very locks ye must pick.
@@ -147,6 +217,114 @@ If you have questions, feel free to ping us on discord: @rlama__ or @cooper7840`
         ? "bg-parchment"
         : "bg-starry"
 
+  useEffect(() => {
+    const elements = anchors
+      .map((a) => document.getElementById(a))
+      .filter((el): el is HTMLElement => !!el)
+
+    if (elements.length === 0) return
+
+    const updateByViewportCenter = () => {
+      const center = window.scrollY + window.innerHeight / 2
+      let bestIdx: number | null = null
+      let bestDist = Infinity
+      elements.forEach((el, idx) => {
+        const rect = el.getBoundingClientRect()
+        const top = rect.top + window.scrollY
+        const mid = top + rect.height / 2
+        const dist = Math.abs(mid - center)
+        if (dist < bestDist) {
+          bestDist = dist
+          bestIdx = idx
+        }
+      })
+      setCurrentPuzzleIndex(bestIdx)
+      const firstEl = elements[0]
+      if (firstEl) {
+        const firstTop = firstEl.getBoundingClientRect().top
+        if (firstTop <= 120) setEnterEnabled(false)
+      }
+    }
+
+    const observer = new IntersectionObserver(
+      () => {
+        updateByViewportCenter()
+      },
+      { root: null, rootMargin: "0px", threshold: [0, 0.25, 0.5, 0.75, 1] }
+    )
+
+    elements.forEach((el) => observer.observe(el))
+
+    updateByViewportCenter()
+
+    return () => {
+      observer.disconnect()
+    }
+  }, [anchors])
+
+  useEffect(() => {
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.metaKey || e.ctrlKey || e.altKey) return
+      if (isTypingTarget(e.target)) return
+
+      if (e.key === "Enter") {
+        handleEnter()
+        return
+      }
+
+      if (e.key === "j" || e.key === "k") {
+        heldKeys.current = { ...heldKeys.current, [e.key]: true }
+        startScrolling()
+        e.preventDefault()
+        return
+      }
+
+      if (e.key === "h") {
+        goPrev()
+        e.preventDefault()
+        return
+      }
+      if (e.key === "l") {
+        goNext()
+        e.preventDefault()
+        return
+      }
+
+      if (e.key === "?") {
+        setShowHelp(true)
+        if (helpTimerRef.current) window.clearTimeout(helpTimerRef.current)
+        helpTimerRef.current = window.setTimeout(() => setShowHelp(false), 3500)
+        e.preventDefault()
+        return
+      }
+    }
+
+    const onKeyUp = (e: KeyboardEvent) => {
+      if (e.key === "j" || e.key === "k") {
+        heldKeys.current = { ...heldKeys.current, [e.key]: false }
+        if (!heldKeys.current.j && !heldKeys.current.k) {
+          stopScrolling()
+        }
+      }
+    }
+
+    const onBlur = () => {
+      heldKeys.current = {}
+      stopScrolling()
+    }
+
+    window.addEventListener("keydown", onKeyDown, { passive: false })
+    window.addEventListener("keyup", onKeyUp)
+    window.addEventListener("blur", onBlur)
+
+    return () => {
+      window.removeEventListener("keydown", onKeyDown as EventListener)
+      window.removeEventListener("keyup", onKeyUp as EventListener)
+      window.removeEventListener("blur", onBlur as EventListener)
+      stopScrolling()
+      if (helpTimerRef.current) window.clearTimeout(helpTimerRef.current)
+    }
+  }, [enterEnabled, currentPuzzleIndex, anchors])
   //const base = import.meta.env.BASE_URL || "/";
   //const goldbugUrl = `${base}assets/pirate/goldbug.png`;
 
@@ -162,6 +340,19 @@ If you have questions, feel free to ping us on discord: @rlama__ or @cooper7840`
           <AnsiHeader />
         </div>
 
+        {showHelp && (
+          <div className="fixed inset-x-0 top-4 mx-auto max-w-md z-50">
+            <div className="border border-yellow-500/40 bg-black/80 text-green-200 rounded-sm px-4 py-3 font-mono text-sm shadow-lg">
+              <div className="text-yellow-300 mb-1">Keyboard Help</div>
+              <ul className="list-[*] pl-4 space-y-1">
+                <li>Enter: jump to first puzzle</li>
+                <li>j / k: smooth scroll down / up while held</li>
+                <li>l / h: next / previous puzzle</li>
+                <li>? : show this help</li>
+              </ul>
+            </div>
+          </div>
+        )}
         <div className="flex items-center gap-1 text-xs font-mono justify-end">
           <span className="text-green-300 mr-2">Background:</span>
           <button
@@ -207,7 +398,7 @@ If you have questions, feel free to ping us on discord: @rlama__ or @cooper7840`
             {isPirateMode ? pirateText : landlubberText}
           </div>
           <p className="ansi-cursor mt-4 text-pink-400">
-            PRESS ANY KEY TO CONTINUE
+            PRESS ANY ENTER TO CONTINUE
           </p>
         </div>
 
