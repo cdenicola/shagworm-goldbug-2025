@@ -2,6 +2,7 @@ import React, { useState } from "react"
 import "./App.css"
 import { Switch } from "./components/ui/switch"
 import PuzzleSection, { TPuzzle } from "./puzzle"
+import { useKeyboardNavigation } from "./hooks/useKeyboardNavigation"
 
 import {
   BLU,
@@ -118,6 +119,8 @@ function App() {
   const [isPirateMode, setIsPirateMode] = useState(true)
   const [bg, setBg] = useState<"ocean" | "parchment" | "starry">("ocean")
 
+  const { showHelp, hasScrolled } = useKeyboardNavigation({ puzzles })
+
   const pirateText = `Ahoy, matey! We be the crew of the Shagworm, victors of the mighty Crypto & Privacy Village Gold Bug Challenge at DEFCON 33, 2025. Once but humble sailors from the far-flung shores of Stanford's Applied Cyber guild, now we sail the seas of cipher and code, with a deck split 'twixt seasoned hands who've weathered many a Gold Bug storm, and greenhorns who'd ne'er before set eyes on such a map of mysteries.
 
 Our charts be marked with trials o' varying peril—each puzzle marked by the Puzzle Masters with one to five gleamin' stars. One star be a calm harbor, five be a storm fit to snap a mast. All treasures we sought were 12-letter phrases—sometimes two or three words lashed together—aye, whether writ in upper, lower, or a mix o' cases, so long as the form be true. In Gold Bug waters, the number 12 be more than mere count—it be a key to the very locks ye must pick.
@@ -207,7 +210,13 @@ If you have questions, feel free to ping us on discord: @rlama__ or @cooper7840`
             {isPirateMode ? pirateText : landlubberText}
           </div>
           <p className="ansi-cursor mt-4 text-pink-400">
-            PRESS ANY KEY TO CONTINUE
+            {!hasScrolled
+              ? isPirateMode
+                ? "CHART YER COURSE, THEN ENTER"
+                : "CONNECTING TO PORT: TORTUGA... PRESS ENTER TO CONTINUE"
+              : isPirateMode
+                ? "LAND HO! ADVENTURE AWAITS"
+                : "WELCOME TO THE SYSTEM"}
           </p>
         </div>
 
@@ -331,7 +340,7 @@ If you have questions, feel free to ping us on discord: @rlama__ or @cooper7840`
 
         <section className="mt-10 space-y-10">
           {puzzles.map((p) => (
-            <PuzzleSection p={p} />
+            <PuzzleSection key={p.code} p={p} />
           ))}
         </section>
 
@@ -429,6 +438,41 @@ If you have questions, feel free to ping us on discord: @rlama__ or @cooper7840`
           </div>
         </footer>
       </div>
+
+      {/* Help Toast */}
+      {showHelp && (
+        <div className="fixed top-4 right-4 z-50 border border-yellow-500/60 bg-black/90 backdrop-blur-sm rounded-sm p-4 font-mono text-sm animate-in fade-in duration-300">
+          <div className="text-yellow-300 mb-2 flex items-center gap-2">
+            <span className="text-pink-400">⚓</span>
+            <span className="font-bold">Keyboard Navigation</span>
+          </div>
+          <div className="space-y-1 text-green-200">
+            <div className="flex justify-between gap-4">
+              <span className="text-yellow-300">j/k</span>
+              <span>scroll down/up</span>
+            </div>
+            <div className="flex justify-between gap-4">
+              <span className="text-yellow-300">h/l</span>
+              <span>prev/next puzzle</span>
+            </div>
+            <div className="flex justify-between gap-4">
+              <span className="text-yellow-300">gg</span>
+              <span>go to top</span>
+            </div>
+            <div className="flex justify-between gap-4">
+              <span className="text-yellow-300">G</span>
+              <span>go to bottom</span>
+            </div>
+            <div className="flex justify-between gap-4">
+              <span className="text-yellow-300">?</span>
+              <span>show this help</span>
+            </div>
+          </div>
+          <div className="mt-2 text-xs text-pink-400 opacity-80">
+            Press any key to dismiss
+          </div>
+        </div>
+      )}
     </div>
   )
 }
