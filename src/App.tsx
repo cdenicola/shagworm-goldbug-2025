@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react"
+import React, { useState } from "react"
 import "./App.css"
 import { Switch } from "./components/ui/switch"
 import PuzzleSection, { TPuzzle } from "./puzzle"
@@ -146,49 +146,6 @@ If you have questions, feel free to ping us on discord: @rlama__ or @cooper7840`
       : bg === "parchment"
         ? "bg-parchment"
         : "bg-starry"
-
-  const shipFrames: string[] = [
-    String.raw`
-             )    )    )               
-             )_)  )_)  )_)              
-            )___))___))___)\            
-        )____)____)_____)\\       
-         _____|____|____|____\\\\__    
----------\                   /---------
-   ^^^^^ ^^^^^^^^^^^^^^^^^^^^^         
-     ^^^^      ^^^^     ^^^    ^^      
-             ^^^^      ^^^             
-`,
-    String.raw`
-              )    )    )              
-              )_)  )_)  )_)             
-             )___))___))___)\           
-         )____)____)_____)\\      
-          _____|____|____|____\\\\__   
----------\                   /---------
-     ^^^^^ ^^^^^^^^^^^^^^^^^^^^        
-       ^^^^      ^^^^     ^^^    ^^    
-               ^^^^      ^^^           
-`,
-    String.raw`
-             )    )    )               
-             )_)  )_)  )_)              
-            )___))___))___)\            
-        )____)____)_____)\\       
-         _____|____|____|____\\\\__    
----------\                   /---------
-  ^^^^^ ^^^^^^^^^^^^^^^^^^^^^^^        
-    ^^^^      ^^^^     ^^^    ^^       
-            ^^^^      ^^^              
-`,
-  ]
-  const [shipFrame, setShipFrame] = useState(0)
-  useEffect(() => {
-    const id = setInterval(() => {
-      setShipFrame((i) => (i + 1) % shipFrames.length)
-    }, 220)
-    return () => clearInterval(id)
-  }, [])
 
   //const base = import.meta.env.BASE_URL || "/";
   //const goldbugUrl = `${base}assets/pirate/goldbug.png`;
@@ -427,62 +384,27 @@ If you have questions, feel free to ping us on discord: @rlama__ or @cooper7840`
 
         <footer className="mt-8 text-sm border border-yellow-500/40 bg-yellow-900/10 rounded-sm p-6">
           <h4 className="text-center text-pink-400 text-xl mb-4">
-            Animated ASCII Ships
+            Animated ASCII Ship
           </h4>
-          <div className="grid gap-4 md:grid-cols-3">
-            <div className="text-center">
-              <div className="inline-block anim-ship-bob">
-                <div className="inline-block anim-sail-sway">
-                  <pre className="text-yellow-300 text-xs leading-none">
-                    {String.raw`             )    )    )               
-             )_)  )_)  )_)              
-            )___))___))___)\            `}
-                  </pre>
-                </div>
-                <pre className="text-yellow-300 text-xs leading-none">
-                  {String.raw`        )____)____)_____)\\       
-         _____|____|____|____\\\\__    
----------\                   /---------`}
-                </pre>
-                <pre className="text-yellow-300 text-xs leading-none anim-wave">
-                  {String.raw`   ^^^^^ ^^^^^^^^^^^^^^^^^^^^^         
-     ^^^^      ^^^^     ^^^    ^^      
-             ^^^^      ^^^             `}
-                </pre>
-              </div>
-              <div className="text-green-300 text-xs mt-1">
-                Variant A: CSS bob, sail sway, wave up/down
-              </div>
-            </div>
-
-            <div className="text-center">
-              <pre className="text-yellow-300 text-xs leading-none">
-                {shipFrames[shipFrame]}
-              </pre>
-              <div className="text-green-300 text-xs mt-1">
-                Variant B: Frame-cycling ASCII
-              </div>
-            </div>
-
-            <div className="text-center">
-              <div className="inline-block water-bg p-1 rounded-sm anim-ship-bob">
+          <div className="text-center">
+            <div className="inline-block anim-ship-bob">
+              <div className="inline-block anim-sail-sway">
                 <pre className="text-yellow-300 text-xs leading-none">
                   {String.raw`             )    )    )               
              )_)  )_)  )_)              
-            )___))___))___)\            
-        )____)____)_____)\\       
+            )___))___))___)\            `}
+                </pre>
+              </div>
+              <pre className="text-yellow-300 text-xs leading-none">
+                {String.raw`        )____)____)_____)\\       
          _____|____|____|____\\\\__    
 ---------\                   /---------`}
-                </pre>
-                <pre className="text-yellow-300 text-xs leading-none">
-                  {String.raw`   ^^^^^ ^^^^^^^^^^^^^^^^^^^^^         
+              </pre>
+              <pre className="text-yellow-300 text-xs leading-none anim-wave">
+                {String.raw`   ^^^^^ ^^^^^^^^^^^^^^^^^^^^^         
      ^^^^      ^^^^     ^^^    ^^      
              ^^^^      ^^^             `}
-                </pre>
-              </div>
-              <div className="text-green-300 text-xs mt-1">
-                Variant C: Water shimmer + bob
-              </div>
+              </pre>
             </div>
           </div>
 
