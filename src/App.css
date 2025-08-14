@@ -232,30 +232,43 @@ body {
 }
 .ansi-title-line {
   display: block;
+}
+
+/* Per-character vertical wobble for header (1.5–2s motion, multi-second pause) */
+@keyframes title-worm-vert {
+  0% {
+    transform: translateY(0);
+  }
+  5% {
+    transform: translateY(0);
+  }
+  12% {
+    transform: translateY(-1.5px);
+  }
+  18% {
+    transform: translateY(1px);
+  }
+  24% {
+    transform: translateY(-0.8px);
+  }
+  30% {
+    transform: translateY(0.6px);
+  }
+  35% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+.ansi-title-chr {
+  display: inline-block;
   will-change: transform;
-  animation: title-worm 6s ease-in-out infinite;
-}
-.ansi-title-line:nth-child(1) {
-  animation-delay: 0s;
-}
-.ansi-title-line:nth-child(2) {
-  animation-delay: 0.08s;
-}
-.ansi-title-line:nth-child(3) {
-  animation-delay: 0.16s;
-}
-.ansi-title-line:nth-child(4) {
-  animation-delay: 0.24s;
-}
-.ansi-title-line:nth-child(5) {
-  animation-delay: 0.32s;
-}
-.ansi-title-line:nth-child(6) {
-  animation-delay: 0.4s;
+  animation: title-worm-vert 6s ease-in-out infinite;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .ansi-title-line {
+  .ansi-title-chr {
     animation: none !important;
   }
 }

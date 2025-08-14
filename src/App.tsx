@@ -64,7 +64,15 @@ function AnsiHeader() {
       >
         {headerLines.map((ln, i) => (
           <span key={i} className="ansi-title-line">
-            {ln}
+            {Array.from(ln).map((ch, j) => (
+              <span
+                key={`${i}-${j}`}
+                className="ansi-title-chr"
+                style={{ animationDelay: `${j * 0.06}s` }}
+              >
+                {ch}
+              </span>
+            ))}
           </span>
         ))}
       </pre>
