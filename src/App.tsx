@@ -234,6 +234,50 @@ If you have questions, feel free to ping us on discord: @rlama__ or @cooper7840`
           </p>
         </div>
 
+        <section className="mt-6 border border-purple-500/40 bg-purple-900/10 rounded-sm p-4">
+          <h2 className="text-2xl text-purple-400 mb-2">
+            <span className="inline mr-2 text-yellow-300" aria-hidden>
+              ⚔️
+            </span>{" "}
+            Crew Manifest
+          </h2>
+          <p className="text-green-200 mb-4">
+            {isPirateMode
+              ? "Behold, the brave souls who sailed with us on this treacherous voyage through the cryptographic seas!"
+              : "Meet the team members who participated in the Gold Bug challenge:"}
+          </p>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-2">
+            {[
+              { name: "Cooper de Nicola", title: "Captain" },
+              { name: "Jack Cable", title: "First Mate" },
+              { name: "Roberto Lama", title: "Navigator" },
+              { name: "George Hosono", title: "Quartermaster" },
+              { name: "Ashley Dai", title: "Master Gunner" },
+              { name: "Keely Podosin", title: "Bosun" },
+              { name: "Seyma Kilic", title: "Ship's Cook" },
+              { name: "Teddy Zhang", title: "Lookout" },
+              { name: "Liam Fay", title: "Cabin Boy" },
+              { name: "Agus Covarrubias", title: "Powder Monkey" },
+              { name: "Yasmine Mitchell", title: "Ship's Doctor" },
+              { name: "Glen Husman", title: "Carpenter" },
+              { name: "Tobias Moser", title: "Sailing Master" },
+              { name: "Nathan Bhak", title: "Ship's Scribe" },
+            ].map((crewMember) => (
+              <div
+                key={crewMember.name}
+                className="flex flex-col gap-1 border border-purple-600/30 rounded-sm px-3 py-2 bg-purple-900/5"
+              >
+                <Badge color="bg-purple-500/20 text-purple-300 border-purple-400/40">
+                  {crewMember.name}
+                </Badge>
+                <span className="text-xs text-yellow-300 font-mono">
+                  {isPirateMode ? crewMember.title : "Team Member"}
+                </span>
+              </div>
+            ))}
+          </div>
+        </section>
+
         <nav className="mt-6 border border-pink-500/40 bg-pink-900/10 rounded-sm p-4">
           <h2 className="text-2xl text-pink-400 mb-2">
             <span className="inline mr-2 text-yellow-300" aria-hidden>
