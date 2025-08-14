@@ -38,14 +38,22 @@ const puzzles: TPuzzle[] = [
 ]
 
 function AnsiHeader() {
+  const headerLines = [
+    "███████╗██╗  ██╗ █████╗  ██████╗ ██╗    ██╗ ██████╗ ██████╗ ███╗   ███╗",
+    "██═════╝██║  ██║██╔══██╗██╔════╝ ██║    ██║██╔═══██╗██╔══██╗████╗ ████║",
+    "███████╗███████║███████║██║ ████╗██║ █╗ ██║██║   ██║██████╔╝██╔████╔██║",
+    "╚════██║██╔══██║██╔══██║██║ ╚═██║██║███╗██║██║   ██║██╔══██╗██║╚██╔╝██║",
+    "███████║██║  ██║██║  ██║╚██████╔╝╚███╔███╔╝╚██████╔╝██║  ██║██║ ╚═╝ ██║",
+    "╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝ ╚═════╝  ╚══╝╚══╝  ╚═════╝ ╚═╝  ╚═╝╚═╝     ╚═╝",
+  ]
   return (
     <div id="top" className="font-mono overflow-x-auto">
       <pre
         className="
-          whitespace-pre                 /* never wrap */
-          text-[clamp(6px,2vw,20px)]     /* responsive size */
-          leading-[1.4]                  /* tighten vertical spacing */
-          [font-variant-ligatures:none]  /* no ligatures */
+          whitespace-pre
+          text-[clamp(6px,2vw,20px)]
+          leading-[1.4]
+          [font-variant-ligatures:none]
           text-yellow-300
         "
         style={{
@@ -54,14 +62,11 @@ function AnsiHeader() {
             `"Menlo","Consolas","Liberation Mono",monospace`,
         }}
       >
-        {String.raw`
-███████╗██╗  ██╗ █████╗  ██████╗ ██╗    ██╗ ██████╗ ██████╗ ███╗   ███╗
-██═════╝██║  ██║██╔══██╗██╔════╝ ██║    ██║██╔═══██╗██╔══██╗████╗ ████║
-███████╗███████║███████║██║ ████╗██║ █╗ ██║██║   ██║██████╔╝██╔████╔██║
-╚════██║██╔══██║██╔══██║██║ ╚═██║██║███╗██║██║   ██║██╔══██╗██║╚██╔╝██║
-███████║██║  ██║██║  ██║╚██████╔╝╚███╔███╔╝╚██████╔╝██║  ██║██║ ╚═╝ ██║
-╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝ ╚═════╝  ╚══╝╚══╝  ╚═════╝ ╚═╝  ╚═╝╚═╝     ╚═╝
-`}
+        {headerLines.map((ln, i) => (
+          <span key={i} className="ansi-title-line">
+            {ln}
+          </span>
+        ))}
       </pre>
       <span className="block text-pink-400 text-2xl mt-2">
         Stanford Applied Cyber Presents: The Gold Bug — Writeup
