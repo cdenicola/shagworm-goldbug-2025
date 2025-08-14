@@ -131,16 +131,20 @@ body {
 }
 @keyframes glint {
   0%,
-  96%,
-  100% {
+  94% {
     text-shadow: none;
   }
-  97%,
-  99% {
-    text-shadow: 0 0 6px rgba(255, 255, 0, 0.6);
+  95% {
+    text-shadow: 0 0 4px rgba(255, 255, 0, 0.45);
   }
-  98% {
+  97% {
+    text-shadow: 0 0 8px rgba(255, 255, 0, 0.7);
+  }
+  99% {
     text-shadow: 0 0 12px rgba(255, 255, 0, 0.9);
+  }
+  100% {
+    text-shadow: 0 0 4px rgba(255, 255, 0, 0.45);
   }
 }
 /* ASCII ship animations */
@@ -269,6 +273,9 @@ body {
 
 @media (prefers-reduced-motion: reduce) {
   .ansi-title-chr {
+    animation: none !important;
+  }
+  .star-glint {
     animation: none !important;
   }
 }

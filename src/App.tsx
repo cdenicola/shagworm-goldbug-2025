@@ -119,6 +119,7 @@ export function DifficultyStars({
         <span
           key={i}
           className={i < level ? "text-yellow-300 star-glint" : "text-gray-500"}
+          style={i < level ? { animationDelay: `${i * 0.25}s` } : undefined}
         >
           ★
         </span>
