@@ -130,95 +130,89 @@ export function useKeyboardNavigation({
         return
       }
 
-      if (!hasScrolled && event.key) {
+      if (!hasScrolled && event.key === "Enter") {
         navigateToFirstPuzzle()
         setHasScrolled(true)
         return
       }
 
-      if (hasScrolled) {
-        if (event.key === "G") {
+      if (event.key === "G") {
+        event.preventDefault()
+        const maxHeight = Math.max(
+          document.body.scrollHeight,
+          document.documentElement.scrollHeight
+        )
+        window.scrollTo({
+          top: maxHeight,
+          behavior: "smooth",
+        })
+        setKeySequence("")
+        if (keySequenceTimeout) {
+          clearTimeout(keySequenceTimeout)
+          setKeySequenceTimeout(null)
+        }
+        return
+      }
+
+      const key = event.key.toLowerCase()
+
+      switch (key) {
+        case "j":
           event.preventDefault()
-          const maxHeight = Math.max(
-            document.body.scrollHeight,
-            document.documentElement.scrollHeight
-          )
-          window.scrollTo({
-            top: maxHeight,
-            behavior: "smooth",
-          })
+          if (!pressedKeys.has("j")) {
+            setPressedKeys((prev) => new Set(prev).add("j"))
+            startSmoothScroll("down")
+          }
+          break
+        case "k":
+          event.preventDefault()
+          if (!pressedKeys.has("k")) {
+            setPressedKeys((prev) => new Set(prev).add("k"))
+            startSmoothScroll("up")
+          }
+          break
+        case "h": {
+          event.preventDefault()
+          const currentIndex = getCurrentVisiblePuzzleIndex()
+          navigateToPuzzle(Math.max(0, currentIndex - 1))
+          break
+        }
+        case "l": {
+          event.preventDefault()
+          const currentIndexL = getCurrentVisiblePuzzleIndex()
+          navigateToPuzzle(Math.min(puzzles.length, currentIndexL + 1))
+          break
+        }
+        case "g":
+          if (keySequenceTimeout) {
+            clearTimeout(keySequenceTimeout)
+          }
+
+          if (keySequence === "g") {
+            event.preventDefault()
+            window.scrollTo({ top: 0, behavior: "smooth" })
+            setKeySequence("")
+            setKeySequenceTimeout(null)
+          } else {
+            setKeySequence("g")
+            const timeout = setTimeout(() => {
+              setKeySequence("")
+              setKeySequenceTimeout(null)
+            }, 1000)
+            setKeySequenceTimeout(timeout)
+          }
+          break
+        case "?":
+          event.preventDefault()
+          showHelpToast()
+          break
+        default:
           setKeySequence("")
           if (keySequenceTimeout) {
             clearTimeout(keySequenceTimeout)
             setKeySequenceTimeout(null)
           }
-          return
-        }
-
-        const key = event.key.toLowerCase()
-
-        switch (key) {
-          case "j":
-            event.preventDefault()
-            if (!pressedKeys.has("j")) {
-              setPressedKeys((prev) => new Set(prev).add("j"))
-              startSmoothScroll("down")
-            }
-            break
-          case "k":
-            event.preventDefault()
-            if (!pressedKeys.has("k")) {
-              setPressedKeys((prev) => new Set(prev).add("k"))
-              startSmoothScroll("up")
-            }
-            break
-          case "h": {
-            event.preventDefault()
-            const currentIndex = getCurrentVisiblePuzzleIndex()
-            if (currentIndex > 0) {
-              navigateToPuzzle(currentIndex - 1)
-            }
-            break
-          }
-          case "l": {
-            event.preventDefault()
-            const currentIndexL = getCurrentVisiblePuzzleIndex()
-            if (currentIndexL < puzzles.length - 1) {
-              navigateToPuzzle(currentIndexL + 1)
-            }
-            break
-          }
-          case "g":
-            if (keySequenceTimeout) {
-              clearTimeout(keySequenceTimeout)
-            }
-
-            if (keySequence === "g") {
-              event.preventDefault()
-              window.scrollTo({ top: 0, behavior: "smooth" })
-              setKeySequence("")
-              setKeySequenceTimeout(null)
-            } else {
-              setKeySequence("g")
-              const timeout = setTimeout(() => {
-                setKeySequence("")
-                setKeySequenceTimeout(null)
-              }, 1000)
-              setKeySequenceTimeout(timeout)
-            }
-            break
-          case "?":
-            event.preventDefault()
-            showHelpToast()
-            break
-          default:
-            setKeySequence("")
-            if (keySequenceTimeout) {
-              clearTimeout(keySequenceTimeout)
-              setKeySequenceTimeout(null)
-            }
-            break
-        }
+          break
       }
     },
     [

@@ -119,7 +119,7 @@ function App() {
   const [isPirateMode, setIsPirateMode] = useState(true)
   const [bg, setBg] = useState<"ocean" | "parchment" | "starry">("ocean")
 
-  const { showHelp } = useKeyboardNavigation({ puzzles })
+  const { showHelp, hasScrolled } = useKeyboardNavigation({ puzzles })
 
   const { showHelp } = useKeyboardNavigation({ puzzles })
 
@@ -469,7 +469,13 @@ If you have questions, feel free to ping us on discord: @rlama__ or @cooper7840`
             {isPirateMode ? pirateText : landlubberText}
           </div>
           <p className="ansi-cursor mt-4 text-pink-400">
-            PRESS ANY KEY TO CONTINUE
+            {!hasScrolled
+              ? isPirateMode
+                ? "CHART YER COURSE, THEN ENTER"
+                : "CONNECTING TO PORT: TORTUGA... PRESS ENTER TO CONTINUE"
+              : isPirateMode
+                ? "LAND HO! ADVENTURE AWAITS"
+                : "WELCOME TO THE SYSTEM"}
           </p>
         </div>
 
