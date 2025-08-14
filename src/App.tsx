@@ -383,9 +383,6 @@ If you have questions, feel free to ping us on discord: @rlama__ or @cooper7840`
         </section>
 
         <footer className="mt-8 text-sm border border-yellow-500/40 bg-yellow-900/10 rounded-sm p-6">
-          <h4 className="text-center text-pink-400 text-xl mb-4">
-            Animated ASCII Ship
-          </h4>
           <div className="text-center">
             <div className="inline-block anim-ship-bob">
               <div className="inline-block anim-sail-sway">
