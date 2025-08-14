@@ -2,6 +2,7 @@ import React, { useState } from "react"
 import "./App.css"
 import { Switch } from "./components/ui/switch"
 import PuzzleSection, { TPuzzle } from "./puzzle"
+import { CitationAside } from "./components/ui/citation-aside"
 
 import {
   BLU,
@@ -190,7 +191,7 @@ If you have questions, feel free to ping us on discord: @rlama__ or @cooper7840`
               <span className="inline mr-2 text-green-200" aria-hidden>
                 🏴‍☠️
               </span>
-              Captain’s Log
+              Captain's Log
             </h3>
             <div className="flex items-center gap-3">
               <span className="text-yellow-300 font-mono text-sm">
@@ -210,6 +211,21 @@ If you have questions, feel free to ping us on discord: @rlama__ or @cooper7840`
             PRESS ANY KEY TO CONTINUE
           </p>
         </div>
+
+        <CitationAside side="left">
+          <p>
+            The Gold Bug Challenge is inspired by Edgar Allan Poe's 1843 short
+            story "The Gold-Bug", which features cryptographic puzzles and
+            treasure hunting themes.
+          </p>
+        </CitationAside>
+
+        <CitationAside side="right">
+          <p>
+            Team Shagworm consists of Stanford Applied Cyber members with a mix
+            of experienced Gold Bug veterans and first-time participants.
+          </p>
+        </CitationAside>
 
         <nav className="mt-6 border border-pink-500/40 bg-pink-900/10 rounded-sm p-4">
           <h2 className="text-2xl text-pink-400 mb-2">
@@ -330,8 +346,19 @@ If you have questions, feel free to ping us on discord: @rlama__ or @cooper7840`
         </section>
 
         <section className="mt-10 space-y-10">
-          {puzzles.map((p) => (
-            <PuzzleSection p={p} />
+          {puzzles.map((p, index) => (
+            <div key={p.code} className="relative">
+              <PuzzleSection p={p} />
+              {index === 2 && (
+                <CitationAside side="left">
+                  <p>
+                    All Gold Bug solutions follow a 12-letter format, which
+                    serves as both the answer format and often a key clue in
+                    solving the puzzles themselves.
+                  </p>
+                </CitationAside>
+              )}
+            </div>
           ))}
         </section>
 
