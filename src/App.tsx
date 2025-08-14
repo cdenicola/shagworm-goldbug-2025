@@ -2,6 +2,7 @@ import React, { useState } from "react"
 import "./App.css"
 import { Switch } from "./components/ui/switch"
 import PuzzleSection, { TPuzzle } from "./puzzle"
+import { useKeyboardNavigation } from "./hooks/useKeyboardNavigation"
 
 import {
   BLU,
@@ -38,14 +39,22 @@ const puzzles: TPuzzle[] = [
 ]
 
 function AnsiHeader() {
+  const headerLines = [
+    "███████╗██╗  ██╗ █████╗  ██████╗ ██╗    ██╗ ██████╗ ██████╗ ███╗   ███╗",
+    "██═════╝██║  ██║██╔══██╗██╔════╝ ██║    ██║██╔═══██╗██╔══██╗████╗ ████║",
+    "███████╗███████║███████║██║ ████╗██║ █╗ ██║██║   ██║██████╔╝██╔████╔██║",
+    "╚════██║██╔══██║██╔══██║██║ ╚═██║██║███╗██║██║   ██║██╔══██╗██║╚██╔╝██║",
+    "███████║██║  ██║██║  ██║╚██████╔╝╚███╔███╔╝╚██████╔╝██║  ██║██║ ╚═╝ ██║",
+    "╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝ ╚═════╝  ╚══╝╚══╝  ╚═════╝ ╚═╝  ╚═╝╚═╝     ╚═╝",
+  ]
   return (
     <div id="top" className="font-mono overflow-x-auto">
       <pre
         className="
-          whitespace-pre                 /* never wrap */
-          text-[clamp(6px,2vw,20px)]     /* responsive size */
-          leading-[1.4]                  /* tighten vertical spacing */
-          [font-variant-ligatures:none]  /* no ligatures */
+          whitespace-pre
+          text-[clamp(6px,2vw,20px)]
+          leading-[1.4]
+          [font-variant-ligatures:none]
           text-yellow-300
         "
         style={{
@@ -54,14 +63,19 @@ function AnsiHeader() {
             `"Menlo","Consolas","Liberation Mono",monospace`,
         }}
       >
-        {String.raw`
-███████╗██╗  ██╗ █████╗  ██████╗ ██╗    ██╗ ██████╗ ██████╗ ███╗   ███╗
-██═════╝██║  ██║██╔══██╗██╔════╝ ██║    ██║██╔═══██╗██╔══██╗████╗ ████║
-███████╗███████║███████║██║ ████╗██║ █╗ ██║██║   ██║██████╔╝██╔████╔██║
-╚════██║██╔══██║██╔══██║██║ ╚═██║██║███╗██║██║   ██║██╔══██╗██║╚██╔╝██║
-███████║██║  ██║██║  ██║╚██████╔╝╚███╔███╔╝╚██████╔╝██║  ██║██║ ╚═╝ ██║
-╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝ ╚═════╝  ╚══╝╚══╝  ╚═════╝ ╚═╝  ╚═╝╚═╝     ╚═╝
-`}
+        {headerLines.map((ln, i) => (
+          <span key={i} className="ansi-title-line">
+            {Array.from(ln).map((ch, j) => (
+              <span
+                key={`${i}-${j}`}
+                className="ansi-title-chr"
+                style={{ animationDelay: `${j * 0.06}s` }}
+              >
+                {ch}
+              </span>
+            ))}
+          </span>
+        ))}
       </pre>
       <span className="block text-pink-400 text-2xl mt-2">
         Stanford Applied Cyber Presents: The Gold Bug — Writeup
@@ -106,6 +120,7 @@ export function DifficultyStars({
         <span
           key={i}
           className={i < level ? "text-yellow-300 star-glint" : "text-gray-500"}
+          style={i < level ? { animationDelay: `${i * 0.25}s` } : undefined}
         >
           ★
         </span>
@@ -117,6 +132,8 @@ export function DifficultyStars({
 function App() {
   const [isPirateMode, setIsPirateMode] = useState(true)
   const [bg, setBg] = useState<"ocean" | "parchment" | "starry">("ocean")
+
+  const { showHelp, hasScrolled } = useKeyboardNavigation({ puzzles })
 
   const pirateText = `Ahoy, matey! We be the crew of the Shagworm, victors of the mighty Crypto & Privacy Village Gold Bug Challenge at DEFCON 33, 2025. Once but humble sailors from the far-flung shores of Stanford's Applied Cyber guild, now we sail the seas of cipher and code, with a deck split 'twixt seasoned hands who've weathered many a Gold Bug storm, and greenhorns who'd ne'er before set eyes on such a map of mysteries.
 
@@ -207,7 +224,13 @@ If you have questions, feel free to ping us on discord: @rlama__ or @cooper7840`
             {isPirateMode ? pirateText : landlubberText}
           </div>
           <p className="ansi-cursor mt-4 text-pink-400">
-            PRESS ANY KEY TO CONTINUE
+            {!hasScrolled
+              ? isPirateMode
+                ? "CHART YER COURSE, THEN ENTER"
+                : "CONNECTING TO PORT: TORTUGA... PRESS ENTER TO CONTINUE"
+              : isPirateMode
+                ? "LAND HO! ADVENTURE AWAITS"
+                : "WELCOME TO THE SYSTEM"}
           </p>
         </div>
 
@@ -431,6 +454,41 @@ If you have questions, feel free to ping us on discord: @rlama__ or @cooper7840`
           </div>
         </footer>
       </div>
+
+      {/* Help Toast */}
+      {showHelp && (
+        <div className="fixed top-4 right-4 z-50 border border-yellow-500/60 bg-black/90 backdrop-blur-sm rounded-sm p-4 font-mono text-sm animate-in fade-in duration-300">
+          <div className="text-yellow-300 mb-2 flex items-center gap-2">
+            <span className="text-pink-400">⚓</span>
+            <span className="font-bold">Keyboard Navigation</span>
+          </div>
+          <div className="space-y-1 text-green-200">
+            <div className="flex justify-between gap-4">
+              <span className="text-yellow-300">j/k</span>
+              <span>scroll down/up</span>
+            </div>
+            <div className="flex justify-between gap-4">
+              <span className="text-yellow-300">h/l</span>
+              <span>prev/next puzzle</span>
+            </div>
+            <div className="flex justify-between gap-4">
+              <span className="text-yellow-300">gg</span>
+              <span>go to top</span>
+            </div>
+            <div className="flex justify-between gap-4">
+              <span className="text-yellow-300">G</span>
+              <span>go to bottom</span>
+            </div>
+            <div className="flex justify-between gap-4">
+              <span className="text-yellow-300">?</span>
+              <span>show this help</span>
+            </div>
+          </div>
+          <div className="mt-2 text-xs text-pink-400 opacity-80">
+            Press any key to dismiss
+          </div>
+        </div>
+      )}
     </div>
   )
 }
