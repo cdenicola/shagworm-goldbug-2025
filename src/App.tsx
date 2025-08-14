@@ -121,8 +121,6 @@ function App() {
 
   const { showHelp, hasScrolled } = useKeyboardNavigation({ puzzles })
 
-  const { showHelp } = useKeyboardNavigation({ puzzles })
-
   const pirateText = `Ahoy, matey! We be the crew of the Shagworm, victors of the mighty Crypto & Privacy Village Gold Bug Challenge at DEFCON 33, 2025. Once but humble sailors from the far-flung shores of Stanford's Applied Cyber guild, now we sail the seas of cipher and code, with a deck split 'twixt seasoned hands who've weathered many a Gold Bug storm, and greenhorns who'd ne'er before set eyes on such a map of mysteries.
 
 Our charts be marked with trials o' varying peril—each puzzle marked by the Puzzle Masters with one to five gleamin' stars. One star be a calm harbor, five be a storm fit to snap a mast. All treasures we sought were 12-letter phrases—sometimes two or three words lashed together—aye, whether writ in upper, lower, or a mix o' cases, so long as the form be true. In Gold Bug waters, the number 12 be more than mere count—it be a key to the very locks ye must pick.
@@ -231,26 +229,28 @@ If you have questions, feel free to ping us on discord: @rlama__ or @cooper7840`
           </h2>
           <ul className="grid md:grid-cols-2 gap-2">
             {puzzles.map((p) => (
-              <li
-                key={p.code}
-                className="flex items-center justify-between gap-2 border border-green-600/30 rounded-sm px-2 py-1 hover:bg-green-900/20"
-              >
-                <div className="flex items-center gap-2">
-                  <Badge>{p.code}</Badge>
-                  <a
-                    className="underline text-green-200 hover:text-yellow-300"
-                    href={`#${p.anchor}`}
-                  >
-                    {p.title}
-                  </a>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Badge color="bg-blue-500/20 text-blue-300 border-blue-400/40">
-                    {p.theme}
-                  </Badge>
-                  <DifficultyStars level={p.difficulty} size="text-sm" />
-                </div>
-              </li>
+              <a href={`#${p.anchor}`}>
+                <li
+                  key={p.code}
+                  className="flex items-center justify-between gap-2 border border-green-600/30 rounded-sm px-2 py-1 hover:bg-green-900/20"
+                >
+                  <div className="flex items-center gap-2">
+                    <Badge>{p.code}</Badge>
+                    <a
+                      className="underline text-green-200 hover:text-yellow-300"
+                      href={`#${p.anchor}`}
+                    >
+                      {p.title}
+                    </a>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <Badge color="bg-blue-500/20 text-blue-300 border-blue-400/40">
+                      {p.theme}
+                    </Badge>
+                    <DifficultyStars level={p.difficulty} size="text-sm" />
+                  </div>
+                </li>
+              </a>
             ))}
           </ul>
           <p className="mt-3 text-sm">
