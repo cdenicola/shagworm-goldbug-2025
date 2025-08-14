@@ -212,20 +212,22 @@ If you have questions, feel free to ping us on discord: @rlama__ or @cooper7840`
           </p>
         </div>
 
-        <CitationAside side="left">
-          <p>
-            The Gold Bug Challenge is inspired by Edgar Allan Poe's 1843 short
-            story "The Gold-Bug", which features cryptographic puzzles and
-            treasure hunting themes.
-          </p>
-        </CitationAside>
+        <div className="relative">
+          <CitationAside side="left">
+            <p>
+              The Gold Bug Challenge is inspired by Edgar Allan Poe's 1843 short
+              story "The Gold-Bug", which features cryptographic puzzles and
+              treasure hunting themes.
+            </p>
+          </CitationAside>
 
-        <CitationAside side="right">
-          <p>
-            Team Shagworm consists of Stanford Applied Cyber members with a mix
-            of experienced Gold Bug veterans and first-time participants.
-          </p>
-        </CitationAside>
+          <CitationAside side="right">
+            <p>
+              Team Shagworm consists of Stanford Applied Cyber members with a
+              mix of experienced Gold Bug veterans and first-time participants.
+            </p>
+          </CitationAside>
+        </div>
 
         <nav className="mt-6 border border-pink-500/40 bg-pink-900/10 rounded-sm p-4">
           <h2 className="text-2xl text-pink-400 mb-2">
@@ -350,13 +352,15 @@ If you have questions, feel free to ping us on discord: @rlama__ or @cooper7840`
             <div key={p.code} className="relative">
               <PuzzleSection p={p} />
               {index === 2 && (
-                <CitationAside side="left">
-                  <p>
-                    All Gold Bug solutions follow a 12-letter format, which
-                    serves as both the answer format and often a key clue in
-                    solving the puzzles themselves.
-                  </p>
-                </CitationAside>
+                <div className="relative mt-4">
+                  <CitationAside side="right">
+                    <p>
+                      All Gold Bug solutions follow a 12-letter format, which
+                      serves as both the answer format and often a key clue in
+                      solving the puzzles themselves.
+                    </p>
+                  </CitationAside>
+                </div>
               )}
             </div>
           ))}
