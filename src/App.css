@@ -264,7 +264,7 @@ body {
 .ansi-title-chr {
   display: inline-block;
   will-change: transform;
-  animation: title-worm-vert 6s ease-in-out infinite;
+  animation: title-worm-vert 6.5s ease-in-out infinite;
 }
 
 @media (prefers-reduced-motion: reduce) {
