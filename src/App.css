@@ -131,16 +131,20 @@ body {
 }
 @keyframes glint {
   0%,
-  96%,
-  100% {
+  94% {
     text-shadow: none;
   }
-  97%,
-  99% {
-    text-shadow: 0 0 6px rgba(255, 255, 0, 0.6);
+  95% {
+    text-shadow: 0 0 4px rgba(255, 255, 0, 0.45);
   }
-  98% {
+  97% {
+    text-shadow: 0 0 8px rgba(255, 255, 0, 0.7);
+  }
+  99% {
     text-shadow: 0 0 12px rgba(255, 255, 0, 0.9);
+  }
+  100% {
+    text-shadow: 0 0 4px rgba(255, 255, 0, 0.45);
   }
 }
 /* ASCII ship animations */
@@ -202,4 +206,76 @@ body {
     rgba(0, 0, 0, 0.04) 2px 4px
   );
   animation: water-shift 2.4s linear infinite;
+}
+/* Subtle worm-like roll for ASCII header: 1.5s motion, ~6.5s pause */
+@keyframes title-worm {
+  0% {
+    transform: translateX(0);
+  }
+  5% {
+    transform: translateX(0);
+  }
+  12% {
+    transform: translateX(1.5px);
+  }
+  18% {
+    transform: translateX(-1px);
+  }
+  24% {
+    transform: translateX(0.8px);
+  }
+  30% {
+    transform: translateX(-0.6px);
+  }
+  35% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+.ansi-title-line {
+  display: block;
+}
+
+/* Per-character vertical wobble for header (1.5–2s motion, multi-second pause) */
+@keyframes title-worm-vert {
+  0% {
+    transform: translateY(0);
+  }
+  5% {
+    transform: translateY(0);
+  }
+  12% {
+    transform: translateY(-1.5px);
+  }
+  18% {
+    transform: translateY(1px);
+  }
+  24% {
+    transform: translateY(-0.8px);
+  }
+  30% {
+    transform: translateY(0.6px);
+  }
+  35% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+.ansi-title-chr {
+  display: inline-block;
+  will-change: transform;
+  animation: title-worm-vert 6.5s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ansi-title-chr {
+    animation: none !important;
+  }
+  .star-glint {
+    animation: none !important;
+  }
 }
