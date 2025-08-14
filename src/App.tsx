@@ -226,7 +226,7 @@ If you have questions, feel free to ping us on discord: @rlama__ or @cooper7840`
       }
 
       const scroll = () => {
-        const scrollAmount = direction === "down" ? 8 : -8
+        const scrollAmount = direction === "down" ? 25 : -25
         window.scrollBy(0, scrollAmount)
 
         if (pressedKeys.has("j") || pressedKeys.has("k")) {
