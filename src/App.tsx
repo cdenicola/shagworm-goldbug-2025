@@ -152,7 +152,7 @@ function App() {
 
   const [isSolvedOrder, setIsSolvedOrder] = useState(true)
   const puzzles = isSolvedOrder ? puzzlesSolvedOrder : puzzlesSiteOrder
-  const { showHelp, hasScrolled } = useKeyboardNavigation({ puzzles })
+  const { showHelp } = useKeyboardNavigation({ puzzles })
 
   const pirateText = `Ahoy, matey! We be the crew of the Shagworm, victors of the mighty Crypto & Privacy Village Gold Bug Challenge at DEFCON 33, 2025. Once but humble sailors from the far-flung shores of Stanford's Applied Cyber guild, now we sail the seas of cipher and code, with a deck split 'twixt seasoned hands who've weathered many a Gold Bug storm, and greenhorns who'd ne'er before set eyes on such a map of mysteries.
 
@@ -243,13 +243,9 @@ If you have questions, feel free to ping us on discord: @rlama__ or @cooper7840`
             {isPirateMode ? pirateText : landlubberText}
           </div>
           <p className="ansi-cursor mt-4 text-pink-400">
-            {!hasScrolled
-              ? isPirateMode
-                ? "CHART YER COURSE, THEN ENTER"
-                : "CONNECTING TO PORT: TORTUGA... PRESS ENTER TO CONTINUE"
-              : isPirateMode
-                ? "LAND HO! ADVENTURE AWAITS"
-                : "WELCOME TO THE SYSTEM"}
+            {isPirateMode
+              ? "CHART YER COURSE, THEN ENTER"
+              : "LAND HO! ADVENTURE AWAITS"}
           </p>
         </div>
 
