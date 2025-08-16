@@ -21,7 +21,7 @@ import {
   MET,
 } from "./puzzles"
 
-const puzzles: TPuzzle[] = [
+const puzzlesSiteOrder: TPuzzle[] = [
   BLU,
   GOS,
   SSY,
@@ -35,6 +35,23 @@ const puzzles: TPuzzle[] = [
   MAN,
   OMR,
   FLP,
+  MET,
+]
+
+const puzzlesSolvedOrder: TPuzzle[] = [
+  FLP,
+  JCR,
+  MOC,
+  NUM,
+  TTT,
+  OMR,
+  CCC,
+  SSY,
+  TPS,
+  BLU,
+  OWB,
+  MAN,
+  GOS,
   MET,
 ]
 
@@ -133,6 +150,8 @@ function App() {
   const [isPirateMode, setIsPirateMode] = useState(true)
   const [bg, setBg] = useState<"ocean" | "parchment" | "starry">("ocean")
 
+  const [isSolvedOrder, setIsSolvedOrder] = useState(puzzlesSolvedOrder)
+  const puzzles = isSolvedOrder ? puzzlesSolvedOrder : puzzlesSiteOrder
   const { showHelp, hasScrolled } = useKeyboardNavigation({ puzzles })
 
   const pirateText = `Ahoy, matey! We be the crew of the Shagworm, victors of the mighty Crypto & Privacy Village Gold Bug Challenge at DEFCON 33, 2025. Once but humble sailors from the far-flung shores of Stanford's Applied Cyber guild, now we sail the seas of cipher and code, with a deck split 'twixt seasoned hands who've weathered many a Gold Bug storm, and greenhorns who'd ne'er before set eyes on such a map of mysteries.
@@ -235,12 +254,24 @@ If you have questions, feel free to ping us on discord: @rlama__ or @cooper7840`
         </div>
 
         <nav className="mt-6 border border-pink-500/40 bg-pink-900/10 rounded-sm p-4">
-          <h2 className="text-2xl text-pink-400 mb-2">
-            <span className="inline mr-2 text-yellow-300" aria-hidden>
-              🧭
-            </span>{" "}
-            Puzzle Index
-          </h2>
+          <div className="flex items-center justify-between mb-4">
+            <h2 className="text-2xl text-pink-400 mb-2">
+              <span className="inline mr-2 text-yellow-300" aria-hidden>
+                🧭
+              </span>{" "}
+              Puzzle Index
+            </h2>
+            <div className="flex items-center gap-3">
+              <span className="text-yellow-300 font-mono text-sm">
+                {isSolvedOrder ? "🕰️ Solved Order" : "🗺️ Site Order"}
+              </span>
+              <Switch
+                checked={isSolvedOrder}
+                onCheckedChange={setIsSolvedOrder}
+                className="data-[state=checked]:bg-yellow-500 data-[state=unchecked]:bg-green-600"
+              />
+            </div>
+          </div>
           <ul className="grid md:grid-cols-2 gap-2">
             {puzzles.map((p) => (
               <a href={`#${p.anchor}`}>
@@ -250,12 +281,12 @@ If you have questions, feel free to ping us on discord: @rlama__ or @cooper7840`
                 >
                   <div className="flex items-center gap-2">
                     <Badge>{p.code}</Badge>
-                    <a
+                    <p
                       className="underline text-green-200 hover:text-yellow-300"
                       href={`#${p.anchor}`}
                     >
                       {p.title}
-                    </a>
+                    </p>
                   </div>
                   <div className="flex items-center gap-2">
                     <Badge color="bg-blue-500/20 text-blue-300 border-blue-400/40">

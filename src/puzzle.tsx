@@ -70,7 +70,7 @@ export default function PuzzleSection({ p }: { p: TPuzzle }) {
           </p>
 
           <h4 className="text-yellow-300 text-xl mt-3">Artifacts</h4>
-          <p className="text-green-200">
+          <div className="text-green-200">
             {p.artifacts?.map((a, i) => (
               <div key={a.url}>
                 Artifact {i + 1}:
@@ -80,7 +80,7 @@ export default function PuzzleSection({ p }: { p: TPuzzle }) {
                 {a.description || a.url}
               </div>
             ))}
-          </p>
+          </div>
         </div>
       </div>
 
