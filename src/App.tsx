@@ -388,8 +388,29 @@ If you have questions, feel free to ping us on discord: @rlama__ or @cooper7840`
           ))}
         </section>
 
-        <section className="mt-10 border border-pink-500/40 bg-pink-900/10 rounded-sm p-4">
+        <footer className="mt-8 text-sm border border-yellow-500/40 bg-yellow-900/10 rounded-sm p-6">
           <h3 className="text-2xl text-pink-400 mb-2">Final Boarding</h3>
+          <div className="text-center">
+            <div className="inline-block anim-ship-bob">
+              <div className="inline-block anim-sail-sway">
+                <pre className="text-yellow-300 text-xs leading-none">
+                  {String.raw`              )    )    )               
+             )_)  )_)  )_)              
+            )___))___))___)\            `}
+                </pre>
+              </div>
+              <pre className="text-yellow-300 text-xs leading-none">
+                {String.raw`        )____)____)_____)\\       
+         _____|____|____|____\\\\__    
+---------\                   /---------`}
+              </pre>
+              <pre className="text-yellow-300 text-xs leading-none anim-wave">
+                {String.raw`   ^^^^^ ^^^^^^^^^^^^^^^^^^^^^         
+     ^^^^      ^^^^     ^^^    ^^      
+             ^^^^      ^^^             `}
+              </pre>
+            </div>
+          </div>
           <div className="space-y-3">
             <p className="text-green-200">
               We are incredibly excited to have won the Crypto &amp; Privacy
@@ -432,53 +453,6 @@ If you have questions, feel free to ping us on discord: @rlama__ or @cooper7840`
               - they create incredible challenges and foster this wonderful
               community!
             </p>
-          </div>
-        </section>
-
-        <footer className="mt-8 text-sm border border-yellow-500/40 bg-yellow-900/10 rounded-sm p-6">
-          <div className="text-center">
-            <div className="inline-block anim-ship-bob">
-              <div className="inline-block anim-sail-sway">
-                <pre className="text-yellow-300 text-xs leading-none">
-                  {String.raw`             )    )    )               
-             )_)  )_)  )_)              
-            )___))___))___)\            `}
-                </pre>
-              </div>
-              <pre className="text-yellow-300 text-xs leading-none">
-                {String.raw`        )____)____)_____)\\       
-         _____|____|____|____\\\\__    
----------\                   /---------`}
-              </pre>
-              <pre className="text-yellow-300 text-xs leading-none anim-wave">
-                {String.raw`   ^^^^^ ^^^^^^^^^^^^^^^^^^^^^         
-     ^^^^      ^^^^     ^^^    ^^      
-             ^^^^      ^^^             `}
-              </pre>
-            </div>
-          </div>
-
-          <div className="text-center mt-6">
-            <div className="text-pink-400 font-mono text-md">
-              ⚓ Frontend by Cadet{" "}
-              <a
-                className="underline text-yellow-300 hover:text-green-300"
-                href="https://devin.ai"
-                target="_blank"
-                rel="noreferrer"
-              >
-                Devin
-              </a>{" "}
-              of the SS Shagworm ⚓
-            </div>
-            <div className="text-green-300 text-xs mt-1">
-              Ahoy! This treasure map was crafted with React &amp; Tailwind by
-              yer friendly AI buccaneer!
-            </div>
-          </div>
-
-          <div className="text-center my-4">
-            <span className="text-yellow-300">💰 ⚔️ 🗺️ ⚔️ 💰</span>
           </div>
         </footer>
       </div>
