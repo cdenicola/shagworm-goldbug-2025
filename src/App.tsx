@@ -150,7 +150,7 @@ function App() {
   const [isPirateMode, setIsPirateMode] = useState(true)
   const [bg, setBg] = useState<"ocean" | "parchment" | "starry">("ocean")
 
-  const [isSolvedOrder, setIsSolvedOrder] = useState(puzzlesSolvedOrder)
+  const [isSolvedOrder, setIsSolvedOrder] = useState(true)
   const puzzles = isSolvedOrder ? puzzlesSolvedOrder : puzzlesSiteOrder
   const { showHelp, hasScrolled } = useKeyboardNavigation({ puzzles })
 
@@ -281,10 +281,7 @@ If you have questions, feel free to ping us on discord: @rlama__ or @cooper7840`
                 >
                   <div className="flex items-center gap-2">
                     <Badge>{p.code}</Badge>
-                    <p
-                      className="underline text-green-200 hover:text-yellow-300"
-                      href={`#${p.anchor}`}
-                    >
+                    <p className="underline text-green-200 hover:text-yellow-300">
                       {p.title}
                     </p>
                   </div>
