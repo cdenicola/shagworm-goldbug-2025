@@ -3,6 +3,7 @@ import "./App.css"
 import { Switch } from "./components/ui/switch"
 import PuzzleSection, { TPuzzle } from "./puzzle"
 import { useKeyboardNavigation } from "./hooks/useKeyboardNavigation"
+import { crewMembers } from "./crew"
 
 import {
   BLU,
@@ -149,6 +150,7 @@ export function DifficultyStars({
 function App() {
   const [isPirateMode, setIsPirateMode] = useState(true)
   const [bg, setBg] = useState<"ocean" | "parchment" | "starry">("ocean")
+  const [isCrewPirateMode, setIsCrewPirateMode] = useState(true)
 
   const [isSolvedOrder, setIsSolvedOrder] = useState(true)
   const puzzles = isSolvedOrder ? puzzlesSolvedOrder : puzzlesSiteOrder
@@ -218,6 +220,67 @@ If you have questions, feel free to ping us on discord: @rlama__ or @cooper7840`
           >
             Starry
           </button>
+        </div>
+
+        <div className="mb-6 border border-cyan-600/40 rounded-sm p-4 bg-cyan-900/10">
+          <div className="flex items-center justify-between mb-4">
+            <h2 className="text-2xl text-cyan-400">⚓ Crew Manifest</h2>
+            <div className="flex items-center gap-3">
+              <span className="text-yellow-300 font-mono text-sm">
+                {isCrewPirateMode ? "🏴‍☠️ Pirate Crew" : "⚓ Team Members"}
+              </span>
+              <Switch
+                checked={isCrewPirateMode}
+                onCheckedChange={setIsCrewPirateMode}
+                className="data-[state=checked]:bg-yellow-500 data-[state=unchecked]:bg-cyan-600"
+              />
+            </div>
+          </div>
+          
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+            {crewMembers.map((member, index) => (
+              <div key={index} className="border border-cyan-600/30 rounded-sm p-3 bg-cyan-900/20 hover:bg-cyan-900/30 transition-colors">
+                <h3 className="text-lg text-cyan-300 font-bold mb-1">{member.name}</h3>
+                <p className="text-yellow-300 text-sm mb-2 min-h-[2.5rem] leading-tight">
+                  {isCrewPirateMode ? member.pirateRole : member.normalRole}
+                </p>
+                <div className="flex flex-wrap gap-1 mb-2">
+                  {member.social.discord && (
+                    <Badge color="bg-purple-500/20 text-purple-300 border-purple-400/40">
+                      @{member.social.discord}
+                    </Badge>
+                  )}
+                  {member.social.github && (
+                    <Badge color="bg-gray-500/20 text-gray-300 border-gray-400/40">
+                      {member.social.github}
+                    </Badge>
+                  )}
+                  {member.social.twitter && (
+                    <Badge color="bg-blue-500/20 text-blue-300 border-blue-400/40">
+                      @{member.social.twitter}
+                    </Badge>
+                  )}
+                  {member.social.linkedin && (
+                    <Badge color="bg-blue-600/20 text-blue-200 border-blue-500/40">
+                      {member.social.linkedin}
+                    </Badge>
+                  )}
+                </div>
+                <div className="mt-2">
+                  <Badge color={member.colorScheme}>
+                    {member.specialization}
+                  </Badge>
+                </div>
+              </div>
+            ))}
+          </div>
+          
+          <p className="mt-4 text-sm text-cyan-400">
+            {isCrewPirateMode 
+              ? "🏴‍☠️ These brave souls sailed the treacherous waters of cryptography to claim victory! A crew split between seasoned veterans and brilliant newcomers."
+              : "👥 Our diverse team of current and former Stanford Applied Cyber members who conquered the Gold Bug challenge. Half multi-year competitors, half first-time participants."
+            }
+          </p>
         </div>
 
         <div className="border border-green-600/40 rounded-sm p-4 bg-green-900/10">
