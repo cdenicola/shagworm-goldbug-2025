@@ -6,6 +6,7 @@ const MAN: TPuzzle = {
   theme: "Romancing the Stone",
   anchor: "man",
   difficulty: 4,
+  markdownFile: "MAN.md",
 }
 
 export default MAN

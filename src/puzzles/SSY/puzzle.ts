@@ -6,6 +6,7 @@ const SSY: TPuzzle = {
   theme: "Pirates of the Caribbean",
   anchor: "ssy",
   difficulty: 3,
+  markdownFile: "SSY.md",
 }
 
 export default SSY

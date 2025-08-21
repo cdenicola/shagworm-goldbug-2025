@@ -6,6 +6,7 @@ const CCC: TPuzzle = {
   theme: "Indiana Jones",
   anchor: "ccc",
   difficulty: 5,
+  markdownFile: "CCC.md",
 }
 
 export default CCC

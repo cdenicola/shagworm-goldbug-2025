@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import "./App.css"
 import { Switch } from "./components/ui/switch"
-import PuzzleSection, { TPuzzle } from "./puzzle"
+import { PuzzleSection, TPuzzle } from "./puzzle"
 import { useKeyboardNavigation } from "./hooks/useKeyboardNavigation"
 
 import {
