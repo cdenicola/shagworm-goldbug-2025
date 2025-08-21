@@ -1,108 +1,96 @@
 export type TCrewMember = {
   name: string
-  linkedin?: string
-  github?: string
-  twitter?: string
-  instagram?: string
+  links?: TSocialLink[]
 }
+
+export type TSocialLink = {
+  link: string
+  icon: keyof typeof LucideIcons
+  label?: string
+}
+
+// base factory
+const makeLinkIcon =
+  (icon: IconName) =>
+  (link: string, label?: string): TSocialLink => ({ link, icon, label })
+
+// convenience helpers (use react names of lucide icons)
+export const LinkedIn = makeLinkIcon("Linkedin") // lucide icon name is "Linkedin"
+export const Github = makeLinkIcon("Github")
+//export const Twitter  = makeLinkIcon("Twitter");
+//export const Instagram= makeLinkIcon("Instagram");
+export const Website = makeLinkIcon("Globe")
+export const Terminal = makeLinkIcon("SquareTerminal")
+export const Security = makeLinkIcon("LockKeyhole")
 
 export const crewMembers: TCrewMember[] = [
   {
     name: "Cooper de Nicola",
-    linkedin: "https://www.linkedin.com/in/cooperdenicola/",
-    github: "https://github.com/cdenicola",
-    twitter: undefined,
-    instagram: undefined,
+    links: [
+      LinkedIn("https://www.linkedin.com/in/cooperdenicola"),
+      Github("https://github.com/cdenicola"),
+    ],
   },
   {
     name: "Roberto Lama",
-    linkedin: undefined,
-    github: undefined,
-    twitter: undefined,
-    instagram: undefined,
+    links: [
+      LinkedIn("https://www.linkedin.com/in/robertolama/"),
+      {
+        link: "https://www.endur.earth/",
+        icon: "Earth",
+        label: "Endur Website",
+      },
+    ],
   },
   {
     name: "George Hosono",
-    linkedin: undefined,
-    github: undefined,
-    twitter: undefined,
-    instagram: undefined,
+    links: [Terminal("https://h4ck.dev/about/")],
   },
   {
     name: "Jack Cable",
-    linkedin: undefined,
-    github: undefined,
-    twitter: undefined,
-    instagram: undefined,
+    links: [
+      LinkedIn("https://www.linkedin.com/in/jackcable"),
+      Security("https://corridor.dev/"),
+    ],
   },
   {
     name: "Ashley Dai",
-    linkedin: undefined,
-    github: undefined,
-    twitter: undefined,
-    instagram: undefined,
+    links: [LinkedIn("https://www.linkedin.com/in/ashley-dai-173648204")],
   },
   {
     name: "Keely Podosin",
-    linkedin: undefined,
-    github: undefined,
-    twitter: undefined,
-    instagram: undefined,
+    links: [LinkedIn("https://www.linkedin.com/in/keely-podosin")],
   },
   {
     name: "Seyma Kilic",
-    linkedin: undefined,
-    github: undefined,
-    twitter: undefined,
-    instagram: undefined,
+    links: [LinkedIn("https://www.linkedin.com/in/seyma-kilic")],
   },
   {
     name: "Teddy Zhang",
-    linkedin: undefined,
-    github: undefined,
-    twitter: undefined,
-    instagram: undefined,
+    links: [LinkedIn("https://www.linkedin.com/in/teddyzhng")],
   },
   {
     name: "Liam Fay",
-    linkedin: undefined,
-    github: undefined,
-    twitter: undefined,
-    instagram: undefined,
+    links: [LinkedIn("https://www.linkedin.com/in/liamjfay")],
   },
   {
     name: "Agus Covarrubias",
-    linkedin: undefined,
-    github: undefined,
-    twitter: undefined,
-    instagram: undefined,
+    links: [Website("https://agucova.dev/")],
   },
   {
     name: "Yasmine Mitchell",
-    linkedin: undefined,
-    github: undefined,
-    twitter: undefined,
-    instagram: undefined,
+    links: [LinkedIn("https://www.linkedin.com/in/ymitchellcs/")],
   },
   {
     name: "Glen Husman",
-    linkedin: undefined,
-    github: undefined,
-    twitter: undefined,
-    instagram: undefined,
+    links: [LinkedIn("https://www.linkedin.com/in/glenhusman/")],
   },
   {
     name: "Tobias Moser",
-    linkedin: undefined,
-    github: undefined,
-    twitter: undefined,
-    instagram: undefined,
+    links: [LinkedIn("https://www.linkedin.com/in/tobias-moser-57a462196/")],
   },
   {
     name: "Nathan Bhak",
-    linkedin: undefined,
-    github: undefined,
-    twitter: undefined,
-    instagram: undefined,
+    links: [LinkedIn("https://www.linkedin.com/in/nathanbhak/")],
   },
 ]
