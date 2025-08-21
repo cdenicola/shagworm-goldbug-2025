@@ -6,6 +6,7 @@ const TTT: TPuzzle = {
   theme: "The Adventures of TinTin",
   anchor: "ttt",
   difficulty: 2,
+  markdownFile: "TTT.md",
 }
 
 export default TTT

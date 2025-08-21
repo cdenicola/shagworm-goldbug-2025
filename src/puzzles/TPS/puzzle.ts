@@ -6,6 +6,7 @@ const TPS: TPuzzle = {
   theme: "Treasure Island / Planet",
   anchor: "tps",
   difficulty: 5,
+  markdownFile: "TPS.md",
 }
 
 export default TPS

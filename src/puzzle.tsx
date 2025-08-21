@@ -1,5 +1,6 @@
 import { DifficultyStars } from "./App"
 import { Badge } from "./components/ui/badge"
+import { useMarkdownContent } from "./hooks/useMarkdownContent"
 
 export type TArtifact = {
   type: "image" | "file"
@@ -18,9 +19,23 @@ export type TPuzzle = {
   tools?: string[]
   solution?: string
   artifacts?: TArtifact[]
+  markdownFile?: string
 }
 
-export default function PuzzleSection({ p }: { p: TPuzzle }) {
+export function PuzzleSection({ p }: { p: TPuzzle }) {
+  const markdownContent = useMarkdownContent(p.code, p.markdownFile)
+
+  const prompt =
+    markdownContent?.prompt ||
+    p.prompt ||
+    "Paste the puzzle prompt summary here (no copyrighted text verbatim)."
+  const approach = markdownContent?.approach || p.approach || []
+  const tools = markdownContent?.tools || p.tools || []
+  const solution =
+    markdownContent?.solution ||
+    p.solution ||
+    "Final answer phrase and steps to get there."
+
   return (
     <article
       id={p.anchor}
@@ -43,31 +58,26 @@ export default function PuzzleSection({ p }: { p: TPuzzle }) {
       <div className="grid md:grid-cols-1 gap-4">
         <div className="space-y-2">
           <h4 className="text-yellow-300 text-xl">Prompt</h4>
-          <p className="text-green-200">
-            {p.prompt ||
-              "Paste the puzzle prompt summary here (no copyrighted text verbatim)."}
-          </p>
+          <p className="text-green-200">{prompt}</p>
 
           <h4 className="text-yellow-300 text-xl mt-3">Approach</h4>
           <ul className="list-[*] pl-6 space-y-1">
-            {p.approach?.map((a) => (
-              <li key={a + p.code}>{a}</li>
+            {approach.map((a, index) => (
+              <li key={`${a}-${p.code}-${index}`}>{a}</li>
             ))}
           </ul>
 
           <h4 className="text-yellow-300 text-xl mt-3">Tools</h4>
           <ul className="list-[+] pl-6 space-y-1">
-            {p.tools?.map((t) => (
-              <li key={t + p.code}>{t}</li>
+            {tools.map((t, index) => (
+              <li key={`${t}-${p.code}-${index}`}>{t}</li>
             ))}
           </ul>
         </div>
 
         <div className="space-y-2">
           <h4 className="text-yellow-300 text-xl">Solution</h4>
-          <p className="text-green-200">
-            {p.solution || "Final answer phrase and steps to get there."}
-          </p>
+          <p className="text-green-200">{solution}</p>
 
           <h4 className="text-yellow-300 text-xl mt-3">Artifacts</h4>
           <div className="text-green-200">

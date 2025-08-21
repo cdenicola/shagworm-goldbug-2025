@@ -6,6 +6,7 @@ const FLP: TPuzzle = {
   theme: "Gold Coin",
   anchor: "flp",
   difficulty: 1,
+  markdownFile: "FLP.md",
 }
 
 export default FLP

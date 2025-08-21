@@ -6,6 +6,7 @@ const MOC: TPuzzle = {
   theme: "Goonies",
   anchor: "moc",
   difficulty: 3,
+  markdownFile: "MOC.md",
 }
 
 export default MOC
