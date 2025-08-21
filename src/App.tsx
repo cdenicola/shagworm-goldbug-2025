@@ -3,6 +3,7 @@ import "./App.css"
 import { Switch } from "./components/ui/switch"
 import PuzzleSection, { TPuzzle } from "./puzzle"
 import { useKeyboardNavigation } from "./hooks/useKeyboardNavigation"
+import { Github, Linkedin, Twitter, Instagram } from "lucide-react"
 
 import {
   BLU,
@@ -248,20 +249,118 @@ If you have questions, feel free to ping us on discord: @rlama__ or @cooper7840`
           </p>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-2">
             {[
-              { name: "Cooper de Nicola", title: "Captain" },
-              { name: "Jack Cable", title: "First Mate" },
-              { name: "Roberto Lama", title: "Navigator" },
-              { name: "George Hosono", title: "Quartermaster" },
-              { name: "Ashley Dai", title: "Master Gunner" },
-              { name: "Keely Podosin", title: "Bosun" },
-              { name: "Seyma Kilic", title: "Ship's Cook" },
-              { name: "Teddy Zhang", title: "Lookout" },
-              { name: "Liam Fay", title: "Cabin Boy" },
-              { name: "Agus Covarrubias", title: "Powder Monkey" },
-              { name: "Yasmine Mitchell", title: "Ship's Doctor" },
-              { name: "Glen Husman", title: "Carpenter" },
-              { name: "Tobias Moser", title: "Sailing Master" },
-              { name: "Nathan Bhak", title: "Ship's Scribe" },
+              {
+                name: "Cooper de Nicola",
+                title: "Captain",
+                linkedin: "https://www.linkedin.com/in/cooperdenicola/",
+                github: "https://github.com/cdenicola",
+                twitter: undefined,
+                instagram: undefined,
+              },
+              {
+                name: "Jack Cable",
+                title: "First Mate",
+                linkedin: undefined,
+                github: undefined,
+                twitter: undefined,
+                instagram: undefined,
+              },
+              {
+                name: "Roberto Lama",
+                title: "Navigator",
+                linkedin: undefined,
+                github: undefined,
+                twitter: undefined,
+                instagram: undefined,
+              },
+              {
+                name: "George Hosono",
+                title: "Quartermaster",
+                linkedin: undefined,
+                github: undefined,
+                twitter: undefined,
+                instagram: undefined,
+              },
+              {
+                name: "Ashley Dai",
+                title: "Master Gunner",
+                linkedin: undefined,
+                github: undefined,
+                twitter: undefined,
+                instagram: undefined,
+              },
+              {
+                name: "Keely Podosin",
+                title: "Bosun",
+                linkedin: undefined,
+                github: undefined,
+                twitter: undefined,
+                instagram: undefined,
+              },
+              {
+                name: "Seyma Kilic",
+                title: "Ship's Cook",
+                linkedin: undefined,
+                github: undefined,
+                twitter: undefined,
+                instagram: undefined,
+              },
+              {
+                name: "Teddy Zhang",
+                title: "Lookout",
+                linkedin: undefined,
+                github: undefined,
+                twitter: undefined,
+                instagram: undefined,
+              },
+              {
+                name: "Liam Fay",
+                title: "Cabin Boy",
+                linkedin: undefined,
+                github: undefined,
+                twitter: undefined,
+                instagram: undefined,
+              },
+              {
+                name: "Agus Covarrubias",
+                title: "Powder Monkey",
+                linkedin: undefined,
+                github: undefined,
+                twitter: undefined,
+                instagram: undefined,
+              },
+              {
+                name: "Yasmine Mitchell",
+                title: "Ship's Doctor",
+                linkedin: undefined,
+                github: undefined,
+                twitter: undefined,
+                instagram: undefined,
+              },
+              {
+                name: "Glen Husman",
+                title: "Carpenter",
+                linkedin: undefined,
+                github: undefined,
+                twitter: undefined,
+                instagram: undefined,
+              },
+              {
+                name: "Tobias Moser",
+                title: "Sailing Master",
+                linkedin: undefined,
+                github: undefined,
+                twitter: undefined,
+                instagram: undefined,
+              },
+              {
+                name: "Nathan Bhak",
+                title: "Ship's Scribe",
+                linkedin: undefined,
+                github: undefined,
+                twitter: undefined,
+                instagram: undefined,
+              },
             ].map((crewMember) => (
               <div
                 key={crewMember.name}
@@ -273,6 +372,57 @@ If you have questions, feel free to ping us on discord: @rlama__ or @cooper7840`
                 <span className="text-xs text-yellow-300 font-mono">
                   {isPirateMode ? crewMember.title : "Team Member"}
                 </span>
+                {(crewMember.linkedin ||
+                  crewMember.github ||
+                  crewMember.twitter ||
+                  crewMember.instagram) && (
+                  <div className="flex gap-2 mt-1">
+                    {crewMember.linkedin && (
+                      <a
+                        href={crewMember.linkedin}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="text-purple-400 hover:text-purple-300 transition-colors"
+                        aria-label={`${crewMember.name} LinkedIn`}
+                      >
+                        <Linkedin size={14} />
+                      </a>
+                    )}
+                    {crewMember.github && (
+                      <a
+                        href={crewMember.github}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="text-purple-400 hover:text-purple-300 transition-colors"
+                        aria-label={`${crewMember.name} GitHub`}
+                      >
+                        <Github size={14} />
+                      </a>
+                    )}
+                    {crewMember.twitter && (
+                      <a
+                        href={crewMember.twitter}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="text-purple-400 hover:text-purple-300 transition-colors"
+                        aria-label={`${crewMember.name} Twitter`}
+                      >
+                        <Twitter size={14} />
+                      </a>
+                    )}
+                    {crewMember.instagram && (
+                      <a
+                        href={crewMember.instagram}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="text-purple-400 hover:text-purple-300 transition-colors"
+                        aria-label={`${crewMember.name} Instagram`}
+                      >
+                        <Instagram size={14} />
+                      </a>
+                    )}
+                  </div>
+                )}
               </div>
             ))}
           </div>
