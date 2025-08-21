@@ -4,6 +4,7 @@ import { Switch } from "./components/ui/switch"
 import PuzzleSection, { TPuzzle } from "./puzzle"
 import { useKeyboardNavigation } from "./hooks/useKeyboardNavigation"
 import { Github, Linkedin, Twitter, Instagram } from "lucide-react"
+import { crewMembers } from "./members"
 
 import {
   BLU,
@@ -248,120 +249,7 @@ If you have questions, feel free to ping us on discord: @rlama__ or @cooper7840`
               : "Meet the team members who participated in the Gold Bug challenge:"}
           </p>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-2">
-            {[
-              {
-                name: "Cooper de Nicola",
-                title: "Captain",
-                linkedin: "https://www.linkedin.com/in/cooperdenicola/",
-                github: "https://github.com/cdenicola",
-                twitter: undefined,
-                instagram: undefined,
-              },
-              {
-                name: "Jack Cable",
-                title: "First Mate",
-                linkedin: undefined,
-                github: undefined,
-                twitter: undefined,
-                instagram: undefined,
-              },
-              {
-                name: "Roberto Lama",
-                title: "Navigator",
-                linkedin: undefined,
-                github: undefined,
-                twitter: undefined,
-                instagram: undefined,
-              },
-              {
-                name: "George Hosono",
-                title: "Quartermaster",
-                linkedin: undefined,
-                github: undefined,
-                twitter: undefined,
-                instagram: undefined,
-              },
-              {
-                name: "Ashley Dai",
-                title: "Master Gunner",
-                linkedin: undefined,
-                github: undefined,
-                twitter: undefined,
-                instagram: undefined,
-              },
-              {
-                name: "Keely Podosin",
-                title: "Bosun",
-                linkedin: undefined,
-                github: undefined,
-                twitter: undefined,
-                instagram: undefined,
-              },
-              {
-                name: "Seyma Kilic",
-                title: "Ship's Cook",
-                linkedin: undefined,
-                github: undefined,
-                twitter: undefined,
-                instagram: undefined,
-              },
-              {
-                name: "Teddy Zhang",
-                title: "Lookout",
-                linkedin: undefined,
-                github: undefined,
-                twitter: undefined,
-                instagram: undefined,
-              },
-              {
-                name: "Liam Fay",
-                title: "Cabin Boy",
-                linkedin: undefined,
-                github: undefined,
-                twitter: undefined,
-                instagram: undefined,
-              },
-              {
-                name: "Agus Covarrubias",
-                title: "Powder Monkey",
-                linkedin: undefined,
-                github: undefined,
-                twitter: undefined,
-                instagram: undefined,
-              },
-              {
-                name: "Yasmine Mitchell",
-                title: "Ship's Doctor",
-                linkedin: undefined,
-                github: undefined,
-                twitter: undefined,
-                instagram: undefined,
-              },
-              {
-                name: "Glen Husman",
-                title: "Carpenter",
-                linkedin: undefined,
-                github: undefined,
-                twitter: undefined,
-                instagram: undefined,
-              },
-              {
-                name: "Tobias Moser",
-                title: "Sailing Master",
-                linkedin: undefined,
-                github: undefined,
-                twitter: undefined,
-                instagram: undefined,
-              },
-              {
-                name: "Nathan Bhak",
-                title: "Ship's Scribe",
-                linkedin: undefined,
-                github: undefined,
-                twitter: undefined,
-                instagram: undefined,
-              },
-            ].map((crewMember) => (
+            {crewMembers.map((crewMember) => (
               <div
                 key={crewMember.name}
                 className="flex flex-col gap-1 border border-purple-600/30 rounded-sm px-3 py-2 bg-purple-900/5"
@@ -369,9 +257,6 @@ If you have questions, feel free to ping us on discord: @rlama__ or @cooper7840`
                 <Badge color="bg-purple-500/20 text-purple-300 border-purple-400/40">
                   {crewMember.name}
                 </Badge>
-                <span className="text-xs text-yellow-300 font-mono">
-                  {isPirateMode ? crewMember.title : "Team Member"}
-                </span>
                 {(crewMember.linkedin ||
                   crewMember.github ||
                   crewMember.twitter ||
