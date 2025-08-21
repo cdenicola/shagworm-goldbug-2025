@@ -1,3 +1,7 @@
+import { icons } from "lucide-react"
+
+export type IconName = keyof typeof icons
+
 export type TCrewMember = {
   name: string
   links?: TSocialLink[]
@@ -5,7 +9,7 @@ export type TCrewMember = {
 
 export type TSocialLink = {
   link: string
-  icon: keyof typeof LucideIcons
+  icon: IconName
   label?: string
 }
 

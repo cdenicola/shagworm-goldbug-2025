@@ -3,7 +3,7 @@ import "./App.css"
 import { Switch } from "./components/ui/switch"
 import PuzzleSection, { TPuzzle } from "./puzzle"
 import { useKeyboardNavigation } from "./hooks/useKeyboardNavigation"
-import * as LucideIcons from "lucide-react"
+import { icons, type LucideIcon } from "lucide-react"
 import { crewMembers } from "./members"
 
 import {
@@ -261,8 +261,9 @@ If you have questions, feel free to ping us on discord: @rlama__ or @cooper7840`
                   {" "}
                   {/* flex row with spacing */}
                   {crewMember.links?.map((c, i) => {
-                    const Icon = LucideIcons[c.icon]
-                    if (!Icon) return null
+                    const Icon =
+                      icons[c.icon] || (icons["ExternalLink"] as LucideIcon)
+
                     const aria = c.label ?? `${crewMember.name} ${c.icon}`
                     return (
                       <a
