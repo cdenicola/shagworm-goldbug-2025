@@ -11,19 +11,12 @@ import {
   DialogTrigger,
 } from "./components/ui/dialog"
 
-export type TArtifact = {
-  type: "image" | "file"
-  url: string
-  description?: string
-}
-
 export type TPuzzle = {
   code: string
   title: string
   theme: string
   anchor: string
   difficulty: number
-  artifacts?: TArtifact[]
   markdownFile?: string
 }
 
@@ -33,21 +26,7 @@ export function PuzzleSection({ p }: { p: TPuzzle }) {
 
   const defaultContent = `# ${p.title} Puzzle Writeup
 
-## Prompt
-Paste the puzzle prompt summary here (no copyrighted text verbatim).
-
-## Approach
-- Step 1: Describe the initial approach
-- Step 2: Explain the methodology used
-- Step 3: Detail any iterations or refinements
-
-## Tools
-- Tool 1: Description of tool usage
-- Tool 2: Additional tools used
-- Tool 3: Any other relevant tools
-
-## Solution
-Final answer phrase and steps to get there.`
+We will write up this puzzle later. If you want the writeup sooner, message us on Discord!`
 
   const contentToRender = markdownContent || defaultContent
 
@@ -141,23 +120,6 @@ Final answer phrase and steps to get there.`
             {contentToRender}
           </Markdown>
         </div>
-
-        {p.artifacts && p.artifacts.length > 0 && (
-          <div className="space-y-2">
-            <h4 className="text-yellow-300 text-xl mt-6">Artifacts</h4>
-            <div className="text-green-200">
-              {p.artifacts.map((a, i) => (
-                <div key={a.url}>
-                  Artifact {i + 1}:
-                  {a.type === "image" && (
-                    <img src={a.url} alt={a.description || a.url} />
-                  )}
-                  {a.description || a.url}
-                </div>
-              ))}
-            </div>
-          </div>
-        )}
       </div>
 
       <footer className="mt-4 text-sm">
