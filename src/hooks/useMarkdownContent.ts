@@ -1,11 +1,10 @@
 import { useState, useEffect } from "react"
-import { parseMarkdownSections, ParsedMarkdown } from "../utils/markdownParser"
 
 export function useMarkdownContent(
   puzzleCode: string,
   markdownFile?: string
-): ParsedMarkdown | null {
-  const [content, setContent] = useState<ParsedMarkdown | null>(null)
+): string | null {
+  const [content, setContent] = useState<string | null>(null)
 
   useEffect(() => {
     if (!markdownFile) {
@@ -20,8 +19,7 @@ export function useMarkdownContent(
           throw new Error(`Failed to fetch ${markdownFile}: ${response.status}`)
         }
         const markdownContent = await response.text()
-        const parsed = parseMarkdownSections(markdownContent)
-        setContent(parsed)
+        setContent(markdownContent)
       } catch (error) {
         console.warn(`Failed to load markdown for ${puzzleCode}:`, error)
         setContent(null)
