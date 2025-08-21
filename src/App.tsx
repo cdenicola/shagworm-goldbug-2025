@@ -3,6 +3,8 @@ import "./App.css"
 import { Switch } from "./components/ui/switch"
 import PuzzleSection, { TPuzzle } from "./puzzle"
 import { useKeyboardNavigation } from "./hooks/useKeyboardNavigation"
+import { icons, type LucideIcon } from "lucide-react"
+import { crewMembers } from "./members"
 
 import {
   BLU,
@@ -249,6 +251,54 @@ If you have questions, feel free to ping us on discord: @rlama__ or @cooper7840`
           </p>
         </div>
 
+        <section className="mt-6 border border-purple-500/40 bg-purple-900/10 rounded-sm p-4">
+          <h2 className="text-2xl text-purple-400 mb-2">
+            <span className="inline mr-2 text-yellow-300" aria-hidden>
+              ⚔️
+            </span>{" "}
+            Crew Manifest
+          </h2>
+          <p className="text-green-200 mb-4">
+            {isPirateMode
+              ? "Behold, the brave souls who sailed with us on this treacherous voyage through the cryptographic seas!"
+              : "Meet the team members who participated in the Gold Bug challenge:"}
+          </p>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-2">
+            {crewMembers.map((crewMember) => (
+              <div
+                key={crewMember.name}
+                className="flex flex-col gap-1 border border-purple-600/30 rounded-sm px-3 py-2 bg-purple-900/5"
+              >
+                <Badge color="bg-purple-500/20 text-purple-300 border-purple-400/40">
+                  {crewMember.name}
+                </Badge>
+                <div className="flex gap-2">
+                  {" "}
+                  {/* flex row with spacing */}
+                  {crewMember.links?.map((c, i) => {
+                    const Icon =
+                      icons[c.icon] || (icons["ExternalLink"] as LucideIcon)
+
+                    const aria = c.label ?? `${crewMember.name} ${c.icon}`
+                    return (
+                      <a
+                        key={i}
+                        href={c.link}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="text-purple-400 hover:text-purple-300 transition-colors"
+                        aria-label={aria}
+                      >
+                        <Icon size={14} />
+                      </a>
+                    )
+                  })}
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
         <nav className="mt-6 border border-pink-500/40 bg-pink-900/10 rounded-sm p-4">
           <div className="flex items-center justify-between mb-4">
             <h2 className="text-2xl text-pink-400 mb-2">
@@ -313,21 +363,6 @@ If you have questions, feel free to ping us on discord: @rlama__ or @cooper7840`
         </nav>
 
         <section className="mt-8 space-y-6">
-          <div className="border border-yellow-500/40 bg-yellow-900/10 rounded-sm p-4">
-            <h3 className="text-2xl text-yellow-300 mb-2">
-              <span className="inline mr-2 text-yellow-300" aria-hidden>
-                🗺️
-              </span>{" "}
-              Overall Strategy
-            </h3>
-            <ul className="list-[>>] pl-6 space-y-1">
-              <li>Team composition and roles</li>
-              <li>Tooling (solvers, scripts, OCR, crypto helpers)</li>
-              <li>Time management and hint usage</li>
-              <li>Meta path and ordering notes</li>
-            </ul>
-          </div>
-
           <div className="border border-blue-500/40 bg-blue-900/10 rounded-sm p-4">
             <h3 className="text-2xl text-blue-300 mb-2">
               <span className="inline mr-2 text-blue-300" aria-hidden>
