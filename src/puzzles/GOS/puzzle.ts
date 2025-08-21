@@ -6,6 +6,7 @@ const GOS: TPuzzle = {
   theme: "National Treasure",
   anchor: "gos",
   difficulty: 5,
+  markdownFile: "GOS.md",
 }
 
 export default GOS

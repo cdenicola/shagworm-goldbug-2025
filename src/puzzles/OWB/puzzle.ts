@@ -6,6 +6,7 @@ const OWB: TPuzzle = {
   theme: "Waterworld",
   anchor: "owb",
   difficulty: 4,
+  markdownFile: "OWB.md",
 }
 
 export default OWB

@@ -6,6 +6,7 @@ const MET: TPuzzle = {
   theme: "Treasure Map",
   anchor: "met",
   difficulty: 5,
+  markdownFile: "MET.md",
 }
 
 export default MET

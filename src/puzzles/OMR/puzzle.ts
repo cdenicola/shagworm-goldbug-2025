@@ -6,6 +6,7 @@ const OMR: TPuzzle = {
   theme: "The Road to El Dorado",
   anchor: "omr",
   difficulty: 1,
+  markdownFile: "OMR.md",
 }
 
 export default OMR

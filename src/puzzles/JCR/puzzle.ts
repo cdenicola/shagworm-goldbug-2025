@@ -6,6 +6,7 @@ const JCR: TPuzzle = {
   theme: "Dora the Explorer",
   anchor: "jcr",
   difficulty: 1,
+  markdownFile: "JCR.md",
 }
 
 export default JCR
