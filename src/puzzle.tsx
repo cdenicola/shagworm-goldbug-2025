@@ -29,7 +29,6 @@ export function PuzzleSection({ p }: { p: TPuzzle }) {
 We will write up this puzzle later. If you want the writeup sooner, message us on Discord!`
 
   const contentToRender = markdownContent || defaultContent
-
   return (
     <article
       id={p.anchor}
