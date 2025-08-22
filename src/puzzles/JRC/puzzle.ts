@@ -1,12 +1,12 @@
 import { TPuzzle } from "../../puzzle"
 
-const JCR: TPuzzle = {
-  code: "JCR",
+const JRC: TPuzzle = {
+  code: "JRC",
   title: "The Key to the Garden Adventure (Jr Crypto Puzzle)",
   theme: "Dora the Explorer",
-  anchor: "jcr",
+  anchor: "jrc",
   difficulty: 1,
-  markdownFile: "JCR.md",
+  markdownFile: "JRC.md",
 }
 
-export default JCR
+export default JRC
