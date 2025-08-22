@@ -7,7 +7,6 @@ const OMR: TPuzzle = {
   anchor: "omr",
   difficulty: 1,
   markdownFile: "OMR.md",
-  isWrittenUp: false,
 }
 
 export default OMR
