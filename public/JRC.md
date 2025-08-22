@@ -10,6 +10,8 @@ This year the puzzles were themed after Dora the Explorer and involved four inte
 
 The first puzzle said Dora left a clue by spiraling rocks and writing a message. The rocks and the message were orientated in similar positions and the rocks had one labeled start. Beginning at the start rock and spiraling leftwards, we traced the letters "FollowBootsLeft".
 
+![Rocks arranged in spiral next to letters arranged in three rows: TFELS LLOFT OWBOO](./assets/jrc-1.png)
+
 The next puzzle was a classical Dora-style riddle from the [Grumpy Old Troll](https://dora.fandom.com/wiki/List_of_the_Grumpy_Old_Troll%27s_riddles). Googling did not reveal the solution. But ChatGPT-5 one-shot the riddle. The thing is a "backpack".
 
 We did not solve the third puzzle. We tried vigeniere cipher with quick as the key. Realizing we were not making progress, we decided to skip it and come back later if we needed the final solution. Luckily we did not need to, and were able to guess the final answer from the other data points.

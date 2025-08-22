@@ -114,6 +114,17 @@ We will write up this puzzle later. If you want the writeup sooner, message us o
                   {children}
                 </pre>
               ),
+              a: ({ href, children, ...props }) => (
+                <a
+                  className="underline text-pink-400 hover:text-yellow-300"
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  {...props}
+                >
+                  {children}
+                </a>
+              ),
             }}
           >
             {contentToRender}
