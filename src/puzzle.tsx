@@ -19,6 +19,7 @@ export type TPuzzle = {
   anchor: string
   difficulty: number
   markdownFile?: string
+  isWrittenUp?: boolean
 }
 
 const BASE = import.meta.env.BASE_URL.replace(/\/$/, "") // "" in dev, "/shagworm-goldbug-2025" in preview/prod
@@ -43,7 +44,9 @@ We will write up this puzzle later. If you want the writeup sooner, message us o
     <article
       id={p.anchor}
       key={p.code}
-      className="border border-green-600/40 rounded-sm p-4 bg-green-900/10"
+      className={`border border-green-600/40 rounded-sm p-4 bg-green-900/10 ${
+        p.isWrittenUp === false ? 'opacity-60' : ''
+      }`}
     >
       <header className="mb-3">
         <div className="flex flex-wrap items-center gap-2">
@@ -73,7 +76,9 @@ We will write up this puzzle later. If you want the writeup sooner, message us o
         </div>
       </header>
 
-      <div className="space-y-4">
+      <div className={`space-y-4 ${
+        p.isWrittenUp === false ? 'max-h-32 overflow-hidden' : ''
+      }`}>
         <div className="prose prose-invert max-w-none">
           <Markdown
             remarkPlugins={[remarkGfm]}

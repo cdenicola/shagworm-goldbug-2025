@@ -7,6 +7,7 @@ const OWB: TPuzzle = {
   anchor: "owb",
   difficulty: 4,
   markdownFile: "OWB.md",
+  isWrittenUp: false,
 }
 
 export default OWB
