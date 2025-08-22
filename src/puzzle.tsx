@@ -4,6 +4,10 @@ import { useMarkdownContent } from "./hooks/useMarkdownContent"
 import Markdown from "react-markdown"
 import { useState } from "react"
 import remarkGfm from "remark-gfm"
+import remarkBreaks from "remark-breaks"
+import rehypeRaw from "rehype-raw"
+import rehypeSanitize, { defaultSchema } from "rehype-sanitize"
+
 import {
   Dialog,
   DialogContent,
@@ -22,13 +26,33 @@ export type TPuzzle = {
   isWrittenUp?: boolean
 }
 
-const BASE = import.meta.env.BASE_URL.replace(/\/$/, "") // "" in dev, "/shagworm-goldbug-2025" in preview/prod
+const BASE_URL = import.meta.env.BASE_URL.replace(/\/$/, "") // "" in dev, "/shagworm-goldbug-2025" in preview/prod
 
-function withBase(url: string | undefined) {
+function withUrlBase(url: string | undefined) {
   if (!url) return url
   if (/^https?:\/\//i.test(url)) return url // external
   const cleaned = url.replace(/^(\.\/|\/)/, "") // strip "./" or leading "/"
-  return `${BASE}/${cleaned}`
+  return `${BASE_URL}/${cleaned}`
+}
+
+// allow a tiny set of tags/attrs you care about
+const schema = {
+  ...defaultSchema,
+  tagNames: [...(defaultSchema.tagNames || []), "br", "div", "span", "img"],
+  attributes: {
+    ...(defaultSchema.attributes || {}),
+    img: [
+      ...(defaultSchema.attributes?.img || []),
+      ["src"],
+      ["alt"],
+      ["width"],
+      ["height"],
+      ["style"],
+      ["className"],
+    ],
+    div: [["style"], ["className"]],
+    span: [["style"], ["className"]],
+  },
 }
 
 export function PuzzleSection({ p }: { p: TPuzzle }) {
@@ -45,7 +69,7 @@ We will write up this puzzle later. If you want the writeup sooner, message us o
       id={p.anchor}
       key={p.code}
       className={`border border-green-600/40 rounded-sm p-4 bg-green-900/10 ${
-        p.isWrittenUp === false ? 'opacity-60' : ''
+        p.isWrittenUp === false ? "opacity-60" : ""
       }`}
     >
       <header className="mb-3">
@@ -76,12 +100,15 @@ We will write up this puzzle later. If you want the writeup sooner, message us o
         </div>
       </header>
 
-      <div className={`space-y-4 ${
-        p.isWrittenUp === false ? 'max-h-32 overflow-hidden' : ''
-      }`}>
+      <div
+        className={`space-y-4 ${
+          p.isWrittenUp === false ? "max-h-32 overflow-hidden" : ""
+        }`}
+      >
         <div className="prose prose-invert max-w-none">
           <Markdown
-            remarkPlugins={[remarkGfm]}
+            remarkPlugins={[remarkGfm, remarkBreaks]}
+            rehypePlugins={[rehypeRaw, [rehypeSanitize, schema]]}
             components={{
               h1: ({ children }) => (
                 <h1 className="text-yellow-300 text-2xl font-bold mb-4">
@@ -143,7 +170,7 @@ We will write up this puzzle later. If you want the writeup sooner, message us o
               ),
               img: ({ src = "", alt = "", ...props }) => (
                 <img
-                  src={withBase(src)}
+                  src={withUrlBase(src)}
                   alt={alt}
                   title={alt}
                   {...props}

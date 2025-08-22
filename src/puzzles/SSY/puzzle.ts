@@ -7,7 +7,6 @@ const SSY: TPuzzle = {
   anchor: "ssy",
   difficulty: 3,
   markdownFile: "SSY.md",
-  isWrittenUp: false,
 }
 
 export default SSY
