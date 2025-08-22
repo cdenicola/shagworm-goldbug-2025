@@ -2,13 +2,13 @@
 
 We will write up this puzzle later. If you want the writeup sooner, message us on Discord!
 
-### Puzzle Info
+## Puzzle Info
 
 Difficulty: 1 star  
 We came upon a page with three elements: a goldbug logo on top, text with strange symbols in the middle, and triplets of numbers on the bottom.  
 ![][image1]
 
-### Solution
+## Solution
 
 Our first thoughts were that the goldbug logo was for style, the first text was a symbol cipher we did not recognize, and the second text was formatted like a [book cipher](https://en.wikipedia.org/wiki/Book_cipher). We needed to find the book or paper to act as the book cipher key. Looking through a list of symbol ciphers we noticed the gold-bug cipher matched the non-standard characters in the ciphertext; and the gold-bug competition logo was prompting the cipher.
 
