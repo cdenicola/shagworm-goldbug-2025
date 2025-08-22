@@ -13,18 +13,18 @@ Our initial impression of this puzzle was: what? missing words? no patterns? how
 
 Re-reading the prompts and the title, we thought each line starting with "I" was Chunk explaining something about his life. We pulled open the text script to the The Goonies and grepped for words in the first line. Boom: "In third grade I cheated on my history exam" helped us fill in "I cheated on my history exam in third grade" and unlocked the flag’s first letter "D". We repeated this for each line – when we got stuck on a line, we prompted ChatGPT with the The Goonies script and the question with blanks, then double checked against the movie script to guard against hallucinations – and extracted the letters flagged with a skull.
 
-I CHEATE**D** on my HISTORY EXAM in THIRD grade.
-I said FIFTY I**R**ANIAN TERRORISTS took over every SIZZLER STEAKHOUSE in the CITY.
-I dropped FAKE PUKE over the BALCON**Y** at the THEATER.
-I said MICHAE**L** JACKSON came to my HOUSE to use the BATHROOM.
-I broke the PHOTO that ONE-EYED WILLY'S M**A**P was in.
-I broke Mikey's statue of MICHELA**N**GELO'S PENIS.
-I said there were CREATURES that MULTIPLIE**D** when they got WET.
-I ate my WEIGHT in GOD**F**ATHER'S PIZZA.
-I used my UNCLE MAX'S T**O**UPEE as a BEARD in my SCHOOL PLAY.
-I said I saved OLD PEOPLE from a FIRE at a N**U**RSING HOME.
-I got KICKED out of SUMMER CAMP for pigging out at LU**N**CH.
-I KNOCKED my SISTER down the STAIRS and BLAMED it on the **D**OG.
+I CHEATE**D** on my HISTORY EXAM in THIRD grade.\
+I said FIFTY I**R**ANIAN TERRORISTS took over every SIZZLER STEAKHOUSE in the CITY.\
+I dropped FAKE PUKE over the BALCON**Y** at the THEATER.\
+I said MICHAE**L** JACKSON came to my HOUSE to use the BATHROOM.\
+I broke the PHOTO that ONE-EYED WILLY'S M**A**P was in.\
+I broke Mikey's statue of MICHELA**N**GELO'S PENIS.\
+I said there were CREATURES that MULTIPLIE**D** when they got WET.\
+I ate my WEIGHT in GOD**F**ATHER'S PIZZA.\
+I used my UNCLE MAX'S T**O**UPEE as a BEARD in my SCHOOL PLAY.\
+I said I saved OLD PEOPLE from a FIRE at a N**U**RSING HOME.\
+I got KICKED out of SUMMER CAMP for pigging out at LU**N**CH.\
+I KNOCKED my SISTER down the STAIRS and BLAMED it on the **D**OG.\
 But for all my misdeeds, I BEFRIENDED SLOTH who SAVED the DAY.
 
 Combining these 12 letters in order gave us our flag.

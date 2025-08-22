@@ -3,6 +3,7 @@ import { Badge } from "./components/ui/badge"
 import { useMarkdownContent } from "./hooks/useMarkdownContent"
 import Markdown from "react-markdown"
 import { useState } from "react"
+import remarkGfm from "remark-gfm"
 import {
   Dialog,
   DialogContent,
@@ -75,6 +76,7 @@ We will write up this puzzle later. If you want the writeup sooner, message us o
       <div className="space-y-4">
         <div className="prose prose-invert max-w-none">
           <Markdown
+            remarkPlugins={[remarkGfm]}
             components={{
               h1: ({ children }) => (
                 <h1 className="text-yellow-300 text-2xl font-bold mb-4">
@@ -142,6 +144,23 @@ We will write up this puzzle later. If you want the writeup sooner, message us o
                   {...props}
                   className="block mx-auto w-full max-w-[32rem] h-auto"
                 />
+              ),
+              table: ({ ...props }) => (
+                <div className="overflow-x-auto">
+                  <table
+                    className="table-auto border-collapse border border-gray-400 mx-auto my-4 text-sm"
+                    {...props}
+                  />
+                </div>
+              ),
+              th: ({ ...props }) => (
+                <th
+                  className="border border-gray-400 px-3 py-2 font-semibold bg-transparent"
+                  {...props}
+                />
+              ),
+              td: ({ ...props }) => (
+                <td className="border border-gray-400 px-3 py-2" {...props} />
               ),
             }}
           >
