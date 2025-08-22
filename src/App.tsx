@@ -15,7 +15,7 @@ import {
   TPS,
   OWB,
   TTT,
-  JCR,
+  JRC,
   MOC,
   MAN,
   OMR,
@@ -32,7 +32,7 @@ const puzzlesSiteOrder: TPuzzle[] = [
   TPS,
   OWB,
   TTT,
-  JCR,
+  JRC,
   MOC,
   MAN,
   OMR,
@@ -41,8 +41,8 @@ const puzzlesSiteOrder: TPuzzle[] = [
 ]
 
 const puzzlesSolvedOrder: TPuzzle[] = [
+  JRC,
   FLP,
-  JCR,
   MOC,
   NUM,
   TTT,
