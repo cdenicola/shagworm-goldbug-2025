@@ -7,7 +7,6 @@ const GOS: TPuzzle = {
   anchor: "gos",
   difficulty: 5,
   markdownFile: "GOS.md",
-  isWrittenUp: false,
 }
 
 export default GOS

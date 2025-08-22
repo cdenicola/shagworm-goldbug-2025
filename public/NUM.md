@@ -51,4 +51,4 @@ We decided to take a further look at the other option, choosing "thirteen" as ou
 | 20 and 2 13 6 |    22-13-6     |   Mine    |
 |    15 5 1     |     15-5-1     |   Back    |
 
-Solved\! \<result\>TakeMineBack\</result\>
+Solved\! <result>TakeMineBack</result>
