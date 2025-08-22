@@ -315,11 +315,15 @@ If you have questions, feel free to ping us on discord: @rlama__ or @cooper7840`
               <a href={`#${p.anchor}`}>
                 <li
                   key={p.code}
-                  className="flex items-center justify-between gap-2 border border-green-600/30 rounded-sm px-2 py-1 hover:bg-green-900/20"
+                  className={`flex items-center justify-between gap-2 border border-green-600/30 rounded-sm px-2 py-1 hover:bg-green-900/20 ${
+                    p.isWrittenUp === false ? 'opacity-50' : ''
+                  }`}
                 >
                   <div className="flex items-center gap-2">
                     <Badge>{p.code}</Badge>
-                    <p className="underline text-green-200 hover:text-yellow-300">
+                    <p className={`underline hover:text-yellow-300 ${
+                      p.isWrittenUp === false ? 'text-gray-400' : 'text-green-200'
+                    }`}>
                       {p.title}
                     </p>
                   </div>
