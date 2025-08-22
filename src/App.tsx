@@ -170,14 +170,6 @@ Each puzzle has a difficulty rating set by the puzzle masters of 1 to 5 stars - 
 
 If you have questions, feel free to ping us on discord: @rlama__ or @cooper7840`
 
-  const getFontFamily = () => {
-    if (isPirateMode) {
-      return "'VT323', ui-monospace, SFMono-Regular, Menlo, monospace"
-    } else {
-      return "ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif"
-    }
-  }
-
   const bgClass =
     bg === "ocean"
       ? "bg-ocean"
@@ -192,7 +184,7 @@ If you have questions, feel free to ping us on discord: @rlama__ or @cooper7840`
     <div
       className={`min-h-screen text-green-300 relative ${bgClass}`}
       style={{
-        fontFamily: getFontFamily(),
+        fontFamily: "ui-monospace, SFMono-Regular, Menlo, monospace",
       }}
     >
       <div className="mx-auto max-w-5xl px-4 py-6">
