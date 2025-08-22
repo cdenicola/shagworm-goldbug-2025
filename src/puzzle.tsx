@@ -20,6 +20,15 @@ export type TPuzzle = {
   markdownFile?: string
 }
 
+const BASE = import.meta.env.BASE_URL.replace(/\/$/, "") // "" in dev, "/shagworm-goldbug-2025" in preview/prod
+
+function withBase(url: string | undefined) {
+  if (!url) return url
+  if (/^https?:\/\//i.test(url)) return url // external
+  const cleaned = url.replace(/^(\.\/|\/)/, "") // strip "./" or leading "/"
+  return `${BASE}/${cleaned}`
+}
+
 export function PuzzleSection({ p }: { p: TPuzzle }) {
   const markdownContent = useMarkdownContent(p.code, p.markdownFile)
   const [isRawDialogOpen, setIsRawDialogOpen] = useState(false)
@@ -124,6 +133,15 @@ We will write up this puzzle later. If you want the writeup sooner, message us o
                 >
                   {children}
                 </a>
+              ),
+              img: ({ src = "", alt = "", ...props }) => (
+                <img
+                  src={withBase(src)}
+                  alt={alt}
+                  title={alt}
+                  {...props}
+                  className="block mx-auto w-full max-w-[32rem] h-auto"
+                />
               ),
             }}
           >
