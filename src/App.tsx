@@ -1,61 +1,11 @@
 import React, { useState } from "react"
 import "./App.css"
 import { Switch } from "./components/ui/switch"
-import { PuzzleSection, TPuzzle } from "./puzzle"
+import { PuzzleSection } from "./puzzle"
+import { puzzlesSolvedOrder, puzzlesSiteOrder } from "./puzzleManifest"
 import { useKeyboardNavigation } from "./hooks/useKeyboardNavigation"
 import { icons, type LucideIcon } from "lucide-react"
 import { crewMembers } from "./members"
-
-import {
-  BLU,
-  GOS,
-  SSY,
-  CCC,
-  NUM,
-  TPS,
-  OWB,
-  TTT,
-  JRC,
-  MOC,
-  MAN,
-  OMR,
-  FLP,
-  MET,
-} from "./puzzles"
-
-const puzzlesSiteOrder: TPuzzle[] = [
-  BLU,
-  GOS,
-  SSY,
-  CCC,
-  NUM,
-  TPS,
-  OWB,
-  TTT,
-  JRC,
-  MOC,
-  MAN,
-  OMR,
-  FLP,
-  MET,
-]
-
-const puzzlesSolvedOrder: TPuzzle[] = [
-  JRC,
-  FLP,
-  MOC,
-  NUM,
-  TTT,
-  OMR,
-  CCC,
-  SSY,
-  TPS,
-  BLU,
-  OWB,
-  MAN,
-  GOS,
-  MET,
-]
 
 function AnsiHeader() {
   const headerLines = [
@@ -316,14 +266,18 @@ If you have questions, feel free to ping us on discord: @rlama__ or @cooper7840`
                 <li
                   key={p.code}
                   className={`flex items-center justify-between gap-2 border border-green-600/30 rounded-sm px-2 py-1 hover:bg-green-900/20 ${
-                    p.isWrittenUp === false ? 'opacity-50' : ''
+                    p.isWrittenUp === false ? "opacity-50" : ""
                   }`}
                 >
                   <div className="flex items-center gap-2">
                     <Badge>{p.code}</Badge>
-                    <p className={`underline hover:text-yellow-300 ${
-                      p.isWrittenUp === false ? 'text-gray-400' : 'text-green-200'
-                    }`}>
+                    <p
+                      className={`underline hover:text-yellow-300 ${
+                        p.isWrittenUp === false
+                          ? "text-gray-400"
+                          : "text-green-200"
+                      }`}
+                    >
                       {p.title}
                     </p>
                   </div>
