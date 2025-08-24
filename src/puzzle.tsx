@@ -168,13 +168,15 @@ We will write up this puzzle later. If you want the writeup sooner, message us o
                   {children}
                 </a>
               ),
-              img: ({ src = "", alt = "", ...props }) => (
+              img: ({ src = "", alt = "", className = "", ...props }) => (
                 <img
                   src={withUrlBase(src)}
                   alt={alt}
                   title={alt}
                   {...props}
-                  className="block mx-auto w-full max-w-[32rem] h-auto"
+                  className={
+                    className || "block mx-auto w-full max-w-[32rem] h-auto"
+                  }
                 />
               ),
               table: ({ ...props }) => (
