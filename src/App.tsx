@@ -5,6 +5,9 @@ import { PuzzleSection, TPuzzle } from "./puzzle"
 import { useKeyboardNavigation } from "./hooks/useKeyboardNavigation"
 import { icons, type LucideIcon } from "lucide-react"
 import { crewMembers } from "./members"
+import { PuzzleNavigation } from "./components/PuzzleNavigation"
+import { PuzzleIndex } from "./components/PuzzleIndex"
+import { PuzzleWriteup } from "./components/PuzzleWriteup"
 
 import {
   BLU,
@@ -151,10 +154,52 @@ export function DifficultyStars({
 function App() {
   const [isPirateMode, setIsPirateMode] = useState(true)
   const [bg, setBg] = useState<"ocean" | "parchment" | "starry">("ocean")
-
   const [isSolvedOrder, setIsSolvedOrder] = useState(true)
+  const [currentPage, setCurrentPage] = useState<"main" | "index" | "writeup">(
+    "main"
+  )
+  const [currentPuzzleCode, setCurrentPuzzleCode] = useState<string | null>(
+    null
+  )
+
   const puzzles = isSolvedOrder ? puzzlesSolvedOrder : puzzlesSiteOrder
-  const { showHelp } = useKeyboardNavigation({ puzzles })
+  const { showHelp, navigateToPuzzle } = useKeyboardNavigation({ puzzles })
+
+  const getCurrentVisiblePuzzleIndex = () => {
+    const viewportCenter = window.scrollY + window.innerHeight / 2
+
+    for (let i = 0; i < puzzles.length; i++) {
+      const element = document.getElementById(puzzles[i].anchor)
+      if (element) {
+        const rect = element.getBoundingClientRect()
+        const elementTop = window.scrollY + rect.top
+        const elementBottom = elementTop + rect.height
+
+        if (viewportCenter >= elementTop && viewportCenter <= elementBottom) {
+          return i
+        }
+      }
+    }
+
+    let closestIndex = 0
+    let closestDistance = Infinity
+
+    for (let i = 0; i < puzzles.length; i++) {
+      const element = document.getElementById(puzzles[i].anchor)
+      if (element) {
+        const rect = element.getBoundingClientRect()
+        const elementTop = window.scrollY + rect.top
+        const distance = Math.abs(viewportCenter - elementTop)
+
+        if (distance < closestDistance) {
+          closestDistance = distance
+          closestIndex = i
+        }
+      }
+    }
+
+    return closestIndex
+  }
 
   const pirateText = `Ahoy, matey! We be the crew of the Shagworm, victors of the mighty Crypto & Privacy Village Gold Bug Challenge at DEFCON 33, 2025. Once but humble sailors from the far-flung shores of Stanford's Applied Cyber guild, now we sail the seas of cipher and code, with a deck split 'twixt seasoned hands who've weathered many a Gold Bug storm, and greenhorns who'd ne'er before set eyes on such a map of mysteries.
 
@@ -192,228 +237,340 @@ If you have questions, feel free to ping us on discord: @rlama__ or @cooper7840`
           <AnsiHeader />
         </div>
 
-        <div className="flex items-center gap-1 text-xs font-mono justify-end">
-          <span className="text-green-300 mr-2">Background:</span>
-          <button
-            onClick={() => setBg("ocean")}
-            className={`px-2 py-1 border rounded-sm ${bg === "ocean" ? "border-yellow-400 text-yellow-300 bg-yellow-900/10" : "border-green-600/40 text-green-200 hover:bg-green-900/20"}`}
-          >
-            Ocean
-          </button>
-          <button
-            onClick={() => setBg("parchment")}
-            className={`px-2 py-1 border rounded-sm ${bg === "parchment" ? "border-yellow-400 text-yellow-300 bg-yellow-900/10" : "border-green-600/40 text-green-200 hover:bg-green-900/20"}`}
-          >
-            Parchment
-          </button>
-          <button
-            onClick={() => setBg("starry")}
-            className={`px-2 py-1 border rounded-sm ${bg === "starry" ? "border-yellow-400 text-yellow-300 bg-yellow-900/10" : "border-green-600/40 text-green-200 hover:bg-green-900/20"}`}
-          >
-            Starry
-          </button>
+        <div className="flex items-center justify-between gap-4 text-xs font-mono">
+          <div className="flex items-center gap-2">
+            <button
+              onClick={() => setCurrentPage("index")}
+              className="px-3 py-1 border border-yellow-500/40 rounded-sm bg-yellow-900/10 text-yellow-300 hover:bg-yellow-900/20 transition-colors"
+            >
+              📚 Puzzle Index
+            </button>
+          </div>
+          <div className="flex items-center gap-1">
+            <span className="text-green-300 mr-2">Background:</span>
+            <button
+              onClick={() => setBg("ocean")}
+              className={`px-2 py-1 border rounded-sm ${bg === "ocean" ? "border-yellow-400 text-yellow-300 bg-yellow-900/10" : "border-green-600/40 text-green-200 hover:bg-green-900/20"}`}
+            >
+              Ocean
+            </button>
+            <button
+              onClick={() => setBg("parchment")}
+              className={`px-2 py-1 border rounded-sm ${bg === "parchment" ? "border-yellow-400 text-yellow-300 bg-yellow-900/10" : "border-green-600/40 text-green-200 hover:bg-green-900/20"}`}
+            >
+              Parchment
+            </button>
+            <button
+              onClick={() => setBg("starry")}
+              className={`px-2 py-1 border rounded-sm ${bg === "starry" ? "border-yellow-400 text-yellow-300 bg-yellow-900/10" : "border-green-600/40 text-green-200 hover:bg-green-900/20"}`}
+            >
+              Starry
+            </button>
+          </div>
         </div>
 
-        <div className="border border-green-600/40 rounded-sm p-4 bg-green-900/10">
-          <div className="flex items-center justify-between mb-4">
-            <h3 className="text-2xl text-green-200">
-              <span className="inline mr-2 text-green-200" aria-hidden>
-                🏴‍☠️
-              </span>
-              Captain's Log
-            </h3>
-            <div className="flex items-center gap-3">
-              <span className="text-yellow-300 font-mono text-sm">
-                {isPirateMode ? "🏴‍☠️ Pirate Mode" : "⚓ Landlubber Mode"}
-              </span>
-              <Switch
-                checked={isPirateMode}
-                onCheckedChange={setIsPirateMode}
-                className="data-[state=checked]:bg-yellow-500 data-[state=unchecked]:bg-green-600"
-              />
-            </div>
-          </div>
-          <div className="text-lg whitespace-pre-line">
-            {isPirateMode ? pirateText : landlubberText}
-          </div>
-          <p className="ansi-cursor mt-4 text-pink-400">
-            {isPirateMode
-              ? "CHART YER COURSE, THEN ENTER"
-              : "LAND HO! ADVENTURE AWAITS"}
-          </p>
-        </div>
+        {currentPage === "main" && (
+          <>
+            <PuzzleNavigation
+              puzzles={puzzles}
+              currentPuzzleIndex={getCurrentVisiblePuzzleIndex()}
+              isSolvedOrder={isSolvedOrder}
+              onToggleOrder={() => setIsSolvedOrder(!isSolvedOrder)}
+              onNavigateToPuzzle={navigateToPuzzle}
+            />
 
-        <section className="mt-6 border border-purple-500/40 bg-purple-900/10 rounded-sm p-4">
-          <h2 className="text-2xl text-purple-400 mb-2">
-            <span className="inline mr-2 text-yellow-300" aria-hidden>
-              ⚔️
-            </span>{" "}
-            Crew Manifest
-          </h2>
-          <p className="text-green-200 mb-4">
-            {isPirateMode
-              ? "Behold, the brave souls who sailed with us on this treacherous voyage through the cryptographic seas!"
-              : "Meet the team members who participated in the Gold Bug challenge:"}
-          </p>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-2">
-            {crewMembers.map((crewMember) => (
-              <div
-                key={crewMember.name}
-                className="flex flex-col gap-1 border border-purple-600/30 rounded-sm px-3 py-2 bg-purple-900/5"
-              >
-                <Badge color="bg-purple-500/20 text-purple-300 border-purple-400/40">
-                  {crewMember.name}
-                </Badge>
-                <div className="flex gap-2">
-                  {" "}
-                  {/* flex row with spacing */}
-                  {crewMember.links?.map((c, i) => {
-                    const Icon =
-                      icons[c.icon] || (icons["ExternalLink"] as LucideIcon)
-
-                    const aria = c.label ?? `${crewMember.name} ${c.icon}`
-                    return (
-                      <a
-                        key={i}
-                        href={c.link}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="text-purple-400 hover:text-purple-300 transition-colors"
-                        aria-label={aria}
-                      >
-                        <Icon size={14} />
-                      </a>
-                    )
-                  })}
+            <div className="border border-green-600/40 rounded-sm p-4 bg-green-900/10">
+              <div className="flex items-center justify-between mb-4">
+                <h3 className="text-2xl text-green-200">
+                  <span className="inline mr-2 text-green-200" aria-hidden>
+                    🏴‍☠️
+                  </span>
+                  Captain's Log
+                </h3>
+                <div className="flex items-center gap-3">
+                  <span className="text-yellow-300 font-mono text-sm">
+                    {isPirateMode ? "🏴‍☠️ Pirate Mode" : "⚓ Landlubber Mode"}
+                  </span>
+                  <Switch
+                    checked={isPirateMode}
+                    onCheckedChange={setIsPirateMode}
+                    className="data-[state=checked]:bg-yellow-500 data-[state=unchecked]:bg-green-600"
+                  />
                 </div>
               </div>
-            ))}
-          </div>
-        </section>
-
-        <nav className="mt-6 border border-pink-500/40 bg-pink-900/10 rounded-sm p-4">
-          <div className="flex items-center justify-between mb-4">
-            <h2 className="text-2xl text-pink-400 mb-2">
-              <span className="inline mr-2 text-yellow-300" aria-hidden>
-                🧭
-              </span>{" "}
-              Puzzle Index
-            </h2>
-            <div className="flex items-center gap-3">
-              <span className="text-yellow-300 font-mono text-sm">
-                {isSolvedOrder ? "🕰️ Solved Order" : "🗺️ Site Order"}
-              </span>
-              <Switch
-                checked={isSolvedOrder}
-                onCheckedChange={setIsSolvedOrder}
-                className="data-[state=checked]:bg-yellow-500 data-[state=unchecked]:bg-green-600"
-              />
+              <div className="text-lg whitespace-pre-line">
+                {isPirateMode ? pirateText : landlubberText}
+              </div>
+              <p className="ansi-cursor mt-4 text-pink-400">
+                {isPirateMode
+                  ? "CHART YER COURSE, THEN ENTER"
+                  : "LAND HO! ADVENTURE AWAITS"}
+              </p>
             </div>
-          </div>
-          <ul className="grid md:grid-cols-2 gap-2">
-            {puzzles.map((p) => (
-              <a href={`#${p.anchor}`}>
-                <li
-                  key={p.code}
-                  className={`flex items-center justify-between gap-2 border border-green-600/30 rounded-sm px-2 py-1 hover:bg-green-900/20 ${
-                    p.isWrittenUp === false ? 'opacity-50' : ''
-                  }`}
-                >
-                  <div className="flex items-center gap-2">
-                    <Badge>{p.code}</Badge>
-                    <p className={`underline hover:text-yellow-300 ${
-                      p.isWrittenUp === false ? 'text-gray-400' : 'text-green-200'
-                    }`}>
-                      {p.title}
-                    </p>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <Badge color="bg-blue-500/20 text-blue-300 border-blue-400/40">
-                      {p.theme}
-                    </Badge>
-                    <DifficultyStars level={p.difficulty} size="text-sm" />
-                  </div>
-                </li>
-              </a>
-            ))}
-          </ul>
-          <p className="mt-3 text-sm">
-            Original puzzle list:{" "}
-            <a
-              className="underline text-yellow-300 hover:text-pink-400"
-              href="https://goldbug.cryptovillage.org/puzzles.html"
-              target="_blank"
-              rel="noreferrer"
-            >
-              goldbug.cryptovillage.org/puzzles.html
-            </a>
-          </p>
-          <div
-            aria-hidden
-            className="my-4 h-px w-full opacity-40"
-            style={{
-              backgroundImage:
-                "repeating-linear-gradient(90deg, #d1b06a 0 8px, transparent 8px 16px)",
-            }}
-          />
-        </nav>
 
-        <section className="mt-8 space-y-6">
-          <div className="border border-blue-500/40 bg-blue-900/10 rounded-sm p-4">
-            <h3 className="text-2xl text-blue-300 mb-2">
-              <span className="inline mr-2 text-blue-300" aria-hidden>
-                ⚓
-              </span>{" "}
-              Treasure Trove of Links
-            </h3>
-            <p className="text-green-200">
-              Relevant links and resources for cybersecurity adventurers.
-            </p>
-            <div className="mt-3">
-              <div className="flex gap-3 overflow-x-auto">
-                {[
-                  {
-                    label: "Gold Bug Puzzles",
-                    href: "https://goldbug.cryptovillage.org/puzzles.html",
-                  },
-                  {
-                    label: "defcon.social/@goldbug",
-                    href: "https://defcon.social/@goldbug",
-                  },
-                  {
-                    label: "Stanford Applied Cyber",
-                    href: "https://applied-cyber.stanford.edu/",
-                  },
-                  {
-                    label: "DEFCON 33",
-                    href: "https://defcon.org/html/defcon-33/dc-33-index.html",
-                  },
-                ].map((it) => (
-                  <a
-                    key={it.href}
-                    href={it.href}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="shrink-0 border border-yellow-500/40 rounded-sm bg-black/40 px-3 py-2 hover:bg-black/60 text-yellow-300"
-                  >
-                    <span className="inline mr-2 text-yellow-300" aria-hidden>
-                      ☠️
-                    </span>
-                    {it.label}
+            <nav className="mt-6 border border-pink-500/40 bg-pink-900/10 rounded-sm p-4">
+              <div className="flex items-center justify-between mb-4">
+                <h2 className="text-2xl text-pink-400 mb-2">
+                  <span className="inline mr-2 text-yellow-300" aria-hidden>
+                    🧭
+                  </span>{" "}
+                  Puzzle Index
+                </h2>
+                <div className="flex items-center gap-3">
+                  <span className="text-yellow-300 font-mono text-sm">
+                    {isSolvedOrder ? "🕰️ Solved Order" : "🗺️ Site Order"}
+                  </span>
+                  <Switch
+                    checked={isSolvedOrder}
+                    onCheckedChange={setIsSolvedOrder}
+                    className="data-[state=checked]:bg-yellow-500 data-[state=unchecked]:bg-green-600"
+                  />
+                </div>
+              </div>
+              <ul className="grid md:grid-cols-2 gap-2">
+                {puzzles.map((p) => (
+                  <a href={`#${p.anchor}`} key={p.code}>
+                    <li
+                      className={`flex items-center justify-between gap-2 border border-green-600/30 rounded-sm px-2 py-1 hover:bg-green-900/20 ${
+                        p.isWrittenUp === false ? 'opacity-50' : ''
+                      }`}
+                    >
+                      <div className="flex items-center gap-2">
+                        <Badge>{p.code}</Badge>
+                        <p className={`underline hover:text-yellow-300 ${
+                          p.isWrittenUp === false ? 'text-gray-400' : 'text-green-200'
+                        }`}>
+                          {p.title}
+                        </p>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <Badge color="bg-blue-500/20 text-blue-300 border-blue-400/40">
+                          {p.theme}
+                        </Badge>
+                        <DifficultyStars level={p.difficulty} size="text-sm" />
+                      </div>
+                    </li>
                   </a>
                 ))}
-              </div>
-            </div>
-          </div>
-        </section>
+              </ul>
+              <p className="mt-3 text-sm">
+                Original puzzle list:{" "}
+                <a
+                  className="underline text-yellow-300 hover:text-pink-400"
+                  href="https://goldbug.cryptovillage.org/puzzles.html"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  goldbug.cryptovillage.org/puzzles.html
+                </a>
+              </p>
+              <div
+                aria-hidden
+                className="my-4 h-px w-full opacity-40"
+                style={{
+                  backgroundImage:
+                    "repeating-linear-gradient(90deg, #d1b06a 0 8px, transparent 8px 16px)",
+                }}
+              />
+            </nav>
 
-        <section className="mt-10 space-y-10">
-          {puzzles.map((p) => (
-            <div key={p.code} className="relative">
-              <PuzzleSection p={p} />
-            </div>
-          ))}
-        </section>
+            <section className="mt-6 border border-purple-500/40 bg-purple-900/10 rounded-sm p-4">
+              <h2 className="text-2xl text-purple-400 mb-2">
+                <span className="inline mr-2 text-yellow-300" aria-hidden>
+                  ⚔️
+                </span>{" "}
+                Crew Manifest
+              </h2>
+              <p className="text-green-200 mb-4">
+                {isPirateMode
+                  ? "Behold, the brave souls who sailed with us on this treacherous voyage through the cryptographic seas!"
+                  : "Meet the team members who participated in the Gold Bug challenge:"}
+              </p>
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-2">
+                {crewMembers.map((crewMember) => (
+                  <div
+                    key={crewMember.name}
+                    className="flex flex-col gap-1 border border-purple-600/30 rounded-sm px-3 py-2 bg-purple-900/5"
+                  >
+                    <Badge color="bg-purple-500/20 text-purple-300 border-purple-400/40">
+                      {crewMember.name}
+                    </Badge>
+                    <div className="flex gap-2">
+                      {" "}
+                      {/* flex row with spacing */}
+                      {crewMember.links?.map((c, i) => {
+                        const Icon =
+                          icons[c.icon] || (icons["ExternalLink"] as LucideIcon)
+
+                        const aria = c.label ?? `${crewMember.name} ${c.icon}`
+                        return (
+                          <a
+                            key={i}
+                            href={c.link}
+                            target="_blank"
+                            rel="noreferrer"
+                            className="text-purple-400 hover:text-purple-300 transition-colors"
+                            aria-label={aria}
+                          >
+                            <Icon size={14} />
+                          </a>
+                        )
+                      })}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </section>
+
+            <nav className="mt-6 border border-pink-500/40 bg-pink-900/10 rounded-sm p-4">
+              <div className="flex items-center justify-between mb-4">
+                <h2 className="text-2xl text-pink-400 mb-2">
+                  <span className="inline mr-2 text-yellow-300" aria-hidden>
+                    🧭
+                  </span>{" "}
+                  Puzzle Index
+                </h2>
+                <div className="flex items-center gap-3">
+                  <span className="text-yellow-300 font-mono text-sm">
+                    {isSolvedOrder ? "🕰️ Solved Order" : "🗺️ Site Order"}
+                  </span>
+                  <Switch
+                    checked={isSolvedOrder}
+                    onCheckedChange={setIsSolvedOrder}
+                    className="data-[state=checked]:bg-yellow-500 data-[state=unchecked]:bg-green-600"
+                  />
+                </div>
+              </div>
+              <ul className="grid md:grid-cols-2 gap-2">
+                {puzzles.map((p) => (
+                  <a href={`#${p.anchor}`} key={p.code}>
+                    <li
+                      className={`flex items-center justify-between gap-2 border border-green-600/30 rounded-sm px-2 py-1 hover:bg-green-900/20 ${
+                        p.isWrittenUp === false ? 'opacity-50' : ''
+                      }`}
+                    >
+                      <div className="flex items-center gap-2">
+                        <Badge>{p.code}</Badge>
+                        <p className={`underline hover:text-yellow-300 ${
+                          p.isWrittenUp === false ? 'text-gray-400' : 'text-green-200'
+                        }`}>
+                          {p.title}
+                        </p>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <Badge color="bg-blue-500/20 text-blue-300 border-blue-400/40">
+                          {p.theme}
+                        </Badge>
+                        <DifficultyStars level={p.difficulty} size="text-sm" />
+                      </div>
+                    </li>
+                  </a>
+                ))}
+              </ul>
+              <p className="mt-3 text-sm">
+                Original puzzle list:{" "}
+                <a
+                  className="underline text-yellow-300 hover:text-pink-400"
+                  href="https://goldbug.cryptovillage.org/puzzles.html"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  goldbug.cryptovillage.org/puzzles.html
+                </a>
+              </p>
+              <div
+                aria-hidden
+                className="my-4 h-px w-full opacity-40"
+                style={{
+                  backgroundImage:
+                    "repeating-linear-gradient(90deg, #d1b06a 0 8px, transparent 8px 16px)",
+                }}
+              />
+            </nav>
+
+            <section className="mt-8 space-y-6">
+              <div className="border border-blue-500/40 bg-blue-900/10 rounded-sm p-4">
+                <h3 className="text-2xl text-blue-300 mb-2">
+                  <span className="inline mr-2 text-blue-300" aria-hidden>
+                    ⚓
+                  </span>{" "}
+                  Treasure Trove of Links
+                </h3>
+                <p className="text-green-200">
+                  Relevant links and resources for cybersecurity adventurers.
+                </p>
+                <div className="mt-3">
+                  <div className="flex gap-3 overflow-x-auto">
+                    {[
+                      {
+                        label: "Gold Bug Puzzles",
+                        href: "https://goldbug.cryptovillage.org/puzzles.html",
+                      },
+                      {
+                        label: "defcon.social/@goldbug",
+                        href: "https://defcon.social/@goldbug",
+                      },
+                      {
+                        label: "Stanford Applied Cyber",
+                        href: "https://applied-cyber.stanford.edu/",
+                      },
+                      {
+                        label: "DEFCON 33",
+                        href: "https://defcon.org/html/defcon-33/dc-33-index.html",
+                      },
+                    ].map((it) => (
+                      <a
+                        key={it.href}
+                        href={it.href}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="shrink-0 border border-yellow-500/40 rounded-sm bg-black/40 px-3 py-2 hover:bg-black/60 text-yellow-300"
+                      >
+                        <span
+                          className="inline mr-2 text-yellow-300"
+                          aria-hidden
+                        >
+                          ☠️
+                        </span>
+                        {it.label}
+                      </a>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <section className="mt-10 space-y-10">
+              {puzzles.map((p) => (
+                <div key={p.code} className="relative">
+                  <PuzzleSection p={p} />
+                </div>
+              ))}
+            </section>
+          </>
+        )}
+
+        {currentPage === "index" && (
+          <PuzzleIndex
+            puzzles={puzzles}
+            onNavigateToWriteup={(puzzleCode) => {
+              setCurrentPuzzleCode(puzzleCode)
+              setCurrentPage("writeup")
+            }}
+            onBackToMain={() => setCurrentPage("main")}
+          />
+        )}
+
+        {currentPage === "writeup" && currentPuzzleCode && (
+          <PuzzleWriteup
+            puzzle={puzzles.find((p) => p.code === currentPuzzleCode)!}
+            onBackToIndex={() => setCurrentPage("index")}
+            onNavigateToPuzzle={(puzzleCode) =>
+              setCurrentPuzzleCode(puzzleCode)
+            }
+            allPuzzles={puzzles}
+          />
+        )}
 
         <footer className="mt-8 text-sm border border-yellow-500/40 bg-yellow-900/10 rounded-sm p-6">
           <h3 className="text-2xl text-pink-400 mb-2">Final Boarding</h3>
