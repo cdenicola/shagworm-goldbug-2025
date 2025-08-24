@@ -40,21 +40,21 @@ This was when we decided to ask the puzzlemakers for clarity. We wanted to make 
 
 Looking at the highlighted letters, we did a search for “Gromark” to learn that it is a cipher that uses a keyword and a 5-digit primer to create a cipher. We realized that the keyword would be the genus of each flower, and the 5-digit primer would be the 5 digits we got from the floral diagrams. Using [this](https://thescytale.com/GR_GromarkDecoder.html%20) website to decode Gromark ciphers, we deciphered each ciphertext associated with the flowers by inputting their corresponding genus and 5-digit codes. For example, for Mayflower, the genus/keyword would be Erigaea. The floral diagram of Mayflower, which is K5 C5 A10 G5, would have 55105 as the 5-digit primer.
 
-| Specimen             | Bonomial Name          | Ciphertext                       | Floral Diagram Digits | States | Plaintext             |
-| -------------------- | ---------------------- | -------------------------------- | --------------------- | ------ | --------------------- | ------------------------------------- |
-| Mayflower            | Epigaea repens         | RAEDISWGLUBQVYLWTOE              | 55105                 | MA     | Overlook near terrace |
-| American Dogwood \#1 | Cornus florida         | AXNSGBWVSIXAYFIH                 | 14442                 | VA/NC  | Arbor frames vault    |
-| Mountain Laurel \#1  | Kalmia latifolia       | GPVQTPFPJDGJIHDOPM               | 55104                 | PA/CT  | Hidden among laurels  |
-| Yellow Jessamine     | Gelsemium sempervirens | VAYIVSPENDTZCVFRL                | 15553                 | SC     | Garden vault sealed   |
-| Purple Lilac         | Syringa vulgaris       | QUXTBAIRSTZFUSK                  | 44122                 | NH     | Briars block door     |
-| Black-Eyed Susan     | Rudbeckia hirta        | IVTBBNIPHMWUUVFE                 | 10892                 | MD     | Nectar guides path    |
-| Peach Blossom        | Prunus persica         | MBTIRXWKTXZWGAZTGU               | 55101                 | DE     | Thicket hides ledger  |
-| Violet \#1           | Viola sororia          | UQTQFFYRKDSXBI                   | 55513                 | RI/NJ  | Entry behind ivy      |
-| Dogwood \#2          | Cornus florida         | IVVGEUXQAIMLGTBZ                 | 14442                 | VA/NC  | Keeper never spoke    |
-| Mountain Laurel \#2  | Kalmia latifolia       | ERZREHWUFTFJWTJMHYG              | 55104                 | PA/CT  | Roots conceal passage |
-| Cherokee Rose        | Rosa laevigata         | EYURLYSBKNOQJTU                  | 55105                 | GA     | Worn stone marker     |
-| Rose                 | Rosa                   | URCCQBCYCWLVQIZLCQ               | 55105                 | NY     | Night obscures clues  |
-| Violet \#2           | Viola sororia          | LRGWGEYZNHJTFIBZCAYUIOOFWRXWSCTL | 55513                 | RI/NJ  | Entry behind ivy      | First letters by state admission date |
+| Specimen             | Bonomial Name          | Ciphertext                       | Floral Diagram Digits | States | Plaintext                             |
+| -------------------- | ---------------------- | -------------------------------- | --------------------- | ------ | ------------------------------------- |
+| Mayflower            | Epigaea repens         | RAEDISWGLUBQVYLWTOE              | 55105                 | MA     | Overlook near terrace                 |
+| American Dogwood \#1 | Cornus florida         | AXNSGBWVSIXAYFIH                 | 14442                 | VA/NC  | Arbor frames vault                    |
+| Mountain Laurel \#1  | Kalmia latifolia       | GPVQTPFPJDGJIHDOPM               | 55104                 | PA/CT  | Hidden among laurels                  |
+| Yellow Jessamine     | Gelsemium sempervirens | VAYIVSPENDTZCVFRL                | 15553                 | SC     | Garden vault sealed                   |
+| Purple Lilac         | Syringa vulgaris       | QUXTBAIRSTZFUSK                  | 44122                 | NH     | Briars block door                     |
+| Black-Eyed Susan     | Rudbeckia hirta        | IVTBBNIPHMWUUVFE                 | 10892                 | MD     | Nectar guides path                    |
+| Peach Blossom        | Prunus persica         | MBTIRXWKTXZWGAZTGU               | 55101                 | DE     | Thicket hides ledger                  |
+| Violet \#1           | Viola sororia          | UQTQFFYRKDSXBI                   | 55513                 | RI/NJ  | Entry behind ivy                      |
+| Dogwood \#2          | Cornus florida         | IVVGEUXQAIMLGTBZ                 | 14442                 | VA/NC  | Keeper never spoke                    |
+| Mountain Laurel \#2  | Kalmia latifolia       | ERZREHWUFTFJWTJMHYG              | 55104                 | PA/CT  | Roots conceal passage                 |
+| Cherokee Rose        | Rosa laevigata         | EYURLYSBKNOQJTU                  | 55105                 | GA     | Worn stone marker                     |
+| Rose                 | Rosa                   | URCCQBCYCWLVQIZLCQ               | 55105                 | NY     | Night obscures clues                  |
+| Violet \#2           | Viola sororia          | LRGWGEYZNHJTFIBZCAYUIOOFWRXWSCTL | 55513                 | RI/NJ  | First letters by state admission date |
 
 The last flower instructed us the clue to take the first letter from each ciphertext and order by their state's admission to the union. For flowers with multiple states, we used \#1 as the earlier admitted state. The order of state admissions to the union was: Delaware, Pennsylvania, New Jersey, Georgia, Connecticut, Massachusetts, Maryland, South Carolina, New Hampshire, Virginia, New York, North Carolina.
 
