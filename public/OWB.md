@@ -40,7 +40,7 @@ We noticed that each coin had a hole punch in it. Using the hint that we had to 
 
 The largest obstacle was determining the "die axis" of the coins; ie: which way they flipped. We found three strategies to estimate die axis: 1\) some coin databases recorded the die axis of their coins; 2\) we found the coins in sleeves on ebay and other auction sites which displayed both sides of a coin in a fixed case; 3\) if all else failed, we used listed images of both sides of a coin and aligned their axes using visible damage on the edges. For all coins we used Figma to flip the coins and superimpose the holes. After many hours of finding, matching, and estimating alignment, we ended up with the following string, where \[\] represents letters we couldn’t agree on:
 
-EAVET\[\]\[EDSR\]\[AN\]\[DY\]MAP
+`EAVET[?][EDSR][AN][DY]MAP`
 
 Even though we were confident about the letter E through our methodology, we recognized that "EAVE" was not very likely the first word of the answer, as all of the other answers thus far had been reasonably common words. So, we assumed our die axis was incorrect and grabbed the other possible letters: H or P, giving us HAVE or PAVE.
 
