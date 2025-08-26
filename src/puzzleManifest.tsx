@@ -118,7 +118,6 @@ const TPS: TPuzzle = {
   anchor: "tps",
   difficulty: 5,
   markdownFile: "TPS.md",
-  isWrittenUp: false,
 }
 
 const TTT: TPuzzle = {
