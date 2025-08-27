@@ -4,7 +4,7 @@
 
 This puzzle consisted of three elements: a graphic from the 1995 movie Waterworld, a text passage, and an image of twelve coins on a chain.
 
-<img src="assets/owb-waterworld.png" alt="graphic from Waterworld (1995) film poster" className="block mx-auto w-xs h-auto"/>
+<img src="./assets/owb-waterworld.png" alt="graphic from Waterworld (1995) film poster" className="block mx-auto w-xs h-auto"/>
 
 The graphic did not serve to help solve the puzzle, it only served as theming.
 
@@ -16,7 +16,7 @@ The passage was as follows:
 
 Though we spent some time considering the weight of the coins ("fit only to weigh down a dead man’s pockets"), nothing came of it. Indeed, the important part of the passage laid in the last sentence: "A secret, perhaps, for those with eyes to see through their silver gleam". We realized that this meant we needed to look through the coins in some way.
 
-![12 coins on a necklace](assets/owb-coins.png)
+![12 coins on a necklace](./assets/owb-coins.png)
 
 We first identified that the twelve labels \- MX104, CHAP34, FR225, etc. \- started with some sort of country code. Ten of them quickly jumped out to us:
 

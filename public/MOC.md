@@ -5,7 +5,7 @@
 The puzzle is a single image, shown below, with a pirate themed background. There are 12 lines, mostly starting with "I" and describing someone’s actions in the first person, with blanks for most of the words. Each line has a skull marking a single empty letter box. The 13th and last line is filled in:
 "But for all my misdeeds, I befriended Sloth who saved the day."
 
-![13 lines, 12 with blanks, describing an individual's actions](assets/moc-1.png)
+![13 lines, 12 with blanks, describing an individual's actions](./assets/moc-1.png)
 
 ## Solution
 

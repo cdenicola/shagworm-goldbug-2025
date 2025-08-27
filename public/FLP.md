@@ -6,7 +6,7 @@
 
 The puzzle starts with the above text and a link to a [3D rendering](https://gold-coin.t3.gg/) (created by Theo t3.gg) of a gold bug coin. These coins were also available at the Crypto & Privacy Village booth.
 
-![Face of gold bug coin with 12 shapes on the edge](assets/flp-1.png)
+![Face of gold bug coin with 12 shapes on the edge](./assets/flp-1.png)
 
 ## Solution
 
@@ -14,7 +14,7 @@ From the text, "memorizing every detail of the coin and being able to see every 
 
 A hint came out that this puzzle was initially the first step to the META puzzle, but was then broken up into its own puzzle. Knowing this, we took a look at the META puzzle, and saw a clear place the coin would fit perfectly.
 
-![META puzzle's treasure map. With circle matching the size and pattern of the coin](assets/flp-2.png)
+![META puzzle's treasure map. With circle matching the size and pattern of the coin](./assets/flp-2.png)
 
 We placed the coin in the "coin" like feature and aligned it so the gold bug is facing upwards in the same orientation as the image. The angle of the shapes aligned on the following lines of letters (from out to in):
 
@@ -31,7 +31,7 @@ WRS**F** - circle
 AO**Y**C - Rect  
 M**E**AA - Triangle
 
-![Gold coin laid on map, surrounded by letters transcribed above](assets/flp-3.webp)
+![Gold coin laid on map, surrounded by letters transcribed above](./assets/flp-3.webp)
 
 We figured the value of the shape must indicate some row from the letters, so we tried ordering by number of the sides of the polygon: most inner circle was circle, then either rectangle or square next, then triangle, then the most outer circle of letter square or rectangle. We tried both orderings of the square and rectangle, and the strategy that produced the winning combination was circle, rectangle, triangle, square. Above in the printout of letters each letter is bolded based on the shape, giving us the correct answer:
 

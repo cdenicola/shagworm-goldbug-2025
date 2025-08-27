@@ -2,7 +2,7 @@
 
 ## Puzzle Info
 
-![Files from GOS puzzle. John Bartram's ledger containing 13 flowers and the website main page](assets/gos-1.png)
+![Files from GOS puzzle. John Bartram's ledger containing 13 flowers and the website main page](./assets/gos-1.png)
 
 We were given a blurb on the main page about botanist John Bartram, who kept a ledger of 13 flowers. The ledger includes annotations, cipher texts, and binomial names for each flower. The pdf was titled National Treasure Garden of Secrets.
 
@@ -10,7 +10,7 @@ We were given a blurb on the main page about botanist John Bartram, who kept a l
 
 The initial puzzle gave us a link to both the PDF of the ledger and a link to a [floral diagram website](https://kvetnidiagram.8u.cz/odiagramech_en.php). Our team spent some time getting familiar with the drawings to try and understand the complex ways of representing a flower (tepals, sepals, petals, stamens, carpels) with a formula. Using the floral diagram, which has a diagram generator, our team went through and made a floral representation of each of the 13 flowers present.
 
-![Flower sample, Specimen: American Dogwood #2; Binomial Name: Cornus florida; ](assets/gos-2.png)
+![Flower sample, Specimen: American Dogwood #2; Binomial Name: Cornus florida; ](./assets/gos-2.png)
 
 The resulting flower formulas looked like:
 
@@ -36,7 +36,7 @@ We then consolidated all the digits and realized they were always 5 digits → K
 
 This was when we decided to ask the puzzlemakers for clarity. We wanted to make sure we were on the right track, and we were told to look closely at a quote on the blurb that mentions how, for Bartram, "family always came before anything else important." Looking at taxonomic ranks, family comes before _genus,_ which was the final component we needed to solve the puzzle. In the next few hours, the organizers posted the following hint from the title of the ledger:
 
-![Documenting Growth Markers in Early... Emphasis on Gro Mark](assets/gos-3.png)
+![Documenting Growth Markers in Early... Emphasis on Gro Mark](./assets/gos-3.png)
 
 Looking at the highlighted letters, we did a search for "Gromark" to learn that it is a cipher that uses a keyword and a 5-digit primer to create a cipher. We realized that the keyword would be the genus of each flower, and the 5-digit primer would be the 5 digits we got from the floral diagrams. Using [this](https://thescytale.com/GR_GromarkDecoder.html%20) website to decode Gromark ciphers, we deciphered each ciphertext associated with the flowers by inputting their corresponding genus and 5-digit codes. For example, for Mayflower, the genus/keyword would be Erigaea. The floral diagram of Mayflower, which is K5 C5 A10 G5, would have 55105 as the 5-digit primer.
 

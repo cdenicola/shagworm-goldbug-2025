@@ -4,13 +4,13 @@
 
 This puzzle came with a lot of different components:
 
-![Main puzzle image](assets/ccc-1.png)
+![Main puzzle image](./assets/ccc-1.png)
 
 - Three Artifacts with messages
 
-|        Compass        |       Spyglass        |        Tankard        |
-| :-------------------: | :-------------------: | :-------------------: |
-| ![](assets/ccc-2.png) | ![](assets/ccc-3.png) | ![](assets/ccc-4.png) |
+|         Compass         |        Spyglass         |         Tankard         |
+| :---------------------: | :---------------------: | :---------------------: |
+| ![](./assets/ccc-2.png) | ![](./assets/ccc-3.png) | ![](./assets/ccc-4.png) |
 
 - A Journal from Captain Elman Royal (Sable Rose)
 - A Log book from Widow's Wake
@@ -24,11 +24,11 @@ We were pretty on the money with this puzzle and had the right intuition the fir
 - Captain Elman Royal of The Sable Rose
 - Captain Gnash of the Triton
 
-![Journal entry introducing the captains](assets/ccc-5.png)
+![Journal entry introducing the captains](./assets/ccc-5.png)
 
 The Journal also hinted that the answer would consist of three words, one tied to each captain:
 
-![Journal entry about three words](assets/ccc-6.png)
+![Journal entry about three words](./assets/ccc-6.png)
 
 > "We chose three words, one for each deck, known to captains alone. When all three were fired in sequence and the hourglass flag flew true, we would convene and claim the treasure"
 
@@ -36,7 +36,7 @@ From this we assumed that the three crews' words, in sequence, would form the fi
 
 The next major clue came in the subsequent journal entry which linked each captain to one of the three artifacts:
 
-![Journal entry linking captains to artifacts](assets/ccc-7.png)
+![Journal entry linking captains to artifacts](./assets/ccc-7.png)
 
 > "Dukes pressed a brass spyglass into my hand… Gnash presented us both with tankards… I gave them a set of my compasses"
 
@@ -48,13 +48,13 @@ So the mapping was:
 
 The Journal also included some peculiar notes from Essex Hale written in green that clued us into the mathematical formula needed to solve this puzzle:
 
-![Essex Hale's notes about ellipses](assets/ccc-8.png)
+![Essex Hale's notes about ellipses](./assets/ccc-8.png)
 
 > "Started going on about shapes and symmetry and e-e-elipses? Or ellip-something. I don't know, I stopped listening when he started calling points rational. Sounds like sorcery to me."
 
 Our first thought was some sort of elliptic curve cryptography but rational points on elliptic curves…
 
-![Essex Hale's notes about abscissa](assets/ccc-9.png)
+![Essex Hale's notes about abscissa](./assets/ccc-9.png)
 
 > "When sum is calculated, the abscissa will reveal the letter you're seeking; yet mind the compass rose, for every twenty and six marks she resets. Mind ye, A be naught!" This quote appeared in green text in the original document." — Essex Hale
 

@@ -4,7 +4,7 @@
 
 The puzzle provided the text: _"Blue Gold beneath Hamunaptra? Or perhaps something else?"_ and an image of 24 colored beetles.
 
-![24 colored beetles on a sandstone background](assets/blu-1.png)
+![24 colored beetles on a sandstone background](./assets/blu-1.png)
 
 ## Solution
 
@@ -19,9 +19,9 @@ Overnight, one of our team members was having trouble sleeping too deep in thoug
 Another team member had a recognition that if we’re going to be doing a trio of color additions or subtractions, then it’s highly likely the resulting scarabs are braille representation → 4 pairs of braille, 3 color combinations. That left us with the question: what means a filled in dot, and what means an empty dot. We assumed by default black scarabs meant empty dot and white dots meant filled in dot due to the consistent bottom right placement of the black dot, a frequently empty dot in braille alpha chars.
 
 We tried several combinations of color addition/subtraction, but most of the time, our reasoning left us with some invalid character that was not an alphabetic character. Finally, we came up with the right color subtraction (a decomposition of RGB) using GIMP where all the braille characters were valid:
-![Braille beetles read: PFTA](assets/blu-2.png)
-![Braille beetles read: REOS](assets/blu-3.png)
-![Braille beetles read: ERBK](assets/blu-4.png)
+![Braille beetles read: PFTA](./assets/blu-2.png)
+![Braille beetles read: REOS](./assets/blu-3.png)
+![Braille beetles read: ERBK](./assets/blu-4.png)
 
 Clear white dots were filled in, black/dark grey were empty. The red layer was PFTA, green layer, REOS, and blue layer ERBK. If you order them first by RGB layer, left to right, you get the correct answer:
 
