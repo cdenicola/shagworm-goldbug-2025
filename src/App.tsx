@@ -434,6 +434,10 @@ If you have questions, feel free to ping us on discord: @rlama__ or @cooper7840`
               - they create incredible challenges and foster this wonderful
               community!
             </p>
+            <img
+              src={`${import.meta.env.BASE_URL}assets/gold-bug-booty.jpeg`}
+              className="w-1/2 sm:w-1/4 h-auto mx-auto"
+            />
           </div>
         </footer>
       </div>
