@@ -16,7 +16,6 @@ const CCC: TPuzzle = {
   anchor: "ccc",
   difficulty: 5,
   markdownFile: "CCC.md",
-  isWrittenUp: false,
 }
 
 const FLP: TPuzzle = {
