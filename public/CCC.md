@@ -2,17 +2,15 @@
 
 ## Puzzle Info
 
-**Difficulty:** 5 Stars
-
 This puzzle came with a lot of different components:
 
 ![Main puzzle image](assets/ccc-1.png)
 
 - Three Artifacts with messages
 
-Compass | Spyglass | Tankard
-:-------------------------:|:-------------------------:|:-------------------------:
-![](assets/ccc-2.png) | ![](assets/ccc-3.png) | ![](assets/ccc-4.png)
+|        Compass        |       Spyglass        |        Tankard        |
+| :-------------------: | :-------------------: | :-------------------: |
+| ![](assets/ccc-2.png) | ![](assets/ccc-3.png) | ![](assets/ccc-4.png) |
 
 - A Journal from Captain Elman Royal (Sable Rose)
 - A Log book from Widow's Wake
@@ -43,6 +41,7 @@ The next major clue came in the subsequent journal entry which linked each capta
 > "Dukes pressed a brass spyglass into my hand… Gnash presented us both with tankards… I gave them a set of my compasses"
 
 So the mapping was:
+
 - Captain Oscar Dukes of the Wake → Spyglass
 - Captain Elman Royal of The Sable Rose → Compass
 - Captain Gnash of the Triton → Tankard
@@ -53,7 +52,7 @@ The Journal also included some peculiar notes from Essex Hale written in green t
 
 > "Started going on about shapes and symmetry and e-e-elipses? Or ellip-something. I don't know, I stopped listening when he started calling points rational. Sounds like sorcery to me."
 
-Our first thought was some sort of elliptic curve cryptography but rational points on elliptic curves….
+Our first thought was some sort of elliptic curve cryptography but rational points on elliptic curves…
 
 ![Essex Hale's notes about abscissa](assets/ccc-9.png)
 
@@ -74,6 +73,7 @@ With all the pieces in hand, the last step was to actually perform the additions
 Following the Log Book night by night, we uncovered the words chosen by each crew:
 
 **Night 1 (June 3rd):**
+
 - **The Sable Rose:** SET
   - Compass (0, 4) + Skull (23, 4) = (44, 63) → S
   - Compass (0,4) + Moon (17, 31) = (56, 45) → E
@@ -88,7 +88,10 @@ Following the Log Book night by night, we uncovered the words chosen by each cre
   - Hook (0, 2)+ Eye (11, 28) = (4, 19) → E
   - Hook (0, 2) + Anchor (3,10) = (19, 59) → T
 
+<br/>
+
 **Night 2 (June 6th):**
+
 - **The Sable Rose:** GET
   - Compass (0,4) + Skull (4,23) = (6, 1) → G
   - Compass (0,4) + Moon (17, 31) = (56, 45) → E
@@ -99,7 +102,10 @@ Following the Log Book night by night, we uncovered the words chosen by each cre
   - Shield (0, 32) + Hand (15, 42) = (45, 5) → T
 - **The Wake:** (There was no addition in the log book)
 
+<br/>
+
 **Night 3 (June 7th):**
+
 - **The Sable Rose:** MARK
   - Compass (0, 4) + Sun (12, 35) = (64, 54) → M
   - Compass (0, 4) + Serpent (6, 26) = (0, 63) → A
@@ -117,4 +123,4 @@ Following the Log Book night by night, we uncovered the words chosen by each cre
 
 The final answer was:
 
-<result>MARKTHESPOTS</result>
+<solution>MARKTHESPOTS</solution>
