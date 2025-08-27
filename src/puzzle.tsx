@@ -129,12 +129,12 @@ We will write up this puzzle later. If you want the writeup sooner, message us o
                 <p className="text-green-200 mb-3">{children}</p>
               ),
               ul: ({ children }) => (
-                <ul className="list-disc pl-6 space-y-1 text-green-200">
+                <ul className="list-disc pl-6 space-y-1 text-green-200 mb-4 last:mb-0">
                   {children}
                 </ul>
               ),
               ol: ({ children }) => (
-                <ol className="list-decimal pl-6 space-y-1 text-green-200">
+                <ol className="list-decimal pl-6 space-y-1 text-green-200 mb-4 last:mb-0">
                   {children}
                 </ol>
               ),
@@ -159,7 +159,7 @@ We will write up this puzzle later. If you want the writeup sooner, message us o
               ),
               a: ({ href, children, ...props }) => (
                 <a
-                  className="underline text-pink-400 hover:text-yellow-300"
+                  className="underline text-pink-400 hover:text-yellow-300 mb-3"
                   href={href}
                   target="_blank"
                   rel="noopener noreferrer"

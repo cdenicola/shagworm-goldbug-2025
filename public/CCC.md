@@ -88,8 +88,6 @@ Following the Log Book night by night, we uncovered the words chosen by each cre
   - Hook (0, 2)+ Eye (11, 28) = (4, 19) → E
   - Hook (0, 2) + Anchor (3,10) = (19, 59) → T
 
-<br/>
-
 **Night 2 (June 6th):**
 
 - **The Sable Rose:** GET
@@ -101,8 +99,6 @@ Following the Log Book night by night, we uncovered the words chosen by each cre
   - Shield (0, 32) + Dagger (1, 31) = (0, 35) → A
   - Shield (0, 32) + Hand (15, 42) = (45, 5) → T
 - **The Wake:** (There was no addition in the log book)
-
-<br/>
 
 **Night 3 (June 7th):**
 

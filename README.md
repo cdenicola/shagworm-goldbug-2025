@@ -74,12 +74,6 @@ From package.json:
 
 Deploys occur on pushes to main.
 
-## Notes
-
-- ANSI/BBS “SHAGWORM” banner and retro styling are included.
-- Each puzzle section includes placeholders for write-up content and DifficultyStars for difficulty.
-- If you change the repository name or hosting path, update base in vite.config.ts accordingly.
-
 ## Troubleshooting
 
 - 404s for CSS/JS on GitHub Pages: Ensure base in vite.config.ts is "/shagworm-goldbug-2025/" and that the Pages workflow completed successfully.
