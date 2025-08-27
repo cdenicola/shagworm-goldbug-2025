@@ -20,7 +20,7 @@ Our first point of note was the puzzle involved 12 bottles of rum and the song w
 
 We remembered that last year’s Gold-bug challenge had a dancing routine involving switching partners. We too quickly guessed that there were 12 pirates drinking at the same time, one bottle each, and swapping bottles around, until one of them slumps on the table and gets removed, giving us a letter. This approach has us interpret the poem with bottle meaning bottle, swig meaning bottle, cups meaning bottle, and finally cup meaning word. This… did not make sense. I got lost in my priors from previous years and could not readjust.
 
-When pondering this discrepancy, we were asked: “do you drink 12 bottles at the same time?” While pirates may go hard and require a bottle per person, our group prefers to share one bottle at a time. This epiphany let us re-define the poem, where: bottle means bottle, swig means transforming the bottle’s name, and cup means letters. That sounded more consistent!
+When pondering this discrepancy, we were asked: "do you drink 12 bottles at the same time?" While pirates may go hard and require a bottle per person, our group prefers to share one bottle at a time. This epiphany let us re-define the poem, where: bottle means bottle, swig means transforming the bottle’s name, and cup means letters. That sounded more consistent!
 
 In the page’s source code, we found the figure’s figcaption transcribed the bottle names and gave us their order.
 

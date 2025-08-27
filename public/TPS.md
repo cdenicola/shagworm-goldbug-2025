@@ -2,7 +2,7 @@
 
 ## Puzzle Info
 
-This year, Treasure Pursuit was the pirate themed “grand event”, which involves a series of challenges one after the other, usually with a “meta” challenge at the end using the previous answers to find the puzzle’s solution. It’s like a mini-gold bug. Each mini-puzzle solution appends to the URL, revealing the next puzzle.
+This year, Treasure Pursuit was the pirate themed "grand event", which involves a series of challenges one after the other, usually with a "meta" challenge at the end using the previous answers to find the puzzle’s solution. It’s like a mini-gold bug. Each mini-puzzle solution appends to the URL, revealing the next puzzle.
 
 ## Solution
 
@@ -16,13 +16,13 @@ The first puzzle, located at the starting URL [https://goldbug.cryptovillage.org
 
 ![Marine Signal Flag code, mapping flags to letters A-Z](./assets/tps-2.png)
 
-Translating each flag to a letter, we got: johnstoneschrysal. Capitalization is important in the grand event puzzles, as the URLs are case sensitive camelcase. Some google-fu gave us “Chrysal; or, The Adventures of a Guinea (1760)” by Charles Johnstone. We converted our answer to **JohnstonesChrysal**, appended the url, and moved onto the next challenge.
+Translating each flag to a letter, we got: johnstoneschrysal. Capitalization is important in the grand event puzzles, as the URLs are case sensitive camelcase. Some google-fu gave us "Chrysal; or, The Adventures of a Guinea (1760)" by Charles Johnstone. We converted our answer to **JohnstonesChrysal**, appended the url, and moved onto the next challenge.
 
 ### Cook's Apprentice
 
 Challenge: [https://goldbug.cryptovillage.org/puzzles/TreasurePursuit/JohnstonesChrysal/](https://goldbug.cryptovillage.org/puzzles/TreasurePursuit/JohnstonesChrysal/)
 
-The puzzle starts with the pirate Long John Silver informing us “ye'll need to learn \[pirate\] lingo”. Then a crossword puzzle with 12 words on the grid and 12 dominos counting from 1 to 12 overlapping blank letters, one on each word.
+The puzzle starts with the pirate Long John Silver informing us "ye'll need to learn \[pirate\] lingo". Then a crossword puzzle with 12 words on the grid and 12 dominos counting from 1 to 12 overlapping blank letters, one on each word.
 
 ![Crossword puzzle with 12 blank words and 12 dominos counting from 1 to 12, one per word](./assets/tps-3.png)
 
@@ -38,7 +38,7 @@ Then we inserted the wording into the crossword puzzle. Thankfully, each phrase 
 
 ![filled in crossword](./assets/tps-5.png)
 
-Taking the letters on the domino squares and ordering them by domino number, we get: **CristosCache**. A reference to the treasure hidden on the island of Montecristo in the “Count of Monte Cristo” by Alexandre Dumas.
+Taking the letters on the domino squares and ordering them by domino number, we get: **CristosCache**. A reference to the treasure hidden on the island of Montecristo in the "Count of Monte Cristo" by Alexandre Dumas.
 
 ### A Grand Carousing
 
@@ -48,9 +48,9 @@ The next puzzle was themed around a pirate gig. The prompt described a dance:
 | Let's kick up our heels with a chanty or two, and get to know one another\!\<br/\> When we be dancin', one matey takes the lead, while the other be followin'. Switching back and forth, see?\<br/\> When ye find a good partner, a grand new jig is born\!\<br/\> Aye, look\! Observe the skilled athlete leads the sculpture to form the dance of a pirate avian companion\!\<br/\> The leads stand fast and await their dance partners, and the follows help show 'em the way\! |
 | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 
-Then there are 12 leads and 12 follows, given in two separate tables. From the puzzle’s prompt and our knowledge of social dance, we knew the leads and follows needed to be paired, then they would create a new “partner” that would lead us to the answer.
+Then there are 12 leads and 12 follows, given in two separate tables. From the puzzle’s prompt and our knowledge of social dance, we knew the leads and follows needed to be paired, then they would create a new "partner" that would lead us to the answer.
 
-One of the lines underlined three phrases, we thought this was acting as an example. A skilled athlete is a PRO and a sculpture is ART. A pirate avian companion is a PARROT. Together, PRO \+ _art_ \= P*a*R*r*O*t* when lead and follow are “switching back and forth”. This served as a basis for solving the puzzle. We needed to solve the crossword prompt for each lead and follow, getting short word answers, then combine them to produce 12 new words.
+One of the lines underlined three phrases, we thought this was acting as an example. A skilled athlete is a PRO and a sculpture is ART. A pirate avian companion is a PARROT. Together, PRO \+ _art_ \= P*a*R*r*O*t* when lead and follow are "switching back and forth". This served as a basis for solving the puzzle. We needed to solve the crossword prompt for each lead and follow, getting short word answers, then combine them to produce 12 new words.
 
 | Lead hint              | Lead word |     | Follow hint          | Follow word |
 | :--------------------- | :-------- | --- | :------------------- | :---------- |
@@ -96,10 +96,10 @@ The color wheel underneath appears to be the puzzle to solve with distinct layer
 
 The puzzle hint states:
 
-- “four layers, from outer to inner” indicating that we should work from outer layer to inner layer.
-- “Each layer speaks for itself but looks to its outer for instruction” means that each can be mapped or decoded individually but probably requires the previous layer to solve it or move on.
-- “Ten colors appear, each holdin’ its own meaning throughout” means that the color combination of the ten colors does not change and should equal that of the Long John Silver key above.
-- “Start at noon and work ye as a clock” means that we should start from the top, noon, and move clockwise decoding the letters.
+- "four layers, from outer to inner" indicating that we should work from outer layer to inner layer.
+- "Each layer speaks for itself but looks to its outer for instruction" means that each can be mapped or decoded individually but probably requires the previous layer to solve it or move on.
+- "Ten colors appear, each holdin’ its own meaning throughout" means that the color combination of the ten colors does not change and should equal that of the Long John Silver key above.
+- "Start at noon and work ye as a clock" means that we should start from the top, noon, and move clockwise decoding the letters.
 
 We first tried mapping the colors to numbers, to create a formula we could apply to find letters. By laying out the letters we knew from the key, we saw a pattern where nearby letters shared a top color and each letter up incremented the colors the same way, in the order: blue, orange, green, red, purple, brown, pink, gray, yellow, cyan. The first color starts at blue, then increases after the second color resets after cyan. Applying this formula to the entire alphabet, we get the key:
 | Letter | Number | Top Color | Bottom Color |
@@ -135,7 +135,7 @@ The first layer (most outer) decoded to: _ROTATE_TWELVE_SKIP_NINETEEN_ (note: un
 
 The second layer decoded to: _IDGVQMSWHCZGOWPPIZKBCSPY_. Then we did a caesar (rotate) cipher by (12) followed by a skip cipher (n=19), getting the result: _UNLOCK_WITH_BLAISE_USE_POLLY_
 
-The third layer decoded to: _EOOHGIVETAWOAECGLTTGISIE_. Then we used vigenere cipher (created by Blaise de Vigenère) with key word “POLLY”, to get result: _PAD_WITH_TI_CHAPTERXIII_TEXT_
+The third layer decoded to: _EOOHGIVETAWOAECGLTTGISIE_. Then we used vigenere cipher (created by Blaise de Vigenère) with key word "POLLY", to get result: _PAD_WITH_TI_CHAPTERXIII_TEXT_
 
 The last layer (most inner) decoded to: _YPRAAMENJWRTBDTIWMVKQERG_. Using a one time pad cipher with chapter XIII of Treasure Island (theme of the puzzle), we got the final answer: _FINAL_X_ANSWER_X_POPPINS_FEED_. We plugged in **PoppinsFeed** to the URL and moved on to the next puzzle.
 
@@ -150,22 +150,22 @@ The puzzle contained the hint:
 | :-: |
 
 And song lyrics:
-|When I was just a lad looking for my right vocation<br/>My father said “Now son, this choice deserves deliberation<br/>Though you could be a doctor or perhaps a financier<br/>Yes boy why not pursue you a more challenging career”<br/>Hey ho yo<br/>You'll cruise to foreign floors<br/>And you'll keep that mind and body sound<br/>By working out of doors<br/>True friendship and adventure are things we can't live without<br/>And when you're a professional pirate<br/>That's what the job's mapped out<br/>Now take Sir Francis Drake, the Spanish all despise him<br/>But to 'ol British he's a hero and they idolize him<br/>It's how you look at buccaneers that makes them bad nor good<br/>And I see us as members of a noble brotherhood<br/>Yo ho ho<br/>We're honorable men<br/>And before we lose our tempers we will always count to ten<br/>On occasion there will be someone you have to execute<br/>But when you’re a professional pirate<br/>You don't have to wear your suit<br/>I could have stayed a surgeon<br/>I like taking things apart<br/>I could have been a lawyer<br/>But I just had too much heart<br/>I could have been in politics<br/>'Cause I've always been a big spender<br/>And me<br/>I could have been a contender<br/>Some say that pirates steal and should be feared and hated<br/>I say we're victims of bad press it's all exaggerated<br/>We'd never stab you in the back, we'd never lie or cheat<br/>We're just about the nicest guys you'd ever want to meet<br/>Hey ho ho<br/>It's one for all for one<br/>And we'll share and share alike with you and love you like a son<br/>We're gentlemen of fortune and that's what we're proud to be<br/>And when you're a professional pirate<br/>You'll be honest brave and free<br/>The soul of decency<br/>You'll be loyal and fair and on the square<br/>And most importantly<br/>When you're a professional pirate<br/>You're always in the best of company|
+|When I was just a lad looking for my right vocation<br/>My father said "Now son, this choice deserves deliberation<br/>Though you could be a doctor or perhaps a financier<br/>Yes boy why not pursue you a more challenging career"<br/>Hey ho yo<br/>You'll cruise to foreign floors<br/>And you'll keep that mind and body sound<br/>By working out of doors<br/>True friendship and adventure are things we can't live without<br/>And when you're a professional pirate<br/>That's what the job's mapped out<br/>Now take Sir Francis Drake, the Spanish all despise him<br/>But to 'ol British he's a hero and they idolize him<br/>It's how you look at buccaneers that makes them bad nor good<br/>And I see us as members of a noble brotherhood<br/>Yo ho ho<br/>We're honorable men<br/>And before we lose our tempers we will always count to ten<br/>On occasion there will be someone you have to execute<br/>But when you’re a professional pirate<br/>You don't have to wear your suit<br/>I could have stayed a surgeon<br/>I like taking things apart<br/>I could have been a lawyer<br/>But I just had too much heart<br/>I could have been in politics<br/>'Cause I've always been a big spender<br/>And me<br/>I could have been a contender<br/>Some say that pirates steal and should be feared and hated<br/>I say we're victims of bad press it's all exaggerated<br/>We'd never stab you in the back, we'd never lie or cheat<br/>We're just about the nicest guys you'd ever want to meet<br/>Hey ho ho<br/>It's one for all for one<br/>And we'll share and share alike with you and love you like a son<br/>We're gentlemen of fortune and that's what we're proud to be<br/>And when you're a professional pirate<br/>You'll be honest brave and free<br/>The soul of decency<br/>You'll be loyal and fair and on the square<br/>And most importantly<br/>When you're a professional pirate<br/>You're always in the best of company|
 | :-: |
 
 We were stuck on the actual lyrics of the song for way too long. During this time we followed a lot of red herrings, such as:
 
-- Why the different combinations of “hey ho yo” in the chorus
+- Why the different combinations of "hey ho yo" in the chorus
 - "Before we lose our tempers we always count to ten"
-  - The combination of this line, along with the instructions: “Now count my words and take no breaks” led us astray counting intervals of 10 wherever we could.
-- “Mapped out” the song on a map
+  - The combination of this line, along with the instructions: "Now count my words and take no breaks" led us astray counting intervals of 10 wherever we could.
+- "Mapped out" the song on a map
 - Any ciphers relating to Sir Francis Drake
 - "One for all for one"
   - Thought this could have to do with palindromes, or the numbers 14, or 41\.
 
-Then someone found the [song](https://disney.fandom.com/wiki/A_Professional_Pirate), “A professional pirate” from Muppet Treasure Island exists, where the lyrics originated. This was huge\! We now had a source for the lyrics!
+Then someone found the [song](https://disney.fandom.com/wiki/A_Professional_Pirate), "A professional pirate" from Muppet Treasure Island exists, where the lyrics originated. This was huge\! We now had a source for the lyrics!
 
-We found that there were 13 different words from the original lyrics in the “A professional pirate” song and the words in the puzzle. These were:
+We found that there were 13 different words from the original lyrics in the "A professional pirate" song and the words in the puzzle. These were:
 
 - Right, yes, pursue you, yo, floors, that, things, mapped out, ‘ol, nor, yo, will, your, stayed
 
@@ -213,16 +213,16 @@ The final challenge is the meta challenge, which brings together the previous an
 They also hint us to append `X` to the URL to reach the spot marked by X.
 `/TreasurePursuit/JohnstonesChrysal/CristosCache/AhabsReward/PoppinsFeed/JudgeDoomsLure/X`
 
-a) Chapter 99 of Moby Dick is titled “The Doubloon”. A normal doubloon is worth four dollars equal to 80 reales de vellón. But Ahab’s doubloon is mentioned to be worth “sixteen dollars”, giving it a value four times that of a normal doubloon, f(a) \= 320
+a) Chapter 99 of Moby Dick is titled "The Doubloon". A normal doubloon is worth four dollars equal to 80 reales de vellón. But Ahab’s doubloon is mentioned to be worth "sixteen dollars", giving it a value four times that of a normal doubloon, f(a) \= 320
 
-b) The bird woman is Mary Poppins, who fed the birds for “tuppence a bag”, and a pence is 4 Farthings, giving g(b) \= 8
+b) The bird woman is Mary Poppins, who fed the birds for "tuppence a bag", and a pence is 4 Farthings, giving g(b) \= 8
 
 c) The adventurer in Johnstone’s Chrysal is a guinea coin. Using the conversion ratios – 1 guinea to 21 shillings, 1 shilling to 12 pence, 1 penny to 4 farthings – resolves to g(c) \= 1008
 
-d) In the Count of Monte Criso, Edmond finds “twenty–five thousand crowns, each worth about eighty francs” in the second grotto, finding h(e) \= 2,000,000
+d) In the Count of Monte Criso, Edmond finds "twenty–five thousand crowns, each worth about eighty francs" in the second grotto, finding h(e) \= 2,000,000
 
-e) Finally, Judge Doom in the film Who Framed Roger Rabbit uses the call-and-response jingle “Shave and a Haircut” “Two bits” to lure Roger Rabbit out of hiding. Two bits is equal to 25 cents, singing i(e) \= 25\.
+e) Finally, Judge Doom in the film Who Framed Roger Rabbit uses the call-and-response jingle "Shave and a Haircut" "Two bits" to lure Roger Rabbit out of hiding. Two bits is equal to 25 cents, singing i(e) \= 25\.
 
-Solve for X \= 320 \* (8 \+ 1008\) \* (2,000,000 \- 25\) \= 650231872000\. Plug in X to the URL, and we reach the last page “Treasure Found\!”, giving us the solution:
+Solve for X \= 320 \* (8 \+ 1008\) \* (2,000,000 \- 25\) \= 650231872000\. Plug in X to the URL, and we reach the last page "Treasure Found\!", giving us the solution:
 
 \<solution\>iAmDishonest\</solution\>

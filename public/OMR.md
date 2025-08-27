@@ -32,7 +32,7 @@ We tried the simplest solutions of adding the die values to get to alphabet char
 
 We then tried to use the order of sided die mapping a 6 sided die or a 8 sided die to a binary value \- i.e 6868 would be 0101\. We were hoping that this would somehow represent either morse code, a bacon cipher, or a binary representation of our number to alphabet character strategies (1/0 indexed alphabet value or ascii). None of these seemed to work.
 
-Our next strategy was to look around the puzzle for other clues. We couldn’t make out all the words, but the puzzle makers showed us that it was part of the poem [_“Eldorado” by Edgar Allen Poe._](https://www.poetryfoundation.org/poems/48634/eldorado-56d22a0920778) The puzzle makers made it clear that reading this was not necessary for the puzzle solution, but helpful thematically.
+Our next strategy was to look around the puzzle for other clues. We couldn’t make out all the words, but the puzzle makers showed us that it was part of the poem [_"Eldorado" by Edgar Allen Poe._](https://www.poetryfoundation.org/poems/48634/eldorado-56d22a0920778) The puzzle makers made it clear that reading this was not necessary for the puzzle solution, but helpful thematically.
 
 We then realized an obvious fact (with the help of the puzzle makers) that the video is filmed in one take. This indicated to us that very clearly (unless the puzzle makers are incredible dice rollers), the value of the die rolled and the order of the sided-die are most likely irrelevant.
 
