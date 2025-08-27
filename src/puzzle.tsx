@@ -129,7 +129,7 @@ We will write up this puzzle later. If you want the writeup sooner, message us o
           </div>
         </header>
 
-        <CollapsibleContent className="data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down">
+        <CollapsibleContent className="CollapsibleContent">
           <div
             className={`space-y-4 ${
               p.isWrittenUp === false ? "max-h-32 overflow-hidden" : ""
