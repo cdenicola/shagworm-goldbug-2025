@@ -30,8 +30,10 @@ We first identified that the twelve labels \- MX104, CHAP34, FR225, etc. \- star
 - AT \- Austria
 - PT \- Portugal
 - DE \- Germany
-- Further research later revealed the final two:  
-  CHAP \- Switzerland, specifically from the Appenzell canton
+
+Further research later revealed the final two:
+
+- CHAP \- Switzerland, specifically from the Appenzell canton
 - ATNL \- Belgium, which was once called the Austrian Netherlands.
 
 After some Google reverse image searching, we noticed a pattern. The numbers following the country codes referred to a specific reference number from the Standard Catalog of World coins. For example, the UK575 coin is [this coin](https://en.numista.com/catalogue/pieces13105.html), which has a reference number of KM\#575. This was important because it allowed us to confirm the exact mintage of a coin, which was important as many coins had slight variations made year to year. We could not find the correct version of the Polish coin.

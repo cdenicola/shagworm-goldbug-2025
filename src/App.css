@@ -279,3 +279,11 @@ body {
     animation: none !important;
   }
 }
+
+/* styles.css */
+.markdown ul ul,
+.markdown ul ol,
+.markdown ol ul,
+.markdown ol ol {
+  @apply text-sm text-green-400 pl-5;
+}

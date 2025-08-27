@@ -129,12 +129,12 @@ We will write up this puzzle later. If you want the writeup sooner, message us o
                 <p className="text-green-200 mb-3">{children}</p>
               ),
               ul: ({ children }) => (
-                <ul className="list-disc pl-6 space-y-1 text-green-200 mb-4 last:mb-0">
+                <ul className="list-disc pl-6 ml-4 space-y-1 text-green-200 mb-4 last:mb-0">
                   {children}
                 </ul>
               ),
               ol: ({ children }) => (
-                <ol className="list-decimal pl-6 space-y-1 text-green-200 mb-4 last:mb-0">
+                <ol className="list-decimal pl-6 ml-4 space-y-1 text-green-200 mb-4 last:mb-0">
                   {children}
                 </ol>
               ),
