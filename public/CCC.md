@@ -119,4 +119,4 @@ Following the Log Book night by night, we uncovered the words chosen by each cre
 
 The final answer was:
 
-<solution>MARKTHESPOTS</solution>
+\<solution\>MarkTheSpot\</solution\>

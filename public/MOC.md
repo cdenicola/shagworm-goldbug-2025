@@ -29,4 +29,4 @@ But for all my misdeeds, I BEFRIENDED SLOTH who SAVED the DAY.
 
 Combining these 12 letters in order gave us our flag.
 
-<result>DryLandFound</result>
+\<solution\>DryLandFound\</solution\>

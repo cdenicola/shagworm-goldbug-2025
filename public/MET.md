@@ -15,7 +15,7 @@ When working on the other puzzles, we noticed each puzzle was themed to an adven
 The meta puzzle’s map had the line “Your first clue lies above, with each solved puzzle pointing the way for your next step”. The first clue was FLP, which was solved by putting the gold coin on the map, and thus the starting point. Then FLP would reference another puzzle with its solution, which would in turn reference another puzzle with its solution — charting a path. We put each puzzle, its theme, and its solution into a spreadsheet, and tried to chart a path between puzzles.
 
 We found most of the solutions were quotes from a story. We initially created an incorrect mapping with the following mistakes… we also forgot to include one:
-| Puzzle | Theme | Solution | Solution’s theme | Confidence / Reasoning |
+| Puzzle | Puzzle Theme | Solution | Solution theme | Confidence / Reasoning |
 | :---- | :---- | :---- | :---- | :---- |
 | FLP | N/A (Start) | WrongLeftEye | Goonies | Medium. One-eye willy has a missing left eye |
 | SSY | Pirates of the Caribbean | HowNotToBulb | The Mummy | Lowest. A bulb is a plant's underground storage organ. A mummy is an underground sack of organs… we were stretching |
@@ -24,7 +24,7 @@ We found most of the solutions were quotes from a story. We initially created an
 
 There were a few connections we were less than confident about, but we had no other ideas and we _had_ made a path, like the map suggested. It was not until later, when reading The Gold-Bug story out loud to each other at 3am in the morning, that we realized our mistake. We narrated the character putting a gold bug beetle into the wrong eye of a skull… at which point we collectively realized our mistake: WrongLeftEye was a reference to The Gold-Bug! We re-charted the connection between clues, finding the correct path; all steps were now high confidence backed by quotes from their respective media:
 
-| Puzzle | Theme                    | Solution      | Solution’s theme         | Reasoning                                                                                                                            |
+| Puzzle | Puzzle Theme             | Solution      | Solution theme           | Evidence                                                                                                                             |
 | :----- | :----------------------- | :------------ | :----------------------- | :----------------------------------------------------------------------------------------------------------------------------------- |
 | FLP    | N/A (Start)              | WrongLeftEye  | The Gold-Bug             | A character drops a gold-bug beetle through the skull’s wrong eye                                                                    |
 | NUM    | The Gold-Bug             | TakeMineBack  | Goonies                  | “This one, this one right here, this was my dream, my wish, and it didn't come true. So I'm takin' it back. I'm takin' 'em all back” |
@@ -126,6 +126,8 @@ Hearts beating in our chests, we saw the end of the race in front of us. We firs
 Taking the first letter of each, we get: KIDDINHERITED. Our team submitted it from a taxiing plane:
 
 !TODO gif
+
+\<solution\>KiddInherited\</solution\>
 
 We cheered\! At 10:40am, after over 48 hours of Gold-Bug, our fourth year competing: we won; we completed every puzzle; and, most importantly, we sailed with the greatest crew we could ask for\!
 

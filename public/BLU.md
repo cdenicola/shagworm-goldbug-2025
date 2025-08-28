@@ -25,4 +25,4 @@ We tried several combinations of color addition/subtraction, but most of the tim
 
 Clear white dots were filled in, black/dark grey were empty. The red layer was PFTA, green layer, REOS, and blue layer ERBK. If you order them first by RGB layer, left to right, you get the correct answer:
 
-<result>PreferToBask</result>
+\<solution\>PreferToBask\</solution\>

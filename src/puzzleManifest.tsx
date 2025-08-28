@@ -61,7 +61,6 @@ const MET: TPuzzle = {
   anchor: "met",
   difficulty: 5,
   markdownFile: "MET.md",
-  isWrittenUp: false,
 }
 
 const MOC: TPuzzle = {

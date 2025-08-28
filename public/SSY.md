@@ -57,5 +57,5 @@ Repeat for each bottle, and we got: blubotoonwoh. Reversing that, ordering lette
 
 After repeated attempts and becoming certain we had the right approach, we talked to the organizers and helped find a mistake. We helped them debug, finding that one of the letters was not set right. We used our script to print the intermediary steps, locate the offending letter (changing squall to squalq in the \#6 bottle), and find a correct one! We helped fix the puzzle. For our help, we received a Gold Bug pin!
 
-<result>HowNotToBulb<result>
+\<solution\>HowNotToBulb\</solution\>
 _(We don’t know what it means either)_

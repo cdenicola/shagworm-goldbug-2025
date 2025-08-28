@@ -35,4 +35,4 @@ M**E**AA - Triangle
 
 We figured the value of the shape must indicate some row from the letters, so we tried ordering by number of the sides of the polygon: most inner circle was circle, then either rectangle or square next, then triangle, then the most outer circle of letter square or rectangle. We tried both orderings of the square and rectangle, and the strategy that produced the winning combination was circle, rectangle, triangle, square. Above in the printout of letters each letter is bolded based on the shape, giving us the correct answer:
 
-<result>WrongLeftEye</result>
+\<solution\>WrongLeftEye\</solution\>

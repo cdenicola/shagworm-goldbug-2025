@@ -38,9 +38,9 @@ We then realized an obvious fact (with the help of the puzzle makers) that the v
 
 We re-watched the video and noticed that there were two distinct shaking patterns \- horizontal and vertical.
 
-![Horizontal shake](./assets/omr-2.png)
-Horizontal shake (above) and vertical shake (below)
-![Vertical shake](./assets/omr-3.png)
+|            Horizontal Shake             |            Vertical Shake             |
+| :-------------------------------------: | :-----------------------------------: |
+| ![Horizontal shake](./assets/omr-2.png) | ![Vertical shake](./assets/omr-3.png) |
 
 We tried to apply the two shaking patterns to morse code. If multiple dice were rolled in the same shake, then those two were consecutive morse code values.
 
@@ -48,4 +48,4 @@ We tried first that horizontal shakes were dashes and vertical shakes dots.
 | -.-. .-. --- -.-. -.- ... -.- .. -. -... --- --- - ... |
 | - |
 
-This gave us the correct answer: <result>CrockSkinBoot</result>
+This gave us the correct answer: \<solution\>CrockSkinBoot\</solution\>

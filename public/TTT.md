@@ -36,4 +36,4 @@ Picture below of solving the puzzle:
 
 Notice we missed an e and had an extra s in the puzzle. Luckily, we were able to look at "WhsyThSnakes" and determine the right answer.
 
-This left us 12 characters, which we unscrambled to be <result>WhyTheSnakes</result>
+This left us 12 characters, which we unscrambled to be \<solution\>WhyTheSnakes\</solution\>

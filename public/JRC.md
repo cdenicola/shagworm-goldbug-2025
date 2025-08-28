@@ -26,8 +26,8 @@ The fourth cipher was drawings of leaves and sticks, chunked into multiple strin
 
 ![Leaves and sticks arranged into 12 strings](./assets/jrc-4.png)
 
-Finally, the last puzzle had 12 letters to fill in, lining up with the twelve numbered letters above. The password prompt listed numbers in Spanish, giving us an order. Inputting the letters we knew: "Ol?Fl?nt?Map". Luckily, one of us had read Treasure Island recently and remembered that Captain Flint’s map was the instigating item of the story. Entering "OldFlintsMap" into the Gold-bug challenge website, we saw the sweet letters "CORRECT" scroll by - and like that we had solved our first puzzle.
+Finally, the last puzzle had 12 letters to fill in, lining up with the twelve numbered letters above. The password prompt listed numbers in Spanish, giving us an order. Inputting the letters we knew: "Ol?Fl?nt?Map". Luckily, one of us had recently read Treasure Island and remembered that Captain Flint’s map was the instigating item of the story. Entering "OldFlintsMap" into the Gold-bug challenge website, we saw the sweet letters "CORRECT" scroll by - and like that we had solved our first puzzle.
 
 ![dos once ocho uno tres siete doce diez seis nueve cuatro cinco](./assets/jrc-5.png)
 
-<result>OldFlintsMap</result>
+\<solution\>OldFlintsMap\</solution\>

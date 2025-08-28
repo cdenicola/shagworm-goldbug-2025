@@ -48,4 +48,4 @@ Even though we were confident about the letter E through our methodology, we rec
 
 After much thought, re-checking every coin multiple times (usually leading to more confusion), and many, many anagram solvers using our candidate letters, we eventually found the correct answer:
 
-<solution>HaveToSayMap</solution>
+\<solution\>HaveToSayMap\</solution\>
