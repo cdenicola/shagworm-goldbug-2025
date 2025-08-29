@@ -52,7 +52,6 @@ const MAN: TPuzzle = {
   anchor: "man",
   difficulty: 4,
   markdownFile: "MAN.md",
-  isWrittenUp: false,
 }
 
 const MET: TPuzzle = {
