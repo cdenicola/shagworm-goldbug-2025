@@ -180,9 +180,7 @@ We will write up this puzzle later. If you want the writeup sooner, message us o
                     <em className="text-green-100 italic">{children}</em>
                   ),
                   code: ({ children }) => (
-                    <code className="bg-green-800/30 px-1 py-0.5 rounded text-green-100">
-                      {children}
-                    </code>
+                    <code className="text-green-100">{children}</code>
                   ),
                   pre: ({ children }) => (
                     <pre className="bg-green-800/30 p-3 rounded overflow-x-auto">
