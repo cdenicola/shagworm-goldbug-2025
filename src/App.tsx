@@ -205,37 +205,33 @@ If you have questions, feel free to ping us on discord: @rlama__ or @cooper7840`
               ? "Behold, the brave souls who sailed with us on this treacherous voyage through the cryptographic seas!"
               : "Meet the team members who participated in the Gold Bug challenge:"}
           </p>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-2">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2">
             {crewMembers.map((crewMember) => (
               <div
                 key={crewMember.name}
-                className="flex flex-col gap-1 border border-purple-600/30 rounded-sm px-3 py-2 bg-purple-900/5"
+                className="flex flex-row items-center gap-3 border border-purple-600/30 rounded-sm px-3 py-2 bg-purple-900/5"
               >
                 <Badge color="bg-purple-500/20 text-purple-300 border-purple-400/40">
                   {crewMember.name}
                 </Badge>
-                <div className="flex gap-2">
-                  {" "}
-                  {/* flex row with spacing */}
-                  {crewMember.links?.map((c, i) => {
-                    const Icon =
-                      icons[c.icon] || (icons["ExternalLink"] as LucideIcon)
+                {crewMember.links?.map((c, i) => {
+                  const Icon =
+                    icons[c.icon] || (icons["ExternalLink"] as LucideIcon)
 
-                    const aria = c.label ?? `${crewMember.name} ${c.icon}`
-                    return (
-                      <a
-                        key={i}
-                        href={c.link}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="text-purple-400 hover:text-purple-300 transition-colors"
-                        aria-label={aria}
-                      >
-                        <Icon size={14} />
-                      </a>
-                    )
-                  })}
-                </div>
+                  const aria = c.label ?? `${crewMember.name} ${c.icon}`
+                  return (
+                    <a
+                      key={i}
+                      href={c.link}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="text-purple-400 hover:text-purple-300 transition-colors"
+                      aria-label={aria}
+                    >
+                      <Icon size={14} />
+                    </a>
+                  )
+                })}
               </div>
             ))}
           </div>
