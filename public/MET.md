@@ -59,7 +59,7 @@ Luckily, there was a single hint released:
 
 We interpreted the hint as the puzzle solution was the pirate joke and the rest of the hint gave clues to solve the puzzle. We learned maud is another word for plaid, like a checkerboard. And the clue paired "even" with "long" and "latitude" with "odd". We thought to grab only the locations with even longitude and odd latitude. Sketching the bars on our map, it quickly looked "maud", making us think we were on the right track.
 
-![Treasure map with coordinate-based grid overlay](./assets/met-maud.webp)
+![Treasure map with coordinate-based grid overlay](./assets/met-maud.png)
 
 But no matter how we selected locations (and many were on the edge) or tried to combine them, we could not come up with an answer. We tried pairing answers or taking three, then using the midpoint. We even tried finding all the locations named after captains for each theme. No dice.
 
@@ -110,7 +110,7 @@ With 13 clues and a 12 letter target, we were extremely intent on trying to use 
 
 Finally, two of our teammates went back to the basics: "How does a treasure map work?", "X marks the spot". Presto\! We needed to map the path between coordinates, then look for all the places the lines intersect.
 
-![Treasure map with paths drawn between coordinates](./assets/met-paths.webp)
+![Treasure map with paths drawn between coordinates](./assets/met-paths.png)
 
 Hearts beating in our chests, we saw the treasure's path form ahead; another crew mere moments behind. We first counted intersections as we saw on the map, after filling in all the paths. We got "IDDINERED", which was not producing a word for us. We then realized we should be tracing the path as we draw it, so we should only count an intersection when the second line crosses over the first. We traced the path and pulled the locations where X marked the spot:
 
