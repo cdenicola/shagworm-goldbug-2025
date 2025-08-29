@@ -209,6 +209,11 @@ We will write up this puzzle later. If you want the writeup sooner, message us o
                       }
                     />
                   ),
+                  blockquote: ({ children }) => (
+                    <blockquote className="border-l-4 border-green-500 pl-4 py-2 italic text-green-200 bg-green-900/10 rounded mb-4 [&_p]:mb-0 [&_p:not(:last-child)]:mb-2">
+                      {children}
+                    </blockquote>
+                  ),
                   table: ({ ...props }) => (
                     <div className="overflow-x-auto">
                       <table
