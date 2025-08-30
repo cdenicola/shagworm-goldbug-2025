@@ -6,6 +6,7 @@ import { puzzlesSolvedOrder, puzzlesSiteOrder } from "./puzzleManifest"
 import { useKeyboardNavigation } from "./hooks/useKeyboardNavigation"
 import { icons, type LucideIcon } from "lucide-react"
 import { crewMembers } from "./members"
+import { DecryptedText } from "./components/DecryptedText"
 
 function AnsiHeader() {
   const headerLines = [
@@ -183,8 +184,13 @@ If you have questions, feel free to ping us on discord: @rlama__ or @cooper7840`
               />
             </div>
           </div>
-          <div className="text-lg whitespace-pre-line">
-            {isPirateMode ? pirateText : landlubberText}
+          <div className="text-lg whitespace-pre-line pirate-mode-transition">
+            <DecryptedText
+              text={isPirateMode ? pirateText : landlubberText}
+              isVisible={true}
+              speed={30}
+              className="block"
+            />
           </div>
           <p className="ansi-cursor mt-4 text-pink-400">
             {isPirateMode

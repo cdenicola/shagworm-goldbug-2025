@@ -2,12 +2,13 @@ import { DifficultyStars } from "./App"
 import { Badge } from "./components/ui/badge"
 import { useMarkdownContent } from "./hooks/useMarkdownContent"
 import Markdown from "react-markdown"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import remarkGfm from "remark-gfm"
 import remarkBreaks from "remark-breaks"
 import rehypeRaw from "rehype-raw"
 import rehypeSanitize, { defaultSchema } from "rehype-sanitize"
 import { ChevronDown } from "lucide-react"
+import { DecryptedText } from "./components/DecryptedText"
 
 import {
   Dialog,
@@ -66,12 +67,32 @@ export function PuzzleSection({ p }: { p: TPuzzle }) {
   const markdownContent = useMarkdownContent(p.code, p.markdownFile)
   const [isRawDialogOpen, setIsRawDialogOpen] = useState(false)
   const [isCollapsed, setIsCollapsed] = useState(false)
+  const [showEncrypted, setShowEncrypted] = useState(false)
+  const [showContent, setShowContent] = useState(false)
 
   const defaultContent = `# ${p.title} Puzzle Writeup
 
 We will write up this puzzle later. If you want the writeup sooner, message us on Discord!`
 
   const contentToRender = markdownContent || defaultContent
+
+  const encryptedPlaceholder = `# ${p.title} Puzzle Writeup
+
+[ENCRYPTED CONTENT]`
+
+  useEffect(() => {
+    if (!isCollapsed && !showEncrypted) {
+      setShowEncrypted(true)
+      const timer = setTimeout(() => {
+        setShowEncrypted(false)
+        setShowContent(true)
+      }, 800)
+      return () => clearTimeout(timer)
+    } else if (isCollapsed) {
+      setShowEncrypted(false)
+      setShowContent(false)
+    }
+  }, [isCollapsed, showEncrypted])
   return (
     <Collapsible
       open={!isCollapsed}
@@ -135,110 +156,126 @@ We will write up this puzzle later. If you want the writeup sooner, message us o
               p.isWrittenUp === false ? "max-h-32 overflow-hidden" : ""
             }`}
           >
-            <div className="prose prose-invert max-w-none">
-              <Markdown
-                remarkPlugins={[remarkGfm, remarkBreaks]}
-                rehypePlugins={[rehypeRaw, [rehypeSanitize, schema]]}
-                components={{
-                  h1: ({ children }) => (
-                    <h1 className="text-yellow-300 text-2xl font-bold mb-4">
-                      {children}
-                    </h1>
-                  ),
-                  h2: ({ children }) => (
-                    <h2 className="text-yellow-300 text-xl font-bold mb-3 mt-6">
-                      {children}
-                    </h2>
-                  ),
-                  h3: ({ children }) => (
-                    <h3 className="text-yellow-300 text-lg font-bold mb-2 mt-4">
-                      {children}
-                    </h3>
-                  ),
-                  p: ({ children }) => (
-                    <p className="text-green-200 mb-3">{children}</p>
-                  ),
-                  ul: ({ children }) => (
-                    <ul className="list-disc pl-6 ml-4 space-y-1 text-green-200 mb-4 last:mb-0">
-                      {children}
-                    </ul>
-                  ),
-                  ol: ({ children }) => (
-                    <ol className="list-decimal pl-6 ml-4 space-y-1 text-green-200 mb-4 last:mb-0">
-                      {children}
-                    </ol>
-                  ),
-                  li: ({ children }) => (
-                    <li className="text-green-200">{children}</li>
-                  ),
-                  strong: ({ children }) => (
-                    <strong className="text-green-100 font-bold">
-                      {children}
-                    </strong>
-                  ),
-                  em: ({ children }) => (
-                    <em className="text-green-100 italic">{children}</em>
-                  ),
-                  code: ({ children }) => (
-                    <code className="text-green-100">{children}</code>
-                  ),
-                  pre: ({ children }) => (
-                    <pre className="bg-green-800/30 p-3 rounded overflow-x-auto">
-                      {children}
-                    </pre>
-                  ),
-                  a: ({ href, children, ...props }) => (
-                    <a
-                      className="underline text-pink-400 hover:text-yellow-300 mb-3"
-                      href={href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      {...props}
-                    >
-                      {children}
-                    </a>
-                  ),
-                  img: ({ src = "", alt = "", className = "", ...props }) => (
-                    <img
-                      src={withUrlBase(src)}
-                      alt={alt}
-                      title={alt}
-                      {...props}
-                      className={
-                        className || "block mx-auto w-full max-w-[32rem] h-auto"
-                      }
-                    />
-                  ),
-                  blockquote: ({ children }) => (
-                    <blockquote className="border-l-4 border-green-500 pl-4 py-2 italic text-green-200 bg-green-900/10 rounded mb-4 [&_p]:mb-0 [&_p:not(:last-child)]:mb-2">
-                      {children}
-                    </blockquote>
-                  ),
-                  table: ({ ...props }) => (
-                    <div className="overflow-x-auto">
-                      <table
-                        className="table-auto border-collapse border border-gray-400 mx-auto my-4 text-sm"
+            {showEncrypted && !isCollapsed ? (
+              <div className="prose prose-invert max-w-none">
+                <DecryptedText
+                  text={encryptedPlaceholder}
+                  isVisible={true}
+                  speed={20}
+                  className="text-green-200"
+                  onComplete={() => {
+                    setShowEncrypted(false)
+                    setShowContent(true)
+                  }}
+                />
+              </div>
+            ) : showContent && !isCollapsed ? (
+              <div className="prose prose-invert max-w-none puzzle-content-transition">
+                <Markdown
+                  remarkPlugins={[remarkGfm, remarkBreaks]}
+                  rehypePlugins={[rehypeRaw, [rehypeSanitize, schema]]}
+                  components={{
+                    h1: ({ children }) => (
+                      <h1 className="text-yellow-300 text-2xl font-bold mb-4">
+                        {children}
+                      </h1>
+                    ),
+                    h2: ({ children }) => (
+                      <h2 className="text-yellow-300 text-xl font-bold mb-3 mt-6">
+                        {children}
+                      </h2>
+                    ),
+                    h3: ({ children }) => (
+                      <h3 className="text-yellow-300 text-lg font-bold mb-2 mt-4">
+                        {children}
+                      </h3>
+                    ),
+                    p: ({ children }) => (
+                      <p className="text-green-200 mb-3">{children}</p>
+                    ),
+                    ul: ({ children }) => (
+                      <ul className="list-disc pl-6 ml-4 space-y-1 text-green-200 mb-4 last:mb-0">
+                        {children}
+                      </ul>
+                    ),
+                    ol: ({ children }) => (
+                      <ol className="list-decimal pl-6 ml-4 space-y-1 text-green-200 mb-4 last:mb-0">
+                        {children}
+                      </ol>
+                    ),
+                    li: ({ children }) => (
+                      <li className="text-green-200">{children}</li>
+                    ),
+                    strong: ({ children }) => (
+                      <strong className="text-green-100 font-bold">
+                        {children}
+                      </strong>
+                    ),
+                    em: ({ children }) => (
+                      <em className="text-green-100 italic">{children}</em>
+                    ),
+                    code: ({ children }) => (
+                      <code className="text-green-100">{children}</code>
+                    ),
+                    pre: ({ children }) => (
+                      <pre className="bg-green-800/30 p-3 rounded overflow-x-auto">
+                        {children}
+                      </pre>
+                    ),
+                    a: ({ href, children, ...props }) => (
+                      <a
+                        className="underline text-pink-400 hover:text-yellow-300 mb-3"
+                        href={href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        {...props}
+                      >
+                        {children}
+                      </a>
+                    ),
+                    img: ({ src = "", alt = "", className = "", ...props }) => (
+                      <img
+                        src={withUrlBase(src)}
+                        alt={alt}
+                        title={alt}
+                        {...props}
+                        className={
+                          className ||
+                          "block mx-auto w-full max-w-[32rem] h-auto"
+                        }
+                      />
+                    ),
+                    blockquote: ({ children }) => (
+                      <blockquote className="border-l-4 border-green-500 pl-4 py-2 italic text-green-200 bg-green-900/10 rounded mb-4 [&_p]:mb-0 [&_p:not(:last-child)]:mb-2">
+                        {children}
+                      </blockquote>
+                    ),
+                    table: ({ ...props }) => (
+                      <div className="overflow-x-auto">
+                        <table
+                          className="table-auto border-collapse border border-gray-400 mx-auto my-4 text-sm"
+                          {...props}
+                        />
+                      </div>
+                    ),
+                    th: ({ ...props }) => (
+                      <th
+                        className="border border-gray-400 px-3 py-2 font-semibold bg-transparent"
                         {...props}
                       />
-                    </div>
-                  ),
-                  th: ({ ...props }) => (
-                    <th
-                      className="border border-gray-400 px-3 py-2 font-semibold bg-transparent"
-                      {...props}
-                    />
-                  ),
-                  td: ({ ...props }) => (
-                    <td
-                      className="border border-gray-400 px-3 py-2"
-                      {...props}
-                    />
-                  ),
-                }}
-              >
-                {contentToRender}
-              </Markdown>
-            </div>
+                    ),
+                    td: ({ ...props }) => (
+                      <td
+                        className="border border-gray-400 px-3 py-2"
+                        {...props}
+                      />
+                    ),
+                  }}
+                >
+                  {contentToRender}
+                </Markdown>
+              </div>
+            ) : null}
           </div>
 
           <footer className="mt-4 text-sm">
