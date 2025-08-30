@@ -42,7 +42,6 @@ We wrote a monstrosity of python code trying to simulate every combination of bo
 
 Slowly, by discussing with the entire team, eliminating combinations, and integrating hints from puzzle organizers, we came to the conclusion that: swig was a caesar cipher; aligning cups meant laying out the letters in a grid with four columns laid out left-to-right then down; spinning starboard is rotating the grid to the right; flatten the words is reading the same order we wrote them down; and finally we select the nth letter.
 
-Sing with us:
 Sing with us, Muse, and through us tell your secret:
 | Lyric | State |
 | :-: | - |

@@ -178,9 +178,9 @@ Now, as the directions said to count **my** words, so we assumed this meant the 
 
 None of the above techniques gave us any solutions. We also noticed that there were only different lyrics in _exactly_ the first half of the poem \- 22 of the 44 lines. We tried to mirror the positions of the changed words on the second half of the poem. Unfortunately the poem was not a palindromic shape, so this became difficult and did not give us any results.
 
-We asked for a hint around now \- and were told we were on the right track with the counting of words. But we were stuck \- we couldn’t think of any more ways to count these words.
+We asked for a hint around now \- and were told we were on the right track with the counting of words. But we were stuck \- we couldn’t think of any more ways to count these words. Then, a formal hint was released:
 
-When we were stuck, a formal hint got released: _\[TPS\] When ye be singin' tis important to mark yer words\! If ye make a mistake, just start over from 1\!_
+> \[TPS\] When ye be singin' tis important to mark yer words\! If ye make a mistake, just start over from 1\!\_
 
 This was an extremely clear hint, and we immediately realized that we had never counted the relative distance between the letters. When you do, you get:  
 | right | 10 |

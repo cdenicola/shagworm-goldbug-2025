@@ -1,12 +1,8 @@
 # Numbers Puzzle Writeup
 
-We will write up this puzzle later. If you want the writeup sooner, message us on Discord!
-
 ## Puzzle Info
 
-Difficulty: 1 star  
-We came upon a page with three elements: a goldbug logo on top, text with strange symbols in the middle, and triplets of numbers on the bottom.  
-![][image1]
+We came upon a page with three elements: a goldbug logo on top, text with strange symbols in the middle, and triplets of numbers on the bottom.
 
 ## Solution
 
