@@ -6,12 +6,15 @@ Live (after merge to main):
 
 - https://cdenicola.github.io/shagworm-goldbug-2025/
 
+## Writeups
+
+Write ups are written in Markdown in the public/ folder. They can be viewed in GitHub markdown or on the website. Changes to the markdown files will update the website. Custom markdown to HTML/CSS conversion is configured `src/puzzle.tsx`.
+
 ## Local development
 
 Prereqs:
 
-- Node.js 20+ (Actions use Node 22), npm 9+
-- Git
+Node.js 20+ (Actions use Node 22), npm 9+
 
 Install:
 
@@ -49,22 +52,9 @@ Vite will serve the dist build (defaults to http://localhost:4173).
 - build: Type-check (tsc -b) and build with Vite
 - preview: Serve the built dist folder
 
-From package.json:
+## CI/CD
 
-```json
-{
-  "scripts": {
-    "dev": "vite",
-    "build": "tsc -b && vite build",
-    "lint": "eslint .",
-    "preview": "vite preview"
-  }
-}
-```
-
-## GitHub Pages deployment
-
-- Project Pages URL: https://cdenicola.github.io/shagworm-goldbug-2025/
+- GitHub Pages URL: https://cdenicola.github.io/shagworm-goldbug-2025/
 - Vite is configured with base: "/shagworm-goldbug-2025/" in vite.config.ts so assets load from the correct subpath.
 - The repo includes a GitHub Actions workflow at .github/workflows/pages.yml that:
   - Checks out the repo
@@ -77,5 +67,3 @@ Deploys occur on pushes to main.
 ## Troubleshooting
 
 - 404s for CSS/JS on GitHub Pages: Ensure base in vite.config.ts is "/shagworm-goldbug-2025/" and that the Pages workflow completed successfully.
-- Dev server won’t start: Check Node version (use Node 20+), remove node_modules and run npm ci again.
-- Preview differs from dev: Use npm run build && npm run preview to test the production output exactly as deployed.
