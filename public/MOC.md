@@ -19,7 +19,7 @@ Re-reading the prompts and the title, we thought each line starting with "I" was
 > I dropped FAKE PUKE over the BALCON**Y** at the THEATER.\
 > I said MICHAE**L** JACKSON came to my HOUSE to use the BATHROOM.\
 > I broke the PHOTO that ONE-EYED WILLY'S M**A**P was in.\
-> I broke Mikey's statue of MICHELA**N**GELO'S PENIS.\
+> I broke Mikey's statue of MICHELA**N**GELO'S DAVID.\
 > I said there were CREATURES that MULTIPLIE**D** when they got WET.\
 > I ate my WEIGHT in GOD**F**ATHER'S PIZZA.\
 > I used my UNCLE MAX'S T**O**UPEE as a BEARD in my SCHOOL PLAY.\
