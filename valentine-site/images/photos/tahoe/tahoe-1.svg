@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="300" viewBox="0 0 400 300">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#FFF8E7"/>
+      <stop offset="100%" stop-color="#FFD700" stop-opacity="0.15"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="300" fill="url(#bg)" rx="12"/>
+  <rect x="10" y="10" width="380" height="280" fill="none" stroke="#D4A017" stroke-width="2" stroke-dasharray="8,4" rx="8"/>
+  <text x="200" y="110" text-anchor="middle" font-size="48">🏔️</text>
+  <text x="200" y="155" text-anchor="middle" font-size="18" fill="#8B6914" font-family="Georgia, serif">Lake Tahoe Photo 1</text>
+  <text x="200" y="185" text-anchor="middle" font-size="12" fill="#999" font-family="Georgia, serif">Replace with your photo:</text>
+  <text x="200" y="205" text-anchor="middle" font-size="11" fill="#aaa" font-family="Georgia, serif">images/photos/tahoe/tahoe-1.jpg</text>
+  <text x="200" y="260" text-anchor="middle" font-size="11" fill="#ccc" font-family="Georgia, serif">manukavalentina.com</text>
+</svg>

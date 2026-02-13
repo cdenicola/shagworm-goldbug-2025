@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manuka Valentina | A Love Letter Across the World</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Lora:ital,wght@0,400;0,600;1,400&family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="honey-particles"></div>
+
+    <!-- HERO SECTION -->
+    <header id="hero">
+        <div class="honeycomb-overlay"></div>
+        <div class="hero-content">
+            <div class="bee-icon">&#x1F41D;</div>
+            <h1 class="hero-title">
+                <span class="script">Pour</span> Manuka Valentina
+            </h1>
+            <p class="hero-subtitle">A love letter written across continents, in every language our hearts speak</p>
+            <div class="hero-quote">
+                <p><em>"Ti amo, je t'aime, te quiero, ich liebe dich, I love you"</em></p>
+            </div>
+            <div class="scroll-hint">
+                <span>Scroll to explore our journey</span>
+                <div class="scroll-arrow">&darr;</div>
+            </div>
+        </div>
+        <!-- Easter Egg: Hidden in the hero honeycomb -->
+        <div class="easter-egg" data-egg="hero-bee" title="?" style="position:absolute;bottom:12%;right:8%;width:30px;height:38px;cursor:pointer;z-index:10;">
+            <svg viewBox="0 0 30 38" width="30" height="38"><ellipse cx="15" cy="22" rx="12" ry="15" fill="#FFD700" opacity="0.6"/><ellipse cx="15" cy="22" rx="12" ry="15" fill="url(#egg-grad-gold)" opacity="0.85"/><defs><linearGradient id="egg-grad-gold" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#FFE066"/><stop offset="100%" stop-color="#CC8800"/></linearGradient></defs></svg>
+        </div>
+    </header>
+
+    <!-- ABOUT SECTION -->
+    <section id="about" class="section">
+        <div class="container">
+            <h2 class="section-title"><span class="honey-drip">About My Honey</span></h2>
+            <div class="about-grid">
+                <div class="about-card">
+                    <div class="about-icon">&#x1F9E0;</div>
+                    <h3>Brilliant Mind</h3>
+                    <p>An AI researcher at ChatGPT, Manuka pushes the boundaries of what's possible. Her intellect is as sweet as her name.</p>
+                </div>
+                <div class="about-card">
+                    <div class="about-icon">&#x1F30D;</div>
+                    <h3>World Traveler</h3>
+                    <p>From snowy peaks to tropical shores, from European cobblestones to Latin rhythms &mdash; every corner of the world is her home.</p>
+                </div>
+                <div class="about-card">
+                    <div class="about-icon">&#x1F9E9;</div>
+                    <h3>Puzzle Lover</h3>
+                    <p>A mind that loves to solve mysteries and unravel secrets. <span class="script">Can you solve the love puzzles below?</span></p>
+                </div>
+                <div class="about-card">
+                    <div class="about-icon">&#x1F4AC;</div>
+                    <h3>Polyglot</h3>
+                    <p>English, Espa&ntilde;ol, Fran&ccedil;ais, Deutsch, Italiano &mdash; love sounds beautiful in every language she speaks.</p>
+                </div>
+            </div>
+        </div>
+        <!-- Easter Egg -->
+        <div class="easter-egg" data-egg="about-heart" style="position:absolute;top:15%;left:3%;width:24px;height:30px;cursor:pointer;z-index:10;">
+            <svg viewBox="0 0 24 30" width="24" height="30"><ellipse cx="12" cy="17" rx="10" ry="13" fill="#FF6B8A" opacity="0.5"/></svg>
+        </div>
+    </section>
+
+    <!-- TRAVEL MAP SECTION -->
+    <section id="travel-map" class="section section-dark">
+        <div class="container">
+            <h2 class="section-title light"><span class="honey-drip">Our Journey Together</span></h2>
+            <p class="section-desc light">"Ogni viaggio inizia con un singolo passo" &mdash; Every journey begins with a single step</p>
+            <div class="map-container">
+                <svg id="world-map" viewBox="0 0 1000 500" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Simplified world map background -->
+                    <rect width="1000" height="500" fill="#1a0a00" rx="12"/>
+
+                    <!-- Ocean -->
+                    <rect width="1000" height="500" fill="#0d1b2a" rx="12" opacity="0.5"/>
+
+                    <!-- Simplified continents -->
+                    <!-- North America -->
+                    <path d="M120,80 L220,60 L280,80 L300,120 L280,180 L260,220 L240,260 L200,280 L160,260 L120,200 L100,140 Z" fill="#2d1810" stroke="#8B6914" stroke-width="1" opacity="0.7"/>
+                    <!-- South America -->
+                    <path d="M220,300 L260,280 L290,300 L300,350 L290,400 L260,440 L230,450 L210,420 L200,370 L210,330 Z" fill="#2d1810" stroke="#8B6914" stroke-width="1" opacity="0.7"/>
+                    <!-- Europe -->
+                    <path d="M440,80 L500,60 L540,80 L560,100 L550,140 L520,160 L480,150 L450,130 L440,100 Z" fill="#2d1810" stroke="#8B6914" stroke-width="1" opacity="0.7"/>
+                    <!-- Africa -->
+                    <path d="M460,180 L520,170 L560,200 L570,260 L550,340 L510,380 L470,370 L450,300 L440,240 L450,200 Z" fill="#2d1810" stroke="#8B6914" stroke-width="1" opacity="0.7"/>
+                    <!-- Asia -->
+                    <path d="M560,60 L700,50 L800,80 L820,140 L780,180 L720,200 L660,180 L600,160 L560,120 Z" fill="#2d1810" stroke="#8B6914" stroke-width="1" opacity="0.7"/>
+                    <!-- Southeast Asia / Indonesia -->
+                    <path d="M720,220 L780,210 L820,230 L830,260 L800,280 L760,270 L730,250 Z" fill="#2d1810" stroke="#8B6914" stroke-width="1" opacity="0.7"/>
+                    <!-- Australia (for reference) -->
+                    <path d="M780,340 L840,330 L880,350 L880,390 L850,410 L810,400 L780,370 Z" fill="#2d1810" stroke="#8B6914" stroke-width="1" opacity="0.5"/>
+
+                    <!-- Travel path (animated dashed line) -->
+                    <!-- 1. Tahoe/Utah (Western US) -->
+                    <!-- 2. Singapore/Bali (SE Asia) -->
+                    <!-- 3. Europe (Amsterdam, Spain, Portugal, France) -->
+                    <!-- 4. Argentina/Mexico (Latin America) -->
+
+                    <g id="travel-path">
+                        <!-- Tahoe to Singapore -->
+                        <line x1="180" y1="160" x2="770" y2="245" class="travel-line" stroke="#FFD700" stroke-width="2" stroke-dasharray="8,4"/>
+                        <!-- Singapore to Europe -->
+                        <line x1="770" y1="245" x2="490" y2="110" class="travel-line" stroke="#FFD700" stroke-width="2" stroke-dasharray="8,4"/>
+                        <!-- Europe to Latin America -->
+                        <line x1="490" y1="110" x2="250" y2="350" class="travel-line" stroke="#FFD700" stroke-width="2" stroke-dasharray="8,4"/>
+                        <!-- Latin America back to Mexico -->
+                        <line x1="250" y1="350" x2="190" y2="240" class="travel-line" stroke="#FFD700" stroke-width="2" stroke-dasharray="8,4"/>
+                    </g>
+
+                    <!-- Location markers -->
+                    <g class="map-markers">
+                        <!-- Tahoe/Utah -->
+                        <g class="marker" data-location="snow">
+                            <circle cx="180" cy="160" r="8" fill="#FFD700" class="marker-pulse"/>
+                            <circle cx="180" cy="160" r="5" fill="#FFF"/>
+                            <text x="180" y="148" text-anchor="middle" fill="#FFD700" font-size="11" font-weight="bold">Tahoe/Utah</text>
+                        </g>
+                        <!-- Singapore/Bali -->
+                        <g class="marker" data-location="tropical">
+                            <circle cx="770" cy="245" r="8" fill="#FF6B8A" class="marker-pulse"/>
+                            <circle cx="770" cy="245" r="5" fill="#FFF"/>
+                            <text x="770" y="233" text-anchor="middle" fill="#FF6B8A" font-size="11" font-weight="bold">Singapore/Bali</text>
+                        </g>
+                        <!-- Europe -->
+                        <g class="marker" data-location="europe">
+                            <circle cx="490" cy="110" r="8" fill="#8B6BFF" class="marker-pulse"/>
+                            <circle cx="490" cy="110" r="5" fill="#FFF"/>
+                            <text x="490" y="98" text-anchor="middle" fill="#8B6BFF" font-size="11" font-weight="bold">Europe</text>
+                        </g>
+                        <!-- Argentina -->
+                        <g class="marker" data-location="latin">
+                            <circle cx="250" cy="350" r="8" fill="#FF4444" class="marker-pulse"/>
+                            <circle cx="250" cy="350" r="5" fill="#FFF"/>
+                            <text x="250" y="338" text-anchor="middle" fill="#FF4444" font-size="11" font-weight="bold">Argentina</text>
+                        </g>
+                        <!-- Mexico -->
+                        <g class="marker" data-location="latin2">
+                            <circle cx="190" cy="240" r="8" fill="#FF8C00" class="marker-pulse"/>
+                            <circle cx="190" cy="240" r="5" fill="#FFF"/>
+                            <text x="190" y="228" text-anchor="middle" fill="#FF8C00" font-size="11" font-weight="bold">Mexico</text>
+                        </g>
+                    </g>
+
+                    <!-- Compass rose -->
+                    <g transform="translate(920,430)">
+                        <circle cx="0" cy="0" r="25" fill="none" stroke="#8B6914" stroke-width="1"/>
+                        <text x="0" y="-28" text-anchor="middle" fill="#FFD700" font-size="10">N</text>
+                        <text x="0" y="36" text-anchor="middle" fill="#FFD700" font-size="10">S</text>
+                        <text x="32" y="4" text-anchor="middle" fill="#FFD700" font-size="10">E</text>
+                        <text x="-32" y="4" text-anchor="middle" fill="#FFD700" font-size="10">W</text>
+                        <line x1="0" y1="-22" x2="0" y2="22" stroke="#FFD700" stroke-width="1.5"/>
+                        <line x1="-22" y1="0" x2="22" y2="0" stroke="#FFD700" stroke-width="1.5"/>
+                        <polygon points="0,-20 -4,-8 4,-8" fill="#FFD700"/>
+                    </g>
+
+                    <!-- Title -->
+                    <text x="500" y="30" text-anchor="middle" fill="#FFD700" font-size="16" font-family="'Playfair Display', serif" font-style="italic">Our Love's Journey Around the World</text>
+                </svg>
+            </div>
+            <div class="map-legend">
+                <span class="legend-item"><span class="legend-dot" style="background:#FFD700"></span> Snow Adventures</span>
+                <span class="legend-item"><span class="legend-dot" style="background:#FF6B8A"></span> Tropical Paradise</span>
+                <span class="legend-item"><span class="legend-dot" style="background:#8B6BFF"></span> European Romance</span>
+                <span class="legend-item"><span class="legend-dot" style="background:#FF4444"></span> Latin Passion</span>
+            </div>
+        </div>
+        <!-- Easter Egg -->
+        <div class="easter-egg" data-egg="map-compass" style="position:absolute;bottom:8%;right:5%;width:26px;height:32px;cursor:pointer;z-index:10;">
+            <svg viewBox="0 0 26 32" width="26" height="32"><ellipse cx="13" cy="18" rx="11" ry="14" fill="#8B6BFF" opacity="0.45"/></svg>
+        </div>
+    </section>
+
+    <!-- TRAVEL PHOTOS SECTIONS -->
+
+    <!-- SNOW: Tahoe & Utah -->
+    <section id="photos-snow" class="section photo-section snow-theme">
+        <div class="container">
+            <h2 class="section-title"><span class="honey-drip">Snow Adventures</span></h2>
+            <p class="section-desc">"La neige tombe doucement, comme notre amour" &mdash; Snow falls gently, like our love</p>
+            <div class="photo-grid">
+                <div class="photo-region">
+                    <h3>Lake Tahoe</h3>
+                    <div class="photo-row">
+                        <div class="photo-card">
+                            <div class="photo-placeholder" data-location="tahoe">
+                                <img src="images/photos/tahoe/tahoe-1.jpg" alt="Tahoe Memory 1" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+                                <div class="placeholder-text"><span>&#x1F3D4;</span><br>Tahoe Photo 1<br><small>Replace: images/photos/tahoe/tahoe-1.jpg</small></div>
+                            </div>
+                        </div>
+                        <div class="photo-card">
+                            <div class="photo-placeholder" data-location="tahoe">
+                                <img src="images/photos/tahoe/tahoe-2.jpg" alt="Tahoe Memory 2" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+                                <div class="placeholder-text"><span>&#x26F7;</span><br>Tahoe Photo 2<br><small>Replace: images/photos/tahoe/tahoe-2.jpg</small></div>
+                            </div>
+                        </div>
+                        <div class="photo-card">
+                            <div class="photo-placeholder" data-location="tahoe">
+                                <img src="images/photos/tahoe/tahoe-3.jpg" alt="Tahoe Memory 3" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+                                <div class="placeholder-text"><span>&#x2744;</span><br>Tahoe Photo 3<br><small>Replace: images/photos/tahoe/tahoe-3.jpg</small></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="photo-region">
+                    <h3>Utah</h3>
+                    <div class="photo-row">
+                        <div class="photo-card">
+                            <div class="photo-placeholder" data-location="utah">
+                                <img src="images/photos/utah/utah-1.jpg" alt="Utah Memory 1" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+                                <div class="placeholder-text"><span>&#x1F3DC;</span><br>Utah Photo 1<br><small>Replace: images/photos/utah/utah-1.jpg</small></div>
+                            </div>
+                        </div>
+                        <div class="photo-card">
+                            <div class="photo-placeholder" data-location="utah">
+                                <img src="images/photos/utah/utah-2.jpg" alt="Utah Memory 2" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+                                <div class="placeholder-text"><span>&#x1F3D4;</span><br>Utah Photo 2<br><small>Replace: images/photos/utah/utah-2.jpg</small></div>
+                            </div>
+                        </div>
+                        <div class="photo-card">
+                            <div class="photo-placeholder" data-location="utah">
+                                <img src="images/photos/utah/utah-3.jpg" alt="Utah Memory 3" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+                                <div class="placeholder-text"><span>&#x26F0;</span><br>Utah Photo 3<br><small>Replace: images/photos/utah/utah-3.jpg</small></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SOUTHEAST ASIA: Singapore & Bali -->
+    <section id="photos-tropical" class="section photo-section tropical-theme">
+        <div class="container">
+            <h2 class="section-title"><span class="honey-drip">Tropical Paradise</span></h2>
+            <p class="section-desc">"Wo die Sonne scheint, bl&uuml;ht unsere Liebe" &mdash; Where the sun shines, our love blooms</p>
+            <div class="photo-grid">
+                <div class="photo-region">
+                    <h3>Singapore</h3>
+                    <div class="photo-row">
+                        <div class="photo-card">
+                            <div class="photo-placeholder" data-location="singapore">
+                                <img src="images/photos/singapore/singapore-1.jpg" alt="Singapore Memory 1" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+                                <div class="placeholder-text"><span>&#x1F1F8;&#x1F1EC;</span><br>Singapore Photo 1<br><small>Replace: images/photos/singapore/singapore-1.jpg</small></div>
+                            </div>
+                        </div>
+                        <div class="photo-card">
+                            <div class="photo-placeholder" data-location="singapore">
+                                <img src="images/photos/singapore/singapore-2.jpg" alt="Singapore Memory 2" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+                                <div class="placeholder-text"><span>&#x1F30F;</span><br>Singapore Photo 2<br><small>Replace: images/photos/singapore/singapore-2.jpg</small></div>
+                            </div>
+                        </div>
+                        <div class="photo-card">
+                            <div class="photo-placeholder" data-location="singapore">
+                                <img src="images/photos/singapore/singapore-3.jpg" alt="Singapore Memory 3" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+                                <div class="placeholder-text"><span>&#x1F334;</span><br>Singapore Photo 3<br><small>Replace: images/photos/singapore/singapore-3.jpg</small></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="photo-region">
+                    <h3>Bali</h3>
+                    <div class="photo-row">
+                        <div class="photo-card">
+                            <div class="photo-placeholder" data-location="bali">
+                                <img src="images/photos/bali/bali-1.jpg" alt="Bali Memory 1" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+                                <div class="placeholder-text"><span>&#x1F3DD;</span><br>Bali Photo 1<br><small>Replace: images/photos/bali/bali-1.jpg</small></div>
+                            </div>
+                        </div>
+                        <div class="photo-card">
+                            <div class="photo-placeholder" data-location="bali">
+                                <img src="images/photos/bali/bali-2.jpg" alt="Bali Memory 2" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+                                <div class="placeholder-text"><span>&#x1F33A;</span><br>Bali Photo 2<br><small>Replace: images/photos/bali/bali-2.jpg</small></div>
+                            </div>
+                        </div>
+                        <div class="photo-card">
+                            <div class="photo-placeholder" data-location="bali">
+                                <img src="images/photos/bali/bali-3.jpg" alt="Bali Memory 3" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+                                <div class="placeholder-text"><span>&#x1F305;</span><br>Bali Photo 3<br><small>Replace: images/photos/bali/bali-3.jpg</small></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Easter Egg -->
+        <div class="easter-egg" data-egg="tropical-flower" style="position:absolute;top:10%;right:6%;width:28px;height:34px;cursor:pointer;z-index:10;">
+            <svg viewBox="0 0 28 34" width="28" height="34"><ellipse cx="14" cy="19" rx="11" ry="14" fill="#FF6B8A" opacity="0.4"/></svg>
+        </div>
+    </section>
+
+    <!-- EUROPE -->
+    <section id="photos-europe" class="section photo-section europe-theme">
+        <div class="container">
+            <h2 class="section-title"><span class="honey-drip">European Romance</span></h2>
+            <p class="section-desc">"L'amour est le miel de la vie" &mdash; Love is the honey of life</p>
+            <div class="photo-grid">
+                <div class="photo-region">
+                    <h3>Amsterdam</h3>
+                    <div class="photo-row">
+                        <div class="photo-card">
+                            <div class="photo-placeholder" data-location="amsterdam">
+                                <img src="images/photos/europe/amsterdam/amsterdam-1.jpg" alt="Amsterdam Memory 1" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+                                <div class="placeholder-text"><span>&#x1F1F3;&#x1F1F1;</span><br>Amsterdam Photo 1<br><small>Replace: images/photos/europe/amsterdam/amsterdam-1.jpg</small></div>
+                            </div>
+                        </div>
+                        <div class="photo-card">
+                            <div class="photo-placeholder" data-location="amsterdam">
+                                <img src="images/photos/europe/amsterdam/amsterdam-2.jpg" alt="Amsterdam Memory 2" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+                                <div class="placeholder-text"><span>&#x1F6B2;</span><br>Amsterdam Photo 2<br><small>Replace: images/photos/europe/amsterdam/amsterdam-2.jpg</small></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="photo-region">
+                    <h3>Spain</h3>
+                    <div class="photo-row">
+                        <div class="photo-card">
+                            <div class="photo-placeholder" data-location="spain">
+                                <img src="images/photos/europe/spain/spain-1.jpg" alt="Spain Memory 1" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+                                <div class="placeholder-text"><span>&#x1F1EA;&#x1F1F8;</span><br>Spain Photo 1<br><small>Replace: images/photos/europe/spain/spain-1.jpg</small></div>
+                            </div>
+                        </div>
+                        <div class="photo-card">
+                            <div class="photo-placeholder" data-location="spain">
+                                <img src="images/photos/europe/spain/spain-2.jpg" alt="Spain Memory 2" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+                                <div class="placeholder-text"><span>&#x1F3F0;</span><br>Spain Photo 2<br><small>Replace: images/photos/europe/spain/spain-2.jpg</small></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="photo-region">
+                    <h3>Portugal</h3>
+                    <div class="photo-row">
+                        <div class="photo-card">
+                            <div class="photo-placeholder" data-location="portugal">
+                                <img src="images/photos/europe/portugal/portugal-1.jpg" alt="Portugal Memory 1" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+                                <div class="placeholder-text"><span>&#x1F1F5;&#x1F1F9;</span><br>Portugal Photo 1<br><small>Replace: images/photos/europe/portugal/portugal-1.jpg</small></div>
+                            </div>
+                        </div>
+                        <div class="photo-card">
+                            <div class="photo-placeholder" data-location="portugal">
+                                <img src="images/photos/europe/portugal/portugal-2.jpg" alt="Portugal Memory 2" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+                                <div class="placeholder-text"><span>&#x1F30A;</span><br>Portugal Photo 2<br><small>Replace: images/photos/europe/portugal/portugal-2.jpg</small></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="photo-region">
+                    <h3>France</h3>
+                    <div class="photo-row">
+                        <div class="photo-card">
+                            <div class="photo-placeholder" data-location="france">
+                                <img src="images/photos/europe/france/france-1.jpg" alt="France Memory 1" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+                                <div class="placeholder-text"><span>&#x1F1EB;&#x1F1F7;</span><br>France Photo 1<br><small>Replace: images/photos/europe/france/france-1.jpg</small></div>
+                            </div>
+                        </div>
+                        <div class="photo-card">
+                            <div class="photo-placeholder" data-location="france">
+                                <img src="images/photos/europe/france/france-2.jpg" alt="France Memory 2" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+                                <div class="placeholder-text"><span>&#x1F5FC;</span><br>France Photo 2<br><small>Replace: images/photos/europe/france/france-2.jpg</small></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Easter Egg -->
+        <div class="easter-egg" data-egg="europe-lock" style="position:absolute;bottom:5%;left:4%;width:22px;height:28px;cursor:pointer;z-index:10;">
+            <svg viewBox="0 0 22 28" width="22" height="28"><ellipse cx="11" cy="16" rx="9" ry="12" fill="#8B6BFF" opacity="0.4"/></svg>
+        </div>
+    </section>
+
+    <!-- LATIN AMERICA: Argentina & Mexico -->
+    <section id="photos-latin" class="section photo-section latin-theme">
+        <div class="container">
+            <h2 class="section-title"><span class="honey-drip">Latin Passion</span></h2>
+            <p class="section-desc">"El amor es la miel que endulza la vida" &mdash; Love is the honey that sweetens life</p>
+            <div class="photo-grid">
+                <div class="photo-region">
+                    <h3>Argentina</h3>
+                    <div class="photo-row">
+                        <div class="photo-card">
+                            <div class="photo-placeholder" data-location="argentina">
+                                <img src="images/photos/argentina/argentina-1.jpg" alt="Argentina Memory 1" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+                                <div class="placeholder-text"><span>&#x1F1E6;&#x1F1F7;</span><br>Argentina Photo 1<br><small>Replace: images/photos/argentina/argentina-1.jpg</small></div>
+                            </div>
+                        </div>
+                        <div class="photo-card">
+                            <div class="photo-placeholder" data-location="argentina">
+                                <img src="images/photos/argentina/argentina-2.jpg" alt="Argentina Memory 2" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+                                <div class="placeholder-text"><span>&#x1F483;</span><br>Argentina Photo 2<br><small>Replace: images/photos/argentina/argentina-2.jpg</small></div>
+                            </div>
+                        </div>
+                        <div class="photo-card">
+                            <div class="photo-placeholder" data-location="argentina">
+                                <img src="images/photos/argentina/argentina-3.jpg" alt="Argentina Memory 3" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+                                <div class="placeholder-text"><span>&#x1F3DE;</span><br>Argentina Photo 3<br><small>Replace: images/photos/argentina/argentina-3.jpg</small></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="photo-region">
+                    <h3>Mexico</h3>
+                    <div class="photo-row">
+                        <div class="photo-card">
+                            <div class="photo-placeholder" data-location="mexico">
+                                <img src="images/photos/mexico/mexico-1.jpg" alt="Mexico Memory 1" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+                                <div class="placeholder-text"><span>&#x1F1F2;&#x1F1FD;</span><br>Mexico Photo 1<br><small>Replace: images/photos/mexico/mexico-1.jpg</small></div>
+                            </div>
+                        </div>
+                        <div class="photo-card">
+                            <div class="photo-placeholder" data-location="mexico">
+                                <img src="images/photos/mexico/mexico-2.jpg" alt="Mexico Memory 2" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+                                <div class="placeholder-text"><span>&#x1F338;</span><br>Mexico Photo 2<br><small>Replace: images/photos/mexico/mexico-2.jpg</small></div>
+                            </div>
+                        </div>
+                        <div class="photo-card">
+                            <div class="photo-placeholder" data-location="mexico">
+                                <img src="images/photos/mexico/mexico-3.jpg" alt="Mexico Memory 3" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+                                <div class="placeholder-text"><span>&#x1F3D6;</span><br>Mexico Photo 3<br><small>Replace: images/photos/mexico/mexico-3.jpg</small></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PUZZLES SECTION -->
+    <section id="puzzles" class="section section-dark">
+        <div class="container">
+            <h2 class="section-title light"><span class="honey-drip">Love Puzzles</span></h2>
+            <p class="section-desc light">"Jedes R&auml;tsel f&uuml;hrt zu dir" &mdash; Every puzzle leads to you</p>
+            <p class="section-desc light" style="font-size:0.95rem;opacity:0.8;">Solve each puzzle to reveal a secret love message. Clues are written in the languages of our hearts.</p>
+            <div class="puzzle-grid">
+                <div class="puzzle-card" id="puzzle-snow-card" onclick="openPuzzle('snow')">
+                    <div class="puzzle-icon">&#x2744;</div>
+                    <h3>Snowflake Cipher</h3>
+                    <p class="puzzle-region">Tahoe &amp; Utah</p>
+                    <p class="puzzle-hint">"Durch den Schnee finden wir W&auml;rme"</p>
+                    <div class="puzzle-status" id="status-snow">Unsolved</div>
+                </div>
+                <div class="puzzle-card" id="puzzle-tropical-card" onclick="openPuzzle('tropical')">
+                    <div class="puzzle-icon">&#x1F33A;</div>
+                    <h3>Tropical Treasure</h3>
+                    <p class="puzzle-region">Singapore &amp; Bali</p>
+                    <p class="puzzle-hint">"Sotto il sole, il nostro amore fiorisce"</p>
+                    <div class="puzzle-status" id="status-tropical">Unsolved</div>
+                </div>
+                <div class="puzzle-card" id="puzzle-europe-card" onclick="openPuzzle('europe')">
+                    <div class="puzzle-icon">&#x1F5FC;</div>
+                    <h3>Love Lock Bridge</h3>
+                    <p class="puzzle-region">Amsterdam, Spain, Portugal &amp; France</p>
+                    <p class="puzzle-hint">"L'amour ouvre toutes les serrures"</p>
+                    <div class="puzzle-status" id="status-europe">Unsolved</div>
+                </div>
+                <div class="puzzle-card" id="puzzle-latin-card" onclick="openPuzzle('latin')">
+                    <div class="puzzle-icon">&#x1F483;</div>
+                    <h3>Tango de Amor</h3>
+                    <p class="puzzle-region">Mexico &amp; Argentina</p>
+                    <p class="puzzle-hint">"Bailamos juntos por siempre"</p>
+                    <div class="puzzle-status" id="status-latin">Unsolved</div>
+                </div>
+            </div>
+        </div>
+        <!-- Easter Egg -->
+        <div class="easter-egg" data-egg="puzzle-key" style="position:absolute;top:50%;left:2%;width:20px;height:26px;cursor:pointer;z-index:10;">
+            <svg viewBox="0 0 20 26" width="20" height="26"><ellipse cx="10" cy="15" rx="8" ry="11" fill="#FFD700" opacity="0.35"/></svg>
+        </div>
+    </section>
+
+    <!-- PUZZLE MODALS -->
+    <!-- Puzzle 1: Snowflake Cipher -->
+    <div id="puzzle-modal-snow" class="puzzle-modal">
+        <div class="puzzle-modal-content snow-puzzle-bg">
+            <button class="puzzle-close" onclick="closePuzzle('snow')">&times;</button>
+            <h2>&#x2744; Snowflake Cipher</h2>
+            <p class="puzzle-story">
+                High in the mountains where Tahoe meets Utah, snowflakes carry secret letters.
+                Each snowflake holds a clue in a different language. Decode them to reveal the hidden love message!
+            </p>
+            <div class="puzzle-instructions">
+                <p><strong>Instructions:</strong> Each clue below is a love phrase in a different language with a missing word.
+                Fill in the missing word, then take the <strong>first letter</strong> of each answer (in order) to spell the secret message.</p>
+            </div>
+            <div class="puzzle-clues" id="snow-clues">
+                <div class="clue-item">
+                    <span class="clue-lang">English</span>
+                    <p class="clue-text">You are the <em>______</em> of my life (brightness that warms)</p>
+                    <input type="text" class="clue-input" data-puzzle="snow" data-index="0" data-answer="SUNSHINE" placeholder="8 letters...">
+                    <span class="clue-check"></span>
+                </div>
+                <div class="clue-item">
+                    <span class="clue-lang">Fran&ccedil;ais</span>
+                    <p class="clue-text">"Tu es mon <em>______</em>" &mdash; You are my darling/treasure</p>
+                    <input type="text" class="clue-input" data-puzzle="snow" data-index="1" data-answer="TRESOR" placeholder="6 letters...">
+                    <span class="clue-check"></span>
+                </div>
+                <div class="clue-item">
+                    <span class="clue-lang">Espa&ntilde;ol</span>
+                    <p class="clue-text">"Eres mi <em>______</em>" &mdash; You are my [the whole universe]</p>
+                    <input type="text" class="clue-input" data-puzzle="snow" data-index="2" data-answer="UNIVERSO" placeholder="8 letters...">
+                    <span class="clue-check"></span>
+                </div>
+                <div class="clue-item">
+                    <span class="clue-lang">Italiano</span>
+                    <p class="clue-text">"Sei il mio <em>______</em>" &mdash; You are my dream</p>
+                    <input type="text" class="clue-input" data-puzzle="snow" data-index="3" data-answer="SOGNO" placeholder="5 letters...">
+                    <span class="clue-check"></span>
+                </div>
+                <div class="clue-item">
+                    <span class="clue-lang">Deutsch</span>
+                    <p class="clue-text">"Du bist mein <em>______</em>" &mdash; You are my star</p>
+                    <input type="text" class="clue-input" data-puzzle="snow" data-index="4" data-answer="STERN" placeholder="5 letters...">
+                    <span class="clue-check"></span>
+                </div>
+                <div class="clue-item">
+                    <span class="clue-lang">English</span>
+                    <p class="clue-text">You make my heart <em>______</em> with love (rhymes with "sing")</p>
+                    <input type="text" class="clue-input" data-puzzle="snow" data-index="5" data-answer="SING" placeholder="4 letters...">
+                    <span class="clue-check"></span>
+                </div>
+            </div>
+            <div class="puzzle-solution-area">
+                <p>Secret Message: <span id="snow-solution-display" class="solution-letters">_ _ _ _ _ _</span></p>
+                <button class="btn-check-puzzle" onclick="checkPuzzle('snow')">Reveal Message</button>
+                <div id="snow-result" class="puzzle-result"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Puzzle 2: Tropical Treasure -->
+    <div id="puzzle-modal-tropical" class="puzzle-modal">
+        <div class="puzzle-modal-content tropical-puzzle-bg">
+            <button class="puzzle-close" onclick="closePuzzle('tropical')">&times;</button>
+            <h2>&#x1F33A; Tropical Treasure</h2>
+            <p class="puzzle-story">
+                Under swaying palms in Singapore and Bali, love notes were hidden in tropical flowers.
+                Match each romantic phrase to its correct language to unlock the treasure!
+            </p>
+            <div class="puzzle-instructions">
+                <p><strong>Instructions:</strong> Drag and drop each love phrase to match it with the correct language.
+                Once all are correctly matched, the first letter of each phrase (top to bottom) spells the secret word!</p>
+            </div>
+            <div class="matching-puzzle" id="tropical-matching">
+                <div class="match-column" id="tropical-phrases">
+                    <div class="match-item phrase" draggable="true" data-match="italian" data-letter="A">"Amore mio, sei tutto per me"</div>
+                    <div class="match-item phrase" draggable="true" data-match="french" data-letter="L">"L'amour est plus fort que tout"</div>
+                    <div class="match-item phrase" draggable="true" data-match="spanish" data-letter="O">"Ojos que no ven, coraz&oacute;n que siente"</div>
+                    <div class="match-item phrase" draggable="true" data-match="german" data-letter="H">"Herz an Herz, f&uuml;r immer vereint"</div>
+                    <div class="match-item phrase" draggable="true" data-match="english" data-letter="A">"Always and forever, my sweet honey"</div>
+                </div>
+                <div class="match-column" id="tropical-languages">
+                    <div class="match-target" data-lang="italian"><span class="lang-label">Italiano</span><div class="drop-zone" data-accept="italian"></div></div>
+                    <div class="match-target" data-lang="french"><span class="lang-label">Fran&ccedil;ais</span><div class="drop-zone" data-accept="french"></div></div>
+                    <div class="match-target" data-lang="spanish"><span class="lang-label">Espa&ntilde;ol</span><div class="drop-zone" data-accept="spanish"></div></div>
+                    <div class="match-target" data-lang="german"><span class="lang-label">Deutsch</span><div class="drop-zone" data-accept="german"></div></div>
+                    <div class="match-target" data-lang="english"><span class="lang-label">English</span><div class="drop-zone" data-accept="english"></div></div>
+                </div>
+            </div>
+            <div class="puzzle-solution-area">
+                <p>Secret Word: <span id="tropical-solution-display" class="solution-letters">_ _ _ _ _</span></p>
+                <button class="btn-check-puzzle" onclick="checkPuzzle('tropical')">Check Answer</button>
+                <div id="tropical-result" class="puzzle-result"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Puzzle 3: Love Lock Bridge -->
+    <div id="puzzle-modal-europe" class="puzzle-modal">
+        <div class="puzzle-modal-content europe-puzzle-bg">
+            <button class="puzzle-close" onclick="closePuzzle('europe')">&times;</button>
+            <h2>&#x1F5FC; Love Lock Bridge</h2>
+            <p class="puzzle-story">
+                On a bridge in Europe, lovers attach locks with secret messages.
+                Each lock bears a famous love quote with one missing word. Find the words to unlock our message!
+            </p>
+            <div class="puzzle-instructions">
+                <p><strong>Instructions:</strong> Complete each famous love quote by choosing the correct missing word.
+                The <strong>first letter</strong> of each missing word spells the secret message.</p>
+            </div>
+            <div class="locks-puzzle" id="europe-locks">
+                <div class="lock-item">
+                    <div class="lock-icon">&#x1F512;</div>
+                    <p class="lock-quote">"L'amour est une <em>______</em> qui embellit l'&acirc;me" &mdash; Love is a _____ that beautifies the soul</p>
+                    <div class="lock-options">
+                        <button class="lock-option" data-puzzle="europe" data-index="0" data-value="FLAMME">Flamme</button>
+                        <button class="lock-option" data-puzzle="europe" data-index="0" data-value="PORTE">Porte</button>
+                        <button class="lock-option" data-puzzle="europe" data-index="0" data-value="FLEUR">Fleur</button>
+                    </div>
+                    <span class="lock-check"></span>
+                </div>
+                <div class="lock-item">
+                    <div class="lock-icon">&#x1F512;</div>
+                    <p class="lock-quote">"El amor es <em>______</em>" &mdash; Love is eternal (Spanish)</p>
+                    <div class="lock-options">
+                        <button class="lock-option" data-puzzle="europe" data-index="1" data-value="ETERNO">Eterno</button>
+                        <button class="lock-option" data-puzzle="europe" data-index="1" data-value="ESPECIAL">Especial</button>
+                        <button class="lock-option" data-puzzle="europe" data-index="1" data-value="ENORME">Enorme</button>
+                    </div>
+                    <span class="lock-check"></span>
+                </div>
+                <div class="lock-item">
+                    <div class="lock-icon">&#x1F512;</div>
+                    <p class="lock-quote">"Die <em>______</em> ist die st&auml;rkste Kraft" &mdash; _____ is the strongest force (German)</p>
+                    <div class="lock-options">
+                        <button class="lock-option" data-puzzle="europe" data-index="2" data-value="LIEBE">Liebe</button>
+                        <button class="lock-option" data-puzzle="europe" data-index="2" data-value="LUST">Lust</button>
+                        <button class="lock-option" data-puzzle="europe" data-index="2" data-value="LAUNE">Laune</button>
+                    </div>
+                    <span class="lock-check"></span>
+                </div>
+                <div class="lock-item">
+                    <div class="lock-icon">&#x1F512;</div>
+                    <p class="lock-quote">"L'amore <em>______</em> tutto" &mdash; Love conquers all (Italian)</p>
+                    <div class="lock-options">
+                        <button class="lock-option" data-puzzle="europe" data-index="3" data-value="ILLUMINA">Illumina</button>
+                        <button class="lock-option" data-puzzle="europe" data-index="3" data-value="INVADE">Invade</button>
+                        <button class="lock-option" data-puzzle="europe" data-index="3" data-value="VINCE">Vince</button>
+                    </div>
+                    <span class="lock-check"></span>
+                </div>
+                <div class="lock-item">
+                    <div class="lock-icon">&#x1F512;</div>
+                    <p class="lock-quote">"Love is the <em>______</em> to every locked heart" &mdash; English</p>
+                    <div class="lock-options">
+                        <button class="lock-option" data-puzzle="europe" data-index="4" data-value="KEY">Key</button>
+                        <button class="lock-option" data-puzzle="europe" data-index="4" data-value="KISS">Kiss</button>
+                        <button class="lock-option" data-puzzle="europe" data-index="4" data-value="KINDNESS">Kindness</button>
+                    </div>
+                    <span class="lock-check"></span>
+                </div>
+            </div>
+            <div class="puzzle-solution-area">
+                <p>Secret Word: <span id="europe-solution-display" class="solution-letters">_ _ _ _ _</span></p>
+                <button class="btn-check-puzzle" onclick="checkPuzzle('europe')">Unlock Message</button>
+                <div id="europe-result" class="puzzle-result"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Puzzle 4: Tango de Amor -->
+    <div id="puzzle-modal-latin" class="puzzle-modal">
+        <div class="puzzle-modal-content latin-puzzle-bg">
+            <button class="puzzle-close" onclick="closePuzzle('latin')">&times;</button>
+            <h2>&#x1F483; Tango de Amor</h2>
+            <p class="puzzle-story">
+                In the streets of Buenos Aires and the plazas of Mexico, love dances in every step.
+                Follow the tango steps to decode the secret message!
+            </p>
+            <div class="puzzle-instructions">
+                <p><strong>Instructions:</strong> Unscramble each love word. The words are from different languages our hearts share.
+                Take the <strong>first letter</strong> of each unscrambled word (in order) to reveal the final secret!</p>
+            </div>
+            <div class="scramble-puzzle" id="latin-scramble">
+                <div class="scramble-item">
+                    <span class="scramble-lang">Espa&ntilde;ol</span>
+                    <p class="scramble-hint">A dance of passion from Argentina</p>
+                    <div class="scramble-letters" data-answer="TANGO">
+                        <span class="scramble-tile" data-letter="G">G</span>
+                        <span class="scramble-tile" data-letter="T">T</span>
+                        <span class="scramble-tile" data-letter="N">N</span>
+                        <span class="scramble-tile" data-letter="A">A</span>
+                        <span class="scramble-tile" data-letter="O">O</span>
+                    </div>
+                    <div class="scramble-answer-slots">
+                        <span class="answer-slot"></span>
+                        <span class="answer-slot"></span>
+                        <span class="answer-slot"></span>
+                        <span class="answer-slot"></span>
+                        <span class="answer-slot"></span>
+                    </div>
+                </div>
+                <div class="scramble-item">
+                    <span class="scramble-lang">Italiano</span>
+                    <p class="scramble-hint">"_____" means love in Italian</p>
+                    <div class="scramble-letters" data-answer="AMORE">
+                        <span class="scramble-tile" data-letter="R">R</span>
+                        <span class="scramble-tile" data-letter="A">A</span>
+                        <span class="scramble-tile" data-letter="E">E</span>
+                        <span class="scramble-tile" data-letter="M">M</span>
+                        <span class="scramble-tile" data-letter="O">O</span>
+                    </div>
+                    <div class="scramble-answer-slots">
+                        <span class="answer-slot"></span>
+                        <span class="answer-slot"></span>
+                        <span class="answer-slot"></span>
+                        <span class="answer-slot"></span>
+                        <span class="answer-slot"></span>
+                    </div>
+                </div>
+                <div class="scramble-item">
+                    <span class="scramble-lang">Fran&ccedil;ais</span>
+                    <p class="scramble-hint">"_____" &mdash; sweetness/gentleness in French</p>
+                    <div class="scramble-letters" data-answer="NUIT">
+                        <span class="scramble-tile" data-letter="I">I</span>
+                        <span class="scramble-tile" data-letter="N">N</span>
+                        <span class="scramble-tile" data-letter="T">T</span>
+                        <span class="scramble-tile" data-letter="U">U</span>
+                    </div>
+                    <div class="scramble-answer-slots">
+                        <span class="answer-slot"></span>
+                        <span class="answer-slot"></span>
+                        <span class="answer-slot"></span>
+                        <span class="answer-slot"></span>
+                    </div>
+                </div>
+                <div class="scramble-item">
+                    <span class="scramble-lang">Deutsch</span>
+                    <p class="scramble-hint">"_____" means to dance in German</p>
+                    <div class="scramble-letters" data-answer="GEBEN">
+                        <span class="scramble-tile" data-letter="B">B</span>
+                        <span class="scramble-tile" data-letter="E">E</span>
+                        <span class="scramble-tile" data-letter="G">G</span>
+                        <span class="scramble-tile" data-letter="N">N</span>
+                        <span class="scramble-tile" data-letter="E">E</span>
+                    </div>
+                    <div class="scramble-answer-slots">
+                        <span class="answer-slot"></span>
+                        <span class="answer-slot"></span>
+                        <span class="answer-slot"></span>
+                        <span class="answer-slot"></span>
+                        <span class="answer-slot"></span>
+                    </div>
+                </div>
+                <div class="scramble-item">
+                    <span class="scramble-lang">English</span>
+                    <p class="scramble-hint">What bees make &mdash; and what Manuka means!</p>
+                    <div class="scramble-letters" data-answer="HONEY">
+                        <span class="scramble-tile" data-letter="E">E</span>
+                        <span class="scramble-tile" data-letter="H">H</span>
+                        <span class="scramble-tile" data-letter="Y">Y</span>
+                        <span class="scramble-tile" data-letter="N">N</span>
+                        <span class="scramble-tile" data-letter="O">O</span>
+                    </div>
+                    <div class="scramble-answer-slots">
+                        <span class="answer-slot"></span>
+                        <span class="answer-slot"></span>
+                        <span class="answer-slot"></span>
+                        <span class="answer-slot"></span>
+                        <span class="answer-slot"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="puzzle-solution-area">
+                <p>Secret Word: <span id="latin-solution-display" class="solution-letters">_ _ _ _ _</span></p>
+                <button class="btn-check-puzzle" onclick="checkPuzzle('latin')">Check Answer</button>
+                <div id="latin-result" class="puzzle-result"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- FINAL MESSAGE / LOVE LETTER -->
+    <section id="love-letter" class="section">
+        <div class="container">
+            <h2 class="section-title"><span class="honey-drip">A Letter For You</span></h2>
+            <div class="letter-container">
+                <div class="letter-paper">
+                    <p class="letter-greeting script">Mia Cara Manuka,</p>
+                    <p>From the snow-capped peaks of Tahoe to the warm shores of Bali, from the cobblestone streets of Amsterdam to the vibrant plazas of Buenos Aires &mdash; every step of our journey has been sweeter than Manuka honey.</p>
+                    <p><em>"Dans chaque coin du monde, je te retrouve"</em> &mdash; In every corner of the world, I find you again.</p>
+                    <p>Your brilliant mind that unravels the mysteries of AI, your heart that speaks in five languages, your spirit that dances through every puzzle life throws our way &mdash; <em>"tutto questo mi fa innamorare di te ogni giorno di pi&ugrave;"</em> &mdash; all of this makes me fall in love with you more every day.</p>
+                    <p><em>"Eres la miel de mi vida, la estrella de mi cielo, el sue&ntilde;o de mi coraz&oacute;n."</em></p>
+                    <p><em>"Du bist mein gr&ouml;&szlig;tes Gl&uuml;ck."</em> &mdash; You are my greatest happiness.</p>
+                    <p class="letter-closing script">Con todo mi amor, para siempre tuyo,<br>Happy Valentine's Day</p>
+                    <div class="letter-seal">&#x1F41D;</div>
+                </div>
+            </div>
+        </div>
+        <!-- Easter Egg -->
+        <div class="easter-egg" data-egg="letter-seal" style="position:absolute;bottom:10%;right:10%;width:28px;height:34px;cursor:pointer;z-index:10;">
+            <svg viewBox="0 0 28 34" width="28" height="34"><ellipse cx="14" cy="19" rx="11" ry="14" fill="#FF4444" opacity="0.35"/></svg>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer id="footer">
+        <div class="container">
+            <div class="footer-hearts">&#x2764; &#x1F41D; &#x2764;</div>
+            <p class="footer-text">Made with love for Manuka Valentina</p>
+            <p class="footer-quote script">"In every language, in every land &mdash; my heart is yours"</p>
+            <div class="footer-languages">
+                <span>I love you</span> &bull;
+                <span>Je t'aime</span> &bull;
+                <span>Te quiero</span> &bull;
+                <span>Ti amo</span> &bull;
+                <span>Ich liebe dich</span>
+            </div>
+        </div>
+        <!-- Easter Egg -->
+        <div class="easter-egg" data-egg="footer-honey" style="position:absolute;top:20%;left:8%;width:22px;height:28px;cursor:pointer;z-index:10;">
+            <svg viewBox="0 0 22 28" width="22" height="28"><ellipse cx="11" cy="16" rx="9" ry="12" fill="#FFD700" opacity="0.3"/></svg>
+        </div>
+    </footer>
+
+    <!-- EASTER EGG LIGHTBOX -->
+    <div id="egg-lightbox" class="egg-lightbox">
+        <div class="egg-lightbox-content">
+            <button class="egg-close" onclick="closeEggLightbox()">&times;</button>
+            <img id="egg-lightbox-img" src="" alt="Easter Egg Photo">
+            <p id="egg-lightbox-caption"></p>
+        </div>
+    </div>
+
+    <!-- NAV -->
+    <nav id="floating-nav">
+        <a href="#hero" title="Home">&#x1F41D;</a>
+        <a href="#travel-map" title="Map">&#x1F5FA;</a>
+        <a href="#photos-snow" title="Snow">&#x2744;</a>
+        <a href="#photos-tropical" title="Tropical">&#x1F334;</a>
+        <a href="#photos-europe" title="Europe">&#x1F5FC;</a>
+        <a href="#photos-latin" title="Latin">&#x1F483;</a>
+        <a href="#puzzles" title="Puzzles">&#x1F9E9;</a>
+        <a href="#love-letter" title="Letter">&#x1F48C;</a>
+    </nav>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
